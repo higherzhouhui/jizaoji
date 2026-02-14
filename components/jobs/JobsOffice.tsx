@@ -1,5 +1,5 @@
 import Link from "next/link";
-
+import Image from "next/image";
 const ENV_ITEMS = [
   { title: "开放工区", desc: "灵活工位与讨论区，鼓励协作与创新" },
   { title: "技术氛围", desc: "大屏、书墙与技术分享文化" },
@@ -21,7 +21,7 @@ export function JobsOffice() {
         <div className="relative aspect-[21/9] overflow-hidden rounded-2xl border border-slate-200 bg-slate-100">
           <div className="absolute inset-0 bg-gradient-to-br from-slate-200 via-slate-100 to-cyan-100" />
           <div className="absolute inset-0 flex items-center justify-center text-slate-400 text-sm">
-            办公环境图片（可替换为 public 下实景照片）
+            <Image src="/images/about/3.jpg" fill className="object-cover" sizes="100vw" alt="workspace" />
           </div>
         </div>
         <div className="mt-10 grid gap-6 sm:grid-cols-3">
