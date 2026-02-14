@@ -3,6 +3,7 @@ import { Noto_Sans_SC } from "next/font/google";
 import { SITE_NAME, DEFAULT_DESCRIPTION, DEFAULT_OG_IMAGE } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { TopProgressBar } from "@/components/layout/TopProgressBar";
+import { ChatWidget } from "@/components/chat/ChatWidget";
 import "./globals.css";
 
 const notoSansSC = Noto_Sans_SC({
@@ -47,6 +48,7 @@ export default function RootLayout({
         <TopProgressBar />
         <JsonLd />
         {children}
+        <ChatWidget />
       </body>
     </html>
   );
