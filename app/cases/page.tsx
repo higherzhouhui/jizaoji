@@ -5,12 +5,14 @@ import { CaseGrid } from "@/components/cases/CaseGrid";
 import { FeaturedCases } from "@/components/cases/FeaturedCases";
 import { CasesCTA } from "@/components/cases/CasesCTA";
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "案例展示",
   description:
     "极造极 — 网站搭建、APP 开发、微信小程序、AI 工具等精选案例，客户背景、解决方案、实施效果，用事实与数据说话。",
-};
+  path: "/cases",
+});
 
 export default function CasesPage() {
   return (

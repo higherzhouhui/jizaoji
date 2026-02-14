@@ -10,12 +10,14 @@ import {
 } from "@/components/solutions/education/EducationModules";
 import { EducationProductSync } from "@/components/solutions/education/EducationProductSync";
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "教育/培训解决方案",
   description:
     "教育/培训数字化：官网与小程序招生、直播录播授课、教务与学员管理、数据驱动续费与转化，从招生到交付一站式支撑教培机构增长。",
-};
+  path: "/solutions/education",
+});
 
 export default function EducationSolutionPage() {
   return (

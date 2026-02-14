@@ -10,12 +10,14 @@ import {
 } from "@/components/solutions/enterprise/EnterpriseModules";
 import { EnterpriseProductSync } from "@/components/solutions/enterprise/EnterpriseProductSync";
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "企业/办公解决方案",
   description:
     "企业协同与数字化办公：IM、文档、会议、审批、考勤、CRM 与安全集成，从协作到管控一体化提升组织效率与合规。",
-};
+  path: "/solutions/enterprise",
+});
 
 export default function EnterpriseSolutionPage() {
   return (

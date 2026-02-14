@@ -31,40 +31,7 @@ export function OfficeEnv() {
             科技感十足的办公空间，期待优秀的你加入
           </p>
         </div>
-        {/* 主视觉：占位图区域，后续可替换为真实照片 */}
-        <div className="relative aspect-[21/9] overflow-hidden rounded-2xl border border-slate-200 bg-slate-100">
-          <div
-            className="absolute inset-0 bg-gradient-to-br from-slate-200 via-slate-100 to-cyan-100"
-            aria-hidden
-          />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center text-slate-400">
-              <svg
-                className="mx-auto h-16 w-16"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={1}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M2.25 21h19.5m-18-18v18m10.5-18v18m10-18v18m3-9h1.5m-1.5 0h-1.5m1.5 0h-1.5m-1.5 0H9.75m-7.5 0H7.5m9-6h1.5m-1.5 0h-1.5m1.5 0h-1.5m-1.5 0H9.75m-7.5 0H7.5m9-6v18m-9-18h1.5m-1.5 0h-1.5m1.5 0h-1.5m-1.5 0H9.75m-7.5 0H7.5m9-6v18m-9-18h1.5m-1.5 0h-1.5m1.5 0h-1.5m-1.5 0H9.75m-7.5 0H7.5m9-6v18"
-                />
-              </svg>
-              <p className="mt-2 text-sm font-medium">
-                <Image
-                  src="/images/about/3.jpg"
-                  fill
-                  className="object-cover"
-                  sizes="100vw"
-                  alt="workspace"
-                />
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="mt-12 grid gap-6 sm:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-3">
           {ABOUT_IMAGES.map((item) => (
             <div
               key={item.src}

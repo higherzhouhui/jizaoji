@@ -12,9 +12,9 @@ export function Footer() {
               <Image
                 src="/logo.png"
                 alt="极造极"
-                width={120}
-                height={36}
-                className="h-9 w-auto object-contain"
+                width={200}
+                height={60}
+                className="h-14 w-auto object-contain"
               />
             </Link>
             <p className="mt-2 text-lg font-semibold text-white">极造极信息科技有限公司</p>
@@ -30,7 +30,7 @@ export function Footer() {
             <Link href="/contact" className="hover:text-white transition">联系我们</Link>
           </div>
         </div>
-        <a href="https://beian.miit.gov.cn/#/Integrated/recordQuery" target="_blank" className="mt-8 border-t border-slate-800 pt-8 text-sm text-slate-500">
+        <a href="https://beian.miit.gov.cn/#/Integrated/recordQuery" target="_blank" className="mt-8 pt-8 text-sm text-slate-500">
           © {year} 极造极信息科技有限公司 版权所有；渝ICP备2023007595号-2
         </a>
       </div>

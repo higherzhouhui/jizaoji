@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { NavDropdown } from "./NavDropdown";
 
 const PRODUCTS_ITEMS = [
@@ -17,7 +20,23 @@ const SOLUTIONS_ITEMS = [
   { label: "企业/办公", href: "/solutions/enterprise" },
 ];
 
+function navLinkClass(active: boolean) {
+  return `text-sm font-medium transition hover:text-white ${active ? "text-white" : "text-slate-400"}`;
+}
+
 export function Header() {
+  const pathname = usePathname() ?? "";
+
+  const isHome = pathname === "/";
+  const isProducts = pathname === "/products" || pathname.startsWith("/products");
+  const isSolutions = pathname.startsWith("/solutions");
+  const isCases = pathname === "/cases" || pathname.startsWith("/cases/");
+  const isTech = pathname === "/tech";
+  const isBlog = pathname === "/blog" || pathname.startsWith("/blog/");
+  const isAbout = pathname === "/about";
+  const isJobs = pathname === "/jobs";
+  const isContact = pathname === "/contact";
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-slate-800/50 bg-slate-950/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
@@ -32,42 +51,24 @@ export function Header() {
           />
         </Link>
         <nav className="hidden sm:flex items-center gap-6 lg:gap-8">
-          <Link
-            href="/"
-            className="text-sm font-medium text-slate-400 transition hover:text-white"
-          >
+          <Link href="/" className={navLinkClass(isHome)}>
             首页
           </Link>
-          <NavDropdown label="产品与服务" items={PRODUCTS_ITEMS} />
-          <NavDropdown label="解决方案" items={SOLUTIONS_ITEMS} />
-          <Link
-            href="/cases"
-            className="text-sm font-medium text-slate-400 transition hover:text-white"
-          >
+          <NavDropdown label="产品与服务" items={PRODUCTS_ITEMS} active={isProducts} pathname={pathname} />
+          <NavDropdown label="解决方案" items={SOLUTIONS_ITEMS} active={isSolutions} pathname={pathname} />
+          <Link href="/cases" className={navLinkClass(isCases)}>
             案例展示
           </Link>
-          <Link
-            href="/tech"
-            className="text-sm font-medium text-slate-400 transition hover:text-white"
-          >
+          <Link href="/tech" className={navLinkClass(isTech)}>
             技术优势
           </Link>
-          <Link
-            href="/blog"
-            className="text-sm font-medium text-slate-400 transition hover:text-white"
-          >
+          <Link href="/blog" className={navLinkClass(isBlog)}>
             资源中心
           </Link>
-          <Link
-            href="/about"
-            className="text-sm font-medium text-slate-400 transition hover:text-white"
-          >
+          <Link href="/about" className={navLinkClass(isAbout)}>
             关于我们
           </Link>
-          <Link
-            href="/jobs"
-            className="text-sm font-medium text-slate-400 transition hover:text-white"
-          >
+          <Link href="/jobs" className={navLinkClass(isJobs)}>
             加入我们
           </Link>
         </nav>

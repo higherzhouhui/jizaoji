@@ -6,12 +6,14 @@ import { CoreTeam } from "@/components/about/CoreTeam";
 import { Honors } from "@/components/about/Honors";
 import { OfficeEnv } from "@/components/about/OfficeEnv";
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "关于我们",
   description:
-    "极造极信息科技有限公司 — 公司愿景与使命、发展历程、核心团队、荣誉资质与办公环境",
-};
+    "极造极信息科技有限公司 — 愿景与使命、发展历程、核心团队、荣誉资质与办公环境，用技术创造价值、用数据赋能未来。",
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (

@@ -5,12 +5,14 @@ import { ContactForm } from "@/components/contact/ContactForm";
 import { ContactInfo } from "@/components/contact/ContactInfo";
 import { ContactMap } from "@/components/contact/ContactMap";
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "联系我们",
   description:
-    "极造极 — 免费咨询、获取方案。地址：重庆市江北区观音桥红鼎国际3001，电话、邮箱、微信与在线表单。",
-};
+    "极造极 — 免费咨询、获取方案。地址：重庆市江北区观音桥红鼎国际3001，电话、邮箱、QQ 与在线表单，欢迎合作与投递。",
+  path: "/contact",
+});
 
 type Props = { searchParams: Promise<{ position?: string }> };
 

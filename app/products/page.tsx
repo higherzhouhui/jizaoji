@@ -8,12 +8,14 @@ import { UniappSection } from "@/components/products/UniappSection";
 import { AiToolsSection } from "@/components/products/AiToolsSection";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "产品与服务",
   description:
-    "数字阵地建设、跨端开发引擎、智能应用工场 — 网站搭建、APP开发、微信小程序、uni-app、AI工具开发",
-};
+    "数字阵地建设、跨端开发引擎、智能应用工场 — 网站搭建、APP 开发、微信小程序、uni-app、AI 工具开发，按场景与能力一站式交付。",
+  path: "/products",
+});
 
 export default function ProductsPage() {
   return (

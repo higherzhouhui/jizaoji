@@ -11,12 +11,14 @@ import { CaseStudy } from "@/components/solutions/ecommerce/CaseStudy";
 import { EcommerceProductSync } from "@/components/solutions/ecommerce/EcommerceProductSync";
 import { EcommerceCTA } from "@/components/solutions/ecommerce/EcommerceCTA";
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "电商/零售解决方案",
   description:
-    "全链路电商数字化服务商：电商前端阵地、全渠道融合中台、门店数字化升级、AI智能应用，从技术开发到商业增长。",
-};
+    "全链路电商数字化：电商前端阵地、全渠道融合中台、门店数字化升级、AI 智能应用，从技术开发到商业增长。",
+  path: "/solutions/ecommerce",
+});
 
 export default function EcommerceSolutionPage() {
   return (

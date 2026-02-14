@@ -6,12 +6,14 @@ import { DevProcess } from "@/components/tech/DevProcess";
 import { QualityAssurance } from "@/components/tech/QualityAssurance";
 import { TechCTA } from "@/components/tech/TechCTA";
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "技术优势",
   description:
     "极造极 — 技术栈（前端/后端/跨端/AI）、开发流程、质量保障与研发团队，用技术深度支撑产品交付。",
-};
+  path: "/tech",
+});
 
 export default function TechPage() {
   return (

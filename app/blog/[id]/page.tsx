@@ -3,6 +3,7 @@ import { Footer } from "@/components/layout/Footer";
 import Link from "next/link";
 import { BLOG_POSTS } from "@/components/blog/blogData";
 import { BLOG_CATEGORIES } from "@/components/blog/blogData";
+import { buildPageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 
 const SOURCE_LABEL: Record<string, string> = {
@@ -19,11 +20,14 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   const post = BLOG_POSTS.find((x) => x.id === id);
-  if (!post) return { title: "资源中心" };
-  return {
+  if (!post)
+    return buildPageMetadata({ title: "资源中心", description: "极造极资源中心", path: "/blog" });
+  return buildPageMetadata({
     title: post.title,
     description: post.excerpt,
-  };
+    path: `/blog/${id}`,
+    image: null,
+  });
 }
 
 export default async function BlogPostPage({ params }: Props) {
@@ -113,7 +117,7 @@ export default async function BlogPostPage({ params }: Props) {
           <p className="mt-6 text-lg text-slate-600 leading-relaxed">{post.excerpt}</p>
           <div className="mt-10 prose prose-slate max-w-none">
             <p className="text-slate-600">
-              正文内容可在此处扩展，或接入 CMS / Markdown 渲染。当前为占位，后续可替换为真实文章内容。
+              完整正文可在此处接入 Markdown 或 CMS 渲染；当前仅展示摘要，更多内容敬请期待。
             </p>
           </div>
           <div className="mt-12 flex flex-wrap gap-4">

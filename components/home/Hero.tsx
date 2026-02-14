@@ -7,8 +7,26 @@ export function Hero() {
         className="hero-bg-gradient absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(34,211,238,0.28),transparent),radial-gradient(ellipse_60%_60%_at_80%_50%,rgba(99,102,241,0.18),transparent),radial-gradient(ellipse_60%_60%_at_20%_80%,rgba(34,211,238,0.12),transparent)]"
         aria-hidden
       />
+      {/* 浮动光球：科技感氛围 */}
       <div
-        className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#888_1px,transparent_1px),linear-gradient(to_bottom,#888_1px,transparent_1px)] bg-[size:4rem_4rem]"
+        className="hero-orb absolute -left-[20%] top-[15%] h-[320px] w-[320px] rounded-full bg-cyan-500/30 blur-[80px]"
+        aria-hidden
+      />
+      <div
+        className="hero-orb hero-orb--delay absolute -right-[15%] top-[40%] h-[280px] w-[280px] rounded-full bg-indigo-500/25 blur-[70px]"
+        aria-hidden
+      />
+      <div
+        className="hero-orb hero-orb--slow absolute left-[40%] bottom-[10%] h-[200px] w-[200px] rounded-full bg-cyan-400/20 blur-[60px]"
+        aria-hidden
+      />
+      <div
+        className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,#888_1px,transparent_1px),linear-gradient(to_bottom,#888_1px,transparent_1px)] bg-[size:4rem_4rem]"
+        aria-hidden
+      />
+      {/* 扫描线 */}
+      <div
+        className="hero-scan-line absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent pointer-events-none"
         aria-hidden
       />
       <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/60 to-slate-950" aria-hidden />

@@ -40,7 +40,7 @@ export function ContactMap() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
             </svg>
             <span className="mt-2 text-sm font-medium">点击打开地图（高德 / 百度）</span>
-            <span className="mt-1 text-xs text-slate-400">可替换为嵌入 iframe 地图</span>
+            <span className="mt-1 text-xs text-slate-400">点击上方按钮在新窗口查看地图</span>
           </a>
         </div>
       </div>

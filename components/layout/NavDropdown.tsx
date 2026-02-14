@@ -8,9 +8,13 @@ type Item = { label: string; href: string };
 export function NavDropdown({
   label,
   items,
+  active = false,
+  pathname = "",
 }: {
   label: string;
   items: Item[];
+  active?: boolean;
+  pathname?: string;
 }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -23,13 +27,15 @@ export function NavDropdown({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const buttonClass = `flex items-center gap-1 text-sm font-medium transition hover:text-white focus:outline-none ${active ? "text-white" : "text-slate-400"}`;
+
   return (
     <div className="relative" ref={ref}>
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
         onMouseEnter={() => setOpen(true)}
-        className="flex items-center gap-1 text-sm font-medium text-slate-400 transition hover:text-white focus:outline-none"
+        className={buttonClass}
         aria-expanded={open}
         aria-haspopup="true"
       >
@@ -49,16 +55,19 @@ export function NavDropdown({
           onMouseLeave={() => setOpen(false)}
         >
           <div className="min-w-[200px] rounded-lg border border-slate-700 bg-slate-900/95 py-2 shadow-xl backdrop-blur">
-            {items.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="block px-4 py-2.5 text-sm text-slate-300 transition hover:bg-slate-800 hover:text-white"
-                onClick={() => setOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {items.map((item) => {
+              const isItemActive = pathname === item.href;
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`block px-4 py-2.5 text-sm transition hover:bg-slate-800 hover:text-white ${isItemActive ? "bg-slate-800/80 text-white" : "text-slate-300"}`}
+                  onClick={() => setOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
           </div>
         </div>
       )}

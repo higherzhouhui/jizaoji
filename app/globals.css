@@ -19,3 +19,67 @@
   0%, 100% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
 }
+
+/* 科技感动态：浮动光球 */
+@keyframes float-orb {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+  25% { transform: translate(8%, -12%) scale(1.05); opacity: 0.5; }
+  50% { transform: translate(-5%, 8%) scale(0.95); opacity: 0.35; }
+  75% { transform: translate(-10%, -5%) scale(1.02); opacity: 0.45; }
+}
+@keyframes float-orb-slow {
+  0%, 100% { transform: translate(0, 0); opacity: 0.25; }
+  33% { transform: translate(-8%, 10%); opacity: 0.35; }
+  66% { transform: translate(6%, -6%); opacity: 0.2; }
+}
+/* 扫描线 */
+@keyframes scan-line {
+  0% { top: -2px; }
+  100% { top: 100%; }
+}
+/* 区块入场：滚动进入视口时淡入上移 */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-in-view {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.animate-in-view.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* 浮动光球类（便于统一关闭动效） */
+.hero-orb {
+  animation: float-orb 18s ease-in-out infinite;
+}
+.hero-orb--slow {
+  animation-name: float-orb-slow;
+  animation-duration: 20s;
+  animation-delay: 4s;
+}
+.hero-orb--delay {
+  animation-duration: 22s;
+  animation-delay: 2s;
+}
+.hero-scan-line {
+  animation: scan-line 8s linear infinite;
+}
+
+/* 减少动效偏好时禁用动画 */
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg-gradient,
+  .hero-orb,
+  .hero-scan-line,
+  .animate-in-view { animation: none !important; }
+  .animate-in-view { opacity: 1; transform: none; }
+  .animate-in-view.in-view { opacity: 1; transform: none; }
+}

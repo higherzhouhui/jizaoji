@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { CASES_LIST } from "@/components/cases/casesData";
 import { CASE_TYPES, CASE_INDUSTRIES } from "@/components/cases/casesData";
+import { buildPageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 
 function getTypeLabel(type: string) {
@@ -24,11 +25,15 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   const c = CASES_LIST.find((x) => x.id === id);
-  if (!c) return { title: "案例" };
-  return {
+  if (!c)
+    return buildPageMetadata({ title: "案例展示", description: "极造极案例展示", path: "/cases" });
+  const description = `${c.clientBrief} — ${c.solutionBrief}`;
+  return buildPageMetadata({
     title: c.title,
-    description: `${c.clientBrief} — ${c.solutionBrief}`,
-  };
+    description,
+    path: `/cases/${id}`,
+    image: c.image ?? undefined,
+  });
 }
 
 export default async function CaseDetailPage({ params }: Props) {
