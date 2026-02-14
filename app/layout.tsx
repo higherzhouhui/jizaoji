@@ -15,12 +15,13 @@ const notoSansSC = Noto_Sans_SC({
 const siteUrl =
   typeof process.env.NEXT_PUBLIC_SITE_URL === "string" && process.env.NEXT_PUBLIC_SITE_URL
     ? process.env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "")
-    : "https://jizaoji.com";
+    : "https://jizaoji.top";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: { default: SITE_NAME, template: `%s | ${SITE_NAME}` },
   description: DEFAULT_DESCRIPTION,
+  icons: { icon: "/favicon.ico" },
   openGraph: {
     type: "website",
     locale: "zh_CN",
