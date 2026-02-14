@@ -6,11 +6,40 @@ type Props = { initialPosition?: string };
 
 export function ContactForm({ initialPosition }: Props) {
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // 后续可对接 API 或邮件服务
-    setSubmitted(true);
+    setError(null);
+    setLoading(true);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const payload = {
+      name: (formData.get("name") as string)?.trim() ?? "",
+      company: (formData.get("company") as string)?.trim() || undefined,
+      need: (formData.get("need") as string)?.trim() ?? "",
+      message: (formData.get("message") as string)?.trim() || undefined,
+      contact: (formData.get("contact") as string)?.trim() ?? "",
+      position: initialPosition?.trim() || undefined,
+    };
+    try {
+      const res = await fetch("/api/consultations", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.error ?? "提交失败，请稍后再试");
+        return;
+      }
+      setSubmitted(true);
+    } catch {
+      setError("网络异常，请稍后再试");
+    } finally {
+      setLoading(false);
+    }
   }
 
   if (submitted) {
@@ -24,6 +53,9 @@ export function ContactForm({ initialPosition }: Props) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
+      {error && (
+        <p className="rounded-lg bg-red-50 px-4 py-2 text-sm text-red-700">{error}</p>
+      )}
       {initialPosition && (
         <p className="rounded-lg bg-cyan-50 px-4 py-2 text-sm text-cyan-800">
           意向职位：<span className="font-medium">{initialPosition}</span>
@@ -102,9 +134,10 @@ export function ContactForm({ initialPosition }: Props) {
       </div>
       <button
         type="submit"
-        className="w-full rounded-lg bg-cyan-500 px-4 py-3 text-base font-semibold text-slate-950 shadow-sm transition hover:bg-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
+        disabled={loading}
+        className="w-full rounded-lg bg-cyan-500 px-4 py-3 text-base font-semibold text-slate-950 shadow-sm transition hover:bg-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 disabled:opacity-70 disabled:cursor-not-allowed"
       >
-        提交
+        {loading ? "提交中…" : "提交"}
       </button>
     </form>
   );

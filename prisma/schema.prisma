@@ -15,3 +15,15 @@ model Example {
   title     String
   createdAt DateTime @default(now())
 }
+
+// 咨询/留资表单（免费咨询、联系我们、意向职位等）
+model Consultation {
+  id        String   @id @default(cuid())
+  name      String   // 姓名 *
+  company   String?  // 公司（选填）
+  need      String   // 需求：website | app | miniprogram | uniapp | ai | solution | other
+  message   String?  // 简要说明（选填）
+  contact   String   // 联系方式（手机或邮箱）*
+  position  String?  // 意向职位（从 /contact?position=xxx 带入）
+  createdAt DateTime @default(now())
+}

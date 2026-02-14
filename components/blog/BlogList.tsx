@@ -40,27 +40,25 @@ export function BlogList() {
           {filtered.map((post) => {
             const isExternal = !!post.externalUrl;
             const sourceLabel = post.source ? SOURCE_LABEL[post.source] : null;
-            const Wrapper = isExternal ? "div" : Link;
-            const wrapperProps = isExternal
-              ? { className: "block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:border-cyan-200 hover:shadow-md" }
-              : { href: `/blog/${post.id}`, className: "block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:border-cyan-200 hover:shadow-md" };
+            const cardClass =
+              "block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:border-cyan-200 hover:shadow-md";
 
             return (
               <li key={post.id}>
-                <Wrapper {...wrapperProps}>
-                  <div className="flex flex-wrap items-center gap-2 text-sm text-slate-500">
-                    <span className="rounded-full bg-cyan-500/10 px-2.5 py-0.5 font-medium text-cyan-700">
-                      {BLOG_CATEGORIES.find((x) => x.value === post.category)?.label ?? post.category}
-                    </span>
-                    <time dateTime={post.date}>{post.date}</time>
-                    {post.author && <span>· {post.author}</span>}
-                    {sourceLabel && (
-                      <span className="rounded-full bg-slate-100 px-2.5 py-0.5 font-medium text-slate-600">
-                        {sourceLabel}
+                {isExternal ? (
+                  <div className={cardClass}>
+                    <div className="flex flex-wrap items-center gap-2 text-sm text-slate-500">
+                      <span className="rounded-full bg-cyan-500/10 px-2.5 py-0.5 font-medium text-cyan-700">
+                        {BLOG_CATEGORIES.find((x) => x.value === post.category)?.label ?? post.category}
                       </span>
-                    )}
-                  </div>
-                  {isExternal ? (
+                      <time dateTime={post.date}>{post.date}</time>
+                      {post.author && <span>· {post.author}</span>}
+                      {sourceLabel && (
+                        <span className="rounded-full bg-slate-100 px-2.5 py-0.5 font-medium text-slate-600">
+                          {sourceLabel}
+                        </span>
+                      )}
+                    </div>
                     <a
                       href={post.externalUrl}
                       target="_blank"
@@ -78,21 +76,33 @@ export function BlogList() {
                         </svg>
                       </span>
                     </a>
-                  ) : (
-                    <>
-                      <h2 className="mt-3 text-xl font-semibold text-slate-900 group-hover:text-cyan-700">
-                        {post.title}
-                      </h2>
-                      <p className="mt-2 text-slate-600 line-clamp-2">{post.excerpt}</p>
-                      <span className="mt-3 inline-flex items-center text-sm font-medium text-cyan-600 group-hover:text-cyan-700">
-                        查看详情
-                        <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
+                  </div>
+                ) : (
+                  <Link href={`/blog/${post.id}`} className={cardClass}>
+                    <div className="flex flex-wrap items-center gap-2 text-sm text-slate-500">
+                      <span className="rounded-full bg-cyan-500/10 px-2.5 py-0.5 font-medium text-cyan-700">
+                        {BLOG_CATEGORIES.find((x) => x.value === post.category)?.label ?? post.category}
                       </span>
-                    </>
-                  )}
-                </Wrapper>
+                      <time dateTime={post.date}>{post.date}</time>
+                      {post.author && <span>· {post.author}</span>}
+                      {sourceLabel && (
+                        <span className="rounded-full bg-slate-100 px-2.5 py-0.5 font-medium text-slate-600">
+                          {sourceLabel}
+                        </span>
+                      )}
+                    </div>
+                    <h2 className="mt-3 text-xl font-semibold text-slate-900 group-hover:text-cyan-700">
+                      {post.title}
+                    </h2>
+                    <p className="mt-2 text-slate-600 line-clamp-2">{post.excerpt}</p>
+                    <span className="mt-3 inline-flex items-center text-sm font-medium text-cyan-600 group-hover:text-cyan-700">
+                      查看详情
+                      <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </span>
+                  </Link>
+                )}
               </li>
             );
           })}
