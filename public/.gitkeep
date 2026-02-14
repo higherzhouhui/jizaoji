@@ -1,0 +1,2 @@
+# 静态资源放在此目录，通过根路径访问
+# 例如：public/logo.png → 页面中使用 /logo.png 或 <Image src="/logo.png" />

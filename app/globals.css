@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: 15 23 42;
+    --color-accent: 34 211 238;
+    --color-muted: 100 116 139;
+  }
+}
+
+/* Hero 动态背景 */
+.hero-bg-gradient {
+  background-size: 400% 400%;
+  animation: hero-gradient 12s ease infinite;
+}
+@keyframes hero-gradient {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
