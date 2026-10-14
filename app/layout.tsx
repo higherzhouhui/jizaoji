@@ -1,15 +1,33 @@
 import type { Metadata } from "next";
-import { Noto_Sans_SC } from "next/font/google";
+import { Instrument_Serif, Noto_Sans_SC, Syne } from "next/font/google";
 import { SITE_NAME, DEFAULT_DESCRIPTION, DEFAULT_OG_IMAGE } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { TopProgressBar } from "@/components/layout/TopProgressBar";
 import { ChatWidget } from "@/components/chat/ChatWidget";
+import { PreferencesProvider } from "@/lib/preferences";
+import { THEME_BOOT } from "@/lib/theme-boot";
 import "./globals.css";
 
 const notoSansSC = Noto_Sans_SC({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-sans-sc",
+  display: "swap",
+});
+
+const syne = Syne({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const instrument = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  style: "italic",
+  variable: "--font-serif",
+  display: "swap",
 });
 
 const siteUrl =
@@ -44,12 +62,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-CN" className={notoSansSC.variable}>
+    <html
+      lang="zh-CN"
+      data-theme="night"
+      data-locale="zh"
+      suppressHydrationWarning
+      className={`${notoSansSC.variable} ${syne.variable} ${instrument.variable}`}
+    >
       <body className="antialiased font-sans">
-        <TopProgressBar />
-        <JsonLd />
-        {children}
-        <ChatWidget />
+        <script dangerouslySetInnerHTML={{ __html: THEME_BOOT }} />
+        <PreferencesProvider>
+          <TopProgressBar />
+          <JsonLd />
+          {children}
+          <ChatWidget />
+        </PreferencesProvider>
       </body>
     </html>
   );

@@ -1,0 +1,2 @@
+/** 在水合前写入主题和语言，避免整页闪成默认黑夜。 */
+export const THEME_BOOT = `(function(){try{var ok={night:1,day:1,gold:1,amber:1};var t=localStorage.getItem("jzj-theme");if(!ok[t]){t=window.matchMedia("(prefers-color-scheme: light)").matches?"day":"night";}var l=localStorage.getItem("jzj-locale");if(l!=="en"&&l!=="zh")l="zh";var h=document.documentElement;h.setAttribute("data-theme",t);h.setAttribute("data-locale",l);h.lang=l==="en"?"en":"zh-CN";}catch(e){}})();`;

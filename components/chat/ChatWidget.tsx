@@ -1,32 +1,31 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
+import { usePreferences } from "@/lib/preferences";
 
 type Message = { role: "user" | "assistant"; content: string };
 
-const WELCOME =
-  "你好，我是极造极智能客服。可以问我关于产品与服务、解决方案、联系方式等问题；复杂需求建议通过「免费咨询」或电话/QQ 沟通。";
-
-/** 根据 pathname 得到页面标题，供模型了解当前情景 */
-function getPageTitle(pathname: string): string {
-  if (!pathname || pathname === "/") return "首页";
-  if (pathname.startsWith("/about")) return "关于我们";
-  if (pathname.startsWith("/contact")) return "联系我们";
-  if (pathname.startsWith("/products")) return "产品与服务";
-  if (pathname.startsWith("/cases")) return pathname === "/cases" ? "案例展示" : "案例详情";
-  if (pathname.startsWith("/blog")) return pathname === "/blog" ? "资源中心" : "文章详情";
-  if (pathname.startsWith("/tech")) return "技术优势";
-  if (pathname.startsWith("/jobs")) return "加入我们";
-  if (pathname.startsWith("/solutions/ecommerce")) return "电商/零售解决方案";
-  if (pathname.startsWith("/solutions/food")) return "餐饮/生活服务解决方案";
-  if (pathname.startsWith("/solutions/enterprise")) return "企业/办公解决方案";
-  if (pathname.startsWith("/solutions/education")) return "教育/培训解决方案";
+function getPageTitle(pathname: string, english: boolean): string {
+  const zh = !english;
+  if (!pathname || pathname === "/") return zh ? "首页" : "Home";
+  if (pathname.startsWith("/about")) return zh ? "关于我们" : "About";
+  if (pathname.startsWith("/contact")) return zh ? "联系" : "Contact";
+  if (pathname.startsWith("/products")) return zh ? "服务" : "Services";
+  if (pathname.startsWith("/cases")) return pathname === "/cases" ? (zh ? "案例" : "Work") : zh ? "案例详情" : "A story";
+  if (pathname.startsWith("/blog")) return zh ? "记录" : "Notes";
+  if (pathname.startsWith("/tech")) return zh ? "怎么交付" : "How it’s built";
+  if (pathname.startsWith("/jobs")) return zh ? "加入我们" : "Jobs";
+  if (pathname.startsWith("/solutions/ecommerce")) return zh ? "卖货" : "Selling";
+  if (pathname.startsWith("/solutions/food")) return zh ? "开店" : "Shops";
+  if (pathname.startsWith("/solutions/enterprise")) return zh ? "公司内部" : "Inside a company";
+  if (pathname.startsWith("/solutions/education")) return zh ? "教课" : "Teaching";
   return pathname;
 }
 
 export function ChatWidget() {
   const pathname = usePathname() ?? "";
+  const { t, locale } = usePreferences();
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
@@ -35,133 +34,146 @@ export function ChatWidget() {
 
   useEffect(() => {
     if (open && listRef.current) listRef.current.scrollTop = listRef.current.scrollHeight;
-  }, [open, messages]);
+  }, [open, messages, loading]);
+
+  useEffect(() => {
+    const onOpen = () => setOpen(true);
+    window.addEventListener("jzj-open-chat", onOpen);
+    return () => window.removeEventListener("jzj-open-chat", onOpen);
+  }, []);
 
   const send = async () => {
     const text = input.trim();
     if (!text || loading) return;
     setInput("");
     const userMsg: Message = { role: "user", content: text };
-    setMessages((m) => [...m, userMsg]);
+    setMessages((current) => [...current, userMsg]);
     setLoading(true);
     try {
-      const history = [...messages, userMsg].map((m) => ({ role: m.role, content: m.content }));
+      const history = [...messages, userMsg].map((message) => ({
+        role: message.role,
+        content: message.content,
+      }));
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           messages: history,
-          context: { pathname, pageTitle: getPageTitle(pathname) },
+          context: { pathname, pageTitle: getPageTitle(pathname, locale === "en"), locale },
         }),
       });
       const data = await res.json();
+      const raw = typeof data.error === "string" ? data.error : "";
+      const fallback =
+        locale === "en"
+          ? raw.includes("未配置")
+            ? "The assistant is not configured on this server yet. Leave a note, or call."
+            : raw.includes("无效")
+              ? "The assistant could not sign in. Use the form or call."
+              : raw
+                ? t.chat.fail
+                : t.chat.fail
+          : raw || t.chat.fail;
       if (!res.ok) {
-        setMessages((m) => [...m, { role: "assistant", content: data.error || "请求失败，请稍后再试。" }]);
+        setMessages((current) => [...current, { role: "assistant", content: fallback }]);
         return;
       }
-      setMessages((m) => [...m, { role: "assistant", content: data.content || "暂无回复。" }]);
+      setMessages((current) => [
+        ...current,
+        { role: "assistant", content: data.content || fallback },
+      ]);
     } catch {
-      setMessages((m) => [...m, { role: "assistant", content: "网络异常，请稍后再试。" }]);
+      setMessages((current) => [...current, { role: "assistant", content: t.chat.fail }]);
     } finally {
       setLoading(false);
     }
   };
 
-  const displayMessages = messages.length === 0 ? [{ role: "assistant" as const, content: WELCOME }] : messages;
+  const displayMessages =
+    messages.length === 0 ? [{ role: "assistant" as const, content: t.chat.welcome }] : messages;
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2">
+    <div className="fixed bottom-4 right-4 z-[60] flex flex-col items-end gap-3 sm:bottom-6 sm:right-6">
       {open && (
-        <div className="flex h-[420px] w-[360px] flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl sm:w-[380px]">
-          <div className="flex items-center justify-between border-b border-slate-200 bg-slate-50 px-4 py-3">
-            <span className="text-sm font-semibold text-slate-800">智能客服</span>
+        <div className="flex h-[min(70vh,460px)] w-[min(100vw-2rem,380px)] flex-col overflow-hidden rounded-3xl border border-line bg-surface shadow-ticket">
+          <div className="flex items-center justify-between border-b border-line px-4 py-3">
+            <div>
+              <p className="text-sm font-semibold text-ink">{t.chat.title}</p>
+              <p className="text-[11px] text-mute">DeepSeek</p>
+            </div>
             <button
               type="button"
               onClick={() => setOpen(false)}
-              className="rounded p-1.5 text-slate-500 hover:bg-slate-200 hover:text-slate-700"
-              aria-label="关闭"
+              className="rounded-full p-1.5 text-mute hover:bg-raised hover:text-ink"
+              aria-label={t.chat.close}
             >
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
           </div>
-          <div
-            ref={listRef}
-            className="flex-1 overflow-y-auto p-4 space-y-4"
-          >
-            {displayMessages.map((m, i) => (
-              <div
-                key={i}
-                className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
-              >
+          <div ref={listRef} className="flex-1 space-y-3 overflow-y-auto p-4">
+            {displayMessages.map((message, index) => (
+              <div key={index} className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}>
                 <div
-                  className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm ${
-                    m.role === "user"
-                      ? "bg-cyan-500 text-white"
-                      : "bg-slate-100 text-slate-800"
+                  className={`max-w-[85%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed ${
+                    message.role === "user" ? "bg-accent text-accent-ink" : "bg-raised text-ink"
                   }`}
                 >
-                  <p className="whitespace-pre-wrap break-words">{m.content}</p>
+                  <p className="whitespace-pre-wrap break-words">{message.content}</p>
                 </div>
               </div>
             ))}
             {loading && (
               <div className="flex justify-start">
-                <div className="rounded-2xl bg-slate-100 px-4 py-2.5 text-sm text-slate-500">
-                  <span className="inline-flex gap-1">
-                    <span className="animate-bounce" style={{ animationDelay: "0ms" }}>·</span>
-                    <span className="animate-bounce" style={{ animationDelay: "150ms" }}>·</span>
-                    <span className="animate-bounce" style={{ animationDelay: "300ms" }}>·</span>
-                  </span>
+                <div className="rounded-2xl bg-raised px-3.5 py-2.5 text-sm text-mute">
+                  <span className="inline-flex gap-1 motion-safe:animate-pulse">···</span>
                 </div>
               </div>
             )}
           </div>
-          <div className="border-t border-slate-200 p-3">
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                send();
-              }}
-              className="flex gap-2"
+          <form
+            onSubmit={(event) => {
+              event.preventDefault();
+              send();
+            }}
+            className="flex gap-2 border-t border-line p-3"
+          >
+            <input
+              type="text"
+              value={input}
+              onChange={(event) => setInput(event.target.value)}
+              placeholder={t.chat.placeholder}
+              className="min-w-0 flex-1 rounded-full border border-line bg-canvas px-4 py-2.5 text-sm text-ink outline-none placeholder:text-mute focus:border-accent"
+              disabled={loading}
+            />
+            <button
+              type="submit"
+              disabled={loading || !input.trim()}
+              className="rounded-full bg-accent px-4 py-2.5 text-sm font-semibold text-accent-ink transition hover:opacity-90 disabled:opacity-50"
             >
-              <input
-                type="text"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                placeholder="输入你的问题..."
-                className="flex-1 rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-sm text-slate-800 placeholder-slate-400 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500"
-                disabled={loading}
-              />
-              <button
-                type="submit"
-                disabled={loading || !input.trim()}
-                className="rounded-xl bg-cyan-500 px-4 py-2.5 text-sm font-medium text-slate-950 transition hover:bg-cyan-400 disabled:opacity-50 disabled:hover:bg-cyan-500"
-              >
-                发送
-              </button>
-            </form>
-          </div>
+              {t.chat.send}
+            </button>
+          </form>
         </div>
       )}
       <button
         type="button"
-        onClick={() => setOpen((v) => !v)}
-        className="flex h-14 w-14 items-center justify-center rounded-full bg-cyan-500 text-slate-950 shadow-lg shadow-cyan-500/30 transition hover:bg-cyan-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2"
-        aria-label={open ? "关闭客服" : "打开智能客服"}
+        onClick={() => setOpen((value) => !value)}
+        className="flex h-14 w-14 items-center justify-center rounded-full bg-accent text-accent-ink shadow-ticket transition hover:opacity-90"
+        aria-label={open ? t.chat.close : t.chat.open}
       >
         {open ? (
           <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M6 18L18 6M6 6l12 12" />
           </svg>
         ) : (
           <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
-              strokeWidth={2}
-              d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+              strokeWidth={1.8}
+              d="M8 10h8M8 14h5M6 19l1.2-3.2A8 8 0 116 5a8 8 0 010 16c-1.1 0-2.1-.2-3.1-.6L6 19z"
             />
           </svg>
         )}

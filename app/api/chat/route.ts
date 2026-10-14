@@ -9,23 +9,31 @@ const SYSTEM_PROMPT = `你是极造极信息科技有限公司官网的智能客
 
 主要产品与服务：数字阵地建设（官网、APP、小程序）、跨端开发引擎（uni-app）、智能应用工场（AI 工具）。解决方案覆盖电商/零售、餐饮/生活服务、企业/办公、教育/培训等行业。
 
-联系方式：电话 18516010812，邮箱 782492184@qq.com，QQ 782492184，地址 重庆市江北区观音桥红鼎国际3001。官网可在线填写「免费咨询」表单。
+联系方式：电话 18516010812，邮箱 zhou782492184@gmail.com，QQ 782492184，地址 重庆市江北区观音桥红鼎国际3001。官网可在线填写咨询表单（/contact）。
 
-要求：回答简洁、友好，用中文。结合「当前情景」中用户所在页面作答，更贴合上下文。若问题涉及报价、定制方案等复杂需求，请建议用户通过官网「免费咨询」或拨打电话/添加 QQ 进一步沟通。不要编造公司未公开的信息。`;
+要求：默认用简洁、自然的中文回答。结合「当前情景」中用户所在页面作答。若问题涉及报价、排期、定制方案，请建议用户通过官网咨询表单或拨打电话/添加 QQ 进一步沟通。不要编造公司未公开的信息，不要编造价格和工期。`;
 
 /** 根据请求中的 context 生成当前情景描述，并完善最后一条用户消息 */
 function applyContext(
   messages: { role: string; content: string }[],
-  context?: { pathname?: string; pageTitle?: string } | null
+  context?: { pathname?: string; pageTitle?: string; locale?: string } | null
 ): { role: string; content: string }[] {
   if (!context?.pathname || messages.length === 0) return messages;
   const last = messages[messages.length - 1];
   if (last.role !== "user") return messages;
-  const situation =
-    context.pageTitle && context.pageTitle.trim()
-      ? `【当前情景】用户正在浏览「${context.pageTitle.trim()}」页面（路径：${context.pathname}）。`
+  const english = context.locale === "en";
+  const page = context.pageTitle?.trim();
+  const situation = english
+    ? page
+      ? `Context: the visitor is on “${page}” (${context.pathname}) and is using the English site.`
+      : `Context: the visitor is on ${context.pathname} and is using the English site.`
+    : page
+      ? `【当前情景】用户正在浏览「${page}」页面（路径：${context.pathname}）。`
       : `【当前情景】用户当前所在页面路径：${context.pathname}。`;
-  const enrichedContent = `${situation}你是在线客服，请用简洁、友好的语言回答用户问题，用户的身份可能是企业老板、产品经理、技术负责人、市场营销人员、普通用户等，请根据用户的身份和需求给出相应的回答。\n\n用户问题：${last.content}`;
+  const voice = english
+    ? "You are the on-site assistant. Reply in clear, natural English. The visitor may be a shop owner, a founder, or someone who is not technical. If they ask for a quote or a schedule, point them to the contact form or the phone."
+    : "你是在线客服，请用简洁、自然的中文回答。访客可能是店主、老板，或不懂技术的人。报价和排期请引导到咨询表单或电话。";
+  const enrichedContent = `${situation}${voice}\n\n${english ? "Question" : "用户问题"}：${last.content}`;
   return [...messages.slice(0, -1), { ...last, content: enrichedContent }];
 }
 
@@ -38,7 +46,7 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  let body: { messages?: { role: string; content: string }[]; context?: { pathname?: string; pageTitle?: string } };
+  let body: { messages?: { role: string; content: string }[]; context?: { pathname?: string; pageTitle?: string; locale?: string } };
   try {
     body = await request.json();
   } catch {
@@ -61,6 +69,14 @@ export async function POST(request: NextRequest) {
   const apiMessages = systemPresent
     ? withContext
     : [{ role: "system" as const, content: SYSTEM_PROMPT }, ...withContext];
+
+  if (body.context?.locale === "en") {
+    const note =
+      "\n\nThe visitor is using the English version of the site. Reply in clear, natural English. Keep the facts above. Do not invent prices or timelines.";
+    for (const message of apiMessages) {
+      if (message.role === "system") message.content += note;
+    }
+  }
 
   try {
     const res = await fetch(DEEPSEEK_API_URL, {

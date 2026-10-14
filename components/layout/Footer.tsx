@@ -1,38 +1,51 @@
+"use client";
+
 import Link from "next/link";
-import Image from "next/image";
+import { Wordmark } from "@/components/brand/Wordmark";
+import { usePreferences } from "@/lib/preferences";
 
 export function Footer() {
+  const { t } = usePreferences();
   const year = new Date().getFullYear();
+  const links = [
+    { href: "/#services", label: t.nav.services },
+    { href: "/cases", label: t.nav.cases },
+    { href: "/#work", label: t.nav.work },
+    { href: "/#faq", label: "FAQ" },
+    { href: "/contact", label: t.nav.contact },
+    { href: "/about", label: t.nav.about },
+    { href: "/products", label: t.nav.products },
+    { href: "/tech", label: t.nav.tech },
+  ];
+
   return (
-    <footer className="border-t border-slate-800 bg-slate-950 py-12">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
-          <div>
-            <Link href="/" className="inline-block">
-              <Image
-                src="/logo.png"
-                alt="极造极"
-                width={200}
-                height={60}
-                className="h-14 w-auto object-contain"
-              />
-            </Link>
-            <p className="mt-2 text-lg font-semibold text-white">极造极信息科技有限公司</p>
-            <p className="mt-1 text-sm text-slate-500">从 0 到 1，打造你的数字产品</p>
+    <footer className="border-t border-line bg-raised">
+      <div className="mx-auto max-w-page px-5 py-14 sm:px-6">
+        <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
+          <div className="max-w-sm">
+            <Wordmark />
+            <p className="mt-4 text-sm leading-relaxed text-mute">{t.footer.blurb}</p>
+            <p className="mt-4 text-sm text-ink">{t.company}</p>
+            <a href="tel:18516010812" className="mt-2 block font-display text-lg text-ink">
+              185 1601 0812
+            </a>
           </div>
-          <div className="flex flex-wrap gap-6 text-sm text-slate-400">
-            <Link href="/about" className="hover:text-white transition">关于我们</Link>
-            <Link href="/products" className="hover:text-white transition">产品与服务</Link>
-            <Link href="/cases" className="hover:text-white transition">案例展示</Link>
-            <Link href="/tech" className="hover:text-white transition">技术优势</Link>
-            <Link href="/blog" className="hover:text-white transition">资源中心</Link>
-            <Link href="/jobs" className="hover:text-white transition">加入我们</Link>
-            <Link href="/contact" className="hover:text-white transition">联系我们</Link>
+          <div className="grid grid-cols-2 gap-x-10 gap-y-3 text-sm sm:grid-cols-4">
+            {links.map((item) => (
+              <Link key={item.href} href={item.href} className="text-mute transition hover:text-ink">
+                {item.label}
+              </Link>
+            ))}
           </div>
         </div>
-        <a href="https://beian.miit.gov.cn/#/Integrated/recordQuery" target="_blank" className="mt-8 pt-8 text-sm text-slate-500">
-          © {year} 极造极信息科技有限公司 版权所有；渝ICP备2023007595号-2
-        </a>
+        <div className="mt-12 flex flex-col gap-2 border-t border-line pt-6 text-xs text-mute sm:flex-row sm:items-center sm:justify-between">
+          <p>
+            © {year} {t.company}. {t.footer.rights}
+          </p>
+          <a href="https://beian.miit.gov.cn/#/Integrated/recordQuery" target="_blank" rel="noreferrer">
+            {t.footer.icp}
+          </a>
+        </div>
       </div>
     </footer>
   );

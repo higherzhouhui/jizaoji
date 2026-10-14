@@ -1,41 +1,38 @@
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { ContactHero } from "@/components/contact/ContactHero";
 import { ContactForm } from "@/components/contact/ContactForm";
 import { ContactInfo } from "@/components/contact/ContactInfo";
 import { ContactMap } from "@/components/contact/ContactMap";
-import type { Metadata } from "next";
+import { ContactIntro } from "@/components/contact/ContactIntro";
 import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = buildPageMetadata({
-  title: "联系我们",
+export const metadata = buildPageMetadata({
+  title: "说说你的事",
   description:
-    "极造极 — 免费咨询、获取方案。地址：重庆市江北区观音桥红鼎国际3001，电话、邮箱、QQ 与在线表单，欢迎合作与投递。",
+    "把现在的情况和想要的结果留下。极造极会回复能不能做、建议怎么做。电话 18516010812，重庆江北观音桥红鼎国际 3001。",
   path: "/contact",
 });
 
-type Props = { searchParams: Promise<{ position?: string }> };
+type Props = { searchParams: Promise<{ position?: string; from?: string; mode?: string }> };
 
 export default async function ContactPage({ searchParams }: Props) {
-  const { position } = await searchParams;
+  const { position, from, mode } = await searchParams;
   return (
     <>
       <Header />
       <main>
-        <ContactHero />
-        <section className="py-16 sm:py-20 bg-white">
-          <div className="mx-auto max-w-7xl px-6">
-            <div className="grid gap-12 lg:grid-cols-5 lg:gap-16">
-              <div className="lg:col-span-3">
-                <h2 className="text-2xl font-bold text-slate-900">在线咨询</h2>
-                <p className="mt-2 text-slate-600">填写表单，我们会尽快与您联系</p>
-                <div className="mt-8">
-                  <ContactForm initialPosition={position ? decodeURIComponent(position) : undefined} />
-                </div>
-              </div>
-              <div className="lg:col-span-2">
-                <ContactInfo />
-              </div>
+        <ContactIntro />
+        <section className="pb-8">
+          <div className="mx-auto grid max-w-page gap-10 px-5 sm:px-6 lg:grid-cols-5 lg:gap-16">
+            <div className="lg:col-span-3">
+              <ContactForm
+                initialPosition={position ? decodeURIComponent(position) : undefined}
+                fromCase={from}
+                mode={mode}
+              />
+            </div>
+            <div className="lg:col-span-2">
+              <ContactInfo />
             </div>
           </div>
         </section>

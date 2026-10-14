@@ -59,7 +59,7 @@ export function TopProgressBar() {
 
   return (
     <div
-      className="fixed left-0 top-0 z-[100] h-0.5 bg-cyan-500 shadow-[0_0_10px_rgba(34,211,238,0.6)] transition-[width] duration-150 ease-out"
+      className="fixed left-0 top-0 z-[100] h-0.5 bg-accent motion-safe:transition-[width] motion-safe:duration-150 motion-safe:ease-out"
       style={{ width: `${percent}%` }}
       aria-hidden
     />
