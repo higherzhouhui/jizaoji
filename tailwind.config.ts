@@ -4,25 +4,31 @@ const config: Config = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./lib/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
       fontFamily: {
         sans: ["var(--font-sans-sc)", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "var(--font-sans-sc)", "system-ui", "sans-serif"],
+        serif: ["var(--font-serif)", "Georgia", "serif"],
       },
-      animation: {
-        "gradient": "gradient 8s ease infinite",
-        "float": "float 6s ease-in-out infinite",
+      colors: {
+        canvas: "rgb(var(--canvas) / <alpha-value>)",
+        raised: "rgb(var(--raised) / <alpha-value>)",
+        surface: "rgb(var(--surface) / <alpha-value>)",
+        ink: "rgb(var(--ink) / <alpha-value>)",
+        mute: "rgb(var(--mute) / <alpha-value>)",
+        line: "rgb(var(--line) / <alpha-value>)",
+        accent: "rgb(var(--accent) / <alpha-value>)",
+        "accent-ink": "rgb(var(--accent-ink) / <alpha-value>)",
+        brass: "rgb(var(--brass) / <alpha-value>)",
       },
-      keyframes: {
-        gradient: {
-          "0%, 100%": { backgroundPosition: "0% 50%" },
-          "50%": { backgroundPosition: "100% 50%" },
-        },
-        float: {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-10px)" },
-        },
+      boxShadow: {
+        ticket: "0 30px 70px -36px rgb(var(--ink) / 0.55)",
+      },
+      maxWidth: {
+        page: "72rem",
       },
     },
   },

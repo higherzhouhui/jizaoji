@@ -1,16 +1,13 @@
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { CasesHero } from "@/components/cases/CasesHero";
-import { CaseGrid } from "@/components/cases/CaseGrid";
-import { FeaturedCases } from "@/components/cases/FeaturedCases";
-import { CasesCTA } from "@/components/cases/CasesCTA";
-import type { Metadata } from "next";
+import { CaseStories } from "@/components/cases/CaseStories";
+import { ClosingBand } from "@/components/home/ClosingBand";
 import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = buildPageMetadata({
-  title: "案例展示",
+export const metadata = buildPageMetadata({
+  title: "做成什么样",
   description:
-    "极造极 — 网站搭建、APP 开发、微信小程序、AI 工具等精选案例，客户背景、解决方案、实施效果，用事实与数据说话。",
+    "极造极的案例：当时卡在哪，做完手里有什么，一个记得住的结果。看完可以直接咨询类似的事。",
   path: "/cases",
 });
 
@@ -19,10 +16,8 @@ export default function CasesPage() {
     <>
       <Header />
       <main>
-        <CasesHero />
-        <CaseGrid />
-        <FeaturedCases />
-        <CasesCTA />
+        <CaseStories />
+        <ClosingBand />
       </main>
       <Footer />
     </>
