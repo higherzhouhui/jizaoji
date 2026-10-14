@@ -1,3 +1,4 @@
+import { Tx } from "@/components/i18n/Tx";
 const ITEMS = [
   {
     title: "库存通",
@@ -25,51 +26,51 @@ const ITEMS = [
 
 export function ModuleMiddle() {
   return (
-    <section id="module-middle" className="scroll-mt-20 py-20 sm:py-24 bg-slate-50 border-y border-slate-200/80">
+    <section id="module-middle" className="scroll-mt-20 py-20 sm:py-24 bg-raised border-y border-line">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-14">
-          <span className="text-sm font-semibold text-cyan-600">连接层</span>
-          <h2 className="mt-1 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            全渠道融合中台
+          <span className="text-sm font-semibold text-accent"><Tx>连接层</Tx></span>
+          <h2 className="mt-1 text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+            <Tx>全渠道融合中台</Tx>
           </h2>
-          <p className="mt-4 text-slate-600 max-w-2xl">
-            云原生 + 微服务架构，支持高并发；队列调度分散订单压力，支持万人同时抢购；敏感信息加密，符合 PCI DSS 等规范。
+          <p className="mt-4 text-mute max-w-2xl">
+            <Tx>云原生 + 微服务架构，支持高并发；队列调度分散订单压力，支持万人同时抢购；敏感信息加密，符合 PCI DSS 等规范。</Tx>
           </p>
         </div>
         <div className="grid gap-8 lg:grid-cols-3">
           {ITEMS.map((item) => (
             <div
               key={item.title}
-              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+              className="rounded-2xl border border-line bg-surface p-6 shadow-sm"
             >
-              <h3 className="text-xl font-semibold text-slate-900">{item.title}</h3>
-              <p className="mt-1 text-sm text-cyan-600">{item.subtitle}</p>
+              <h3 className="text-xl font-semibold text-ink">{<Tx>{item.title}</Tx>}</h3>
+              <p className="mt-1 text-sm text-accent">{<Tx>{item.subtitle}</Tx>}</p>
               {"scene" in item && (
-                <p className="mt-4 text-sm text-slate-600">
-                  <span className="font-medium text-slate-700">场景：</span> {item.scene}
+                <p className="mt-4 text-sm text-mute">
+                  <span className="font-medium text-ink"><Tx>场景：</Tx></span> {<Tx>{item.scene}</Tx>}
                 </p>
               )}
               {"value" in item && (
-                <p className="mt-2 text-sm text-slate-600">
-                  <span className="font-medium text-slate-700">价值：</span> {item.value}
+                <p className="mt-2 text-sm text-mute">
+                  <span className="font-medium text-ink"><Tx>价值：</Tx></span> {<Tx>{item.value}</Tx>}
                 </p>
               )}
               {"points" in item && (
-                <ul className="mt-4 space-y-2 text-sm text-slate-600">
+                <ul className="mt-4 space-y-2 text-sm text-mute">
                   {item.points!.map((p) => (
                     <li key={p} className="flex gap-2">
-                      <span className="text-cyan-500">•</span> {p}
+                      <span className="text-accent">•</span> {<Tx>{p}</Tx>}
                     </li>
                   ))}
                 </ul>
               )}
               {"case" in item && item.case && (
-                <p className="mt-4 text-sm text-slate-500 border-t border-slate-100 pt-4">
-                  案例：{item.case}
+                <p className="mt-4 text-sm text-mute border-t border-line pt-4">
+                  <Tx>案例：</Tx>{<Tx>{item.case}</Tx>}
                 </p>
               )}
               {"metric" in item && item.metric && (
-                <p className="mt-4 text-sm font-medium text-cyan-600">{item.metric}</p>
+                <p className="mt-4 text-sm font-medium text-accent">{<Tx>{item.metric}</Tx>}</p>
               )}
             </div>
           ))}

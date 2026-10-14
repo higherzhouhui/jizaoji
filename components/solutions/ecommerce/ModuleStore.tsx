@@ -1,3 +1,4 @@
+import { Tx } from "@/components/i18n/Tx";
 const ITEMS = [
   {
     title: "云货架",
@@ -20,27 +21,27 @@ const ITEMS = [
 
 export function ModuleStore() {
   return (
-    <section id="module-store" className="scroll-mt-20 py-20 sm:py-24 bg-white">
+    <section id="module-store" className="scroll-mt-20 py-20 sm:py-24 bg-surface">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-14">
-          <span className="text-sm font-semibold text-cyan-600">体验层</span>
-          <h2 className="mt-1 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            门店数字化升级
+          <span className="text-sm font-semibold text-accent"><Tx>体验层</Tx></span>
+          <h2 className="mt-1 text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+            <Tx>门店数字化升级</Tx>
           </h2>
-          <p className="mt-4 text-slate-600 max-w-2xl">
-            针对有实体门店的零售客户，提供 O2O 融合能力，用技术赋能实体零售
+          <p className="mt-4 text-mute max-w-2xl">
+            <Tx>针对有实体门店的零售客户，提供 O2O 融合能力，用技术赋能实体零售</Tx>
           </p>
         </div>
         <div className="grid gap-6 sm:grid-cols-2">
           {ITEMS.map((item) => (
             <div
               key={item.title}
-              className="rounded-2xl border border-slate-200 bg-slate-50/50 p-6"
+              className="rounded-2xl border border-line bg-raised/60 p-6"
             >
-              <h3 className="text-lg font-semibold text-slate-900">{item.title}</h3>
-              <p className="mt-3 text-slate-600">{item.desc}</p>
+              <h3 className="text-lg font-semibold text-ink">{<Tx>{item.title}</Tx>}</h3>
+              <p className="mt-3 text-mute">{<Tx>{item.desc}</Tx>}</p>
               {"case" in item && item.case && (
-                <p className="mt-4 text-sm text-slate-500">案例：{item.case}</p>
+                <p className="mt-4 text-sm text-mute"><Tx>案例：</Tx>{<Tx>{item.case}</Tx>}</p>
               )}
             </div>
           ))}

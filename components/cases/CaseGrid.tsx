@@ -18,7 +18,7 @@ export function CaseGrid() {
   }, [typeFilter, industryFilter]);
 
   return (
-    <section className="py-12 sm:py-16 bg-slate-50 border-b border-slate-200/80">
+    <section className="py-12 sm:py-16 bg-raised border-b border-line">
       <div className="mx-auto max-w-7xl px-6">
         <CaseFilter
           typeFilter={typeFilter}
@@ -32,7 +32,7 @@ export function CaseGrid() {
           ))}
         </div>
         {filtered.length === 0 && (
-          <p className="py-12 text-center text-slate-500">暂无该筛选条件下的案例</p>
+          <p className="py-12 text-center text-mute">暂无该筛选条件下的案例</p>
         )}
       </div>
     </section>

@@ -1,3 +1,4 @@
+import { Tx } from "@/components/i18n/Tx";
 const BENEFITS = [
   {
     title: "五险一金",
@@ -27,24 +28,24 @@ const BENEFITS = [
 
 export function JobsBenefits() {
   return (
-    <section className="py-20 sm:py-24 bg-white">
+    <section className="py-20 sm:py-24 bg-surface">
       <div className="mx-auto max-w-7xl px-6">
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            福利待遇
+          <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+            <Tx>福利待遇</Tx>
           </h2>
-          <p className="mt-4 text-slate-600">
-            我们重视每一位伙伴的工作体验与成长
+          <p className="mt-4 text-mute">
+            <Tx>我们重视每一位伙伴的工作体验与成长</Tx>
           </p>
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {BENEFITS.map((item) => (
             <div
               key={item.title}
-              className="rounded-2xl border border-slate-200 bg-slate-50/50 p-6"
+              className="rounded-2xl border border-line bg-raised/60 p-6"
             >
-              <h3 className="text-lg font-semibold text-slate-900">{item.title}</h3>
-              <p className="mt-2 text-slate-600">{item.desc}</p>
+              <h3 className="text-lg font-semibold text-ink">{<Tx>{item.title}</Tx>}</h3>
+              <p className="mt-2 text-mute">{<Tx>{item.desc}</Tx>}</p>
             </div>
           ))}
         </div>

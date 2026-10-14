@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Tx } from "@/components/i18n/Tx";
 
 const ONLINE_ITEMS = [
   {
@@ -54,23 +55,23 @@ function SectionBlock({
   items: { title: string; desc: string }[];
 }) {
   return (
-    <section id={`module-${id}`} className="scroll-mt-20 py-20 sm:py-24 bg-white">
+    <section id={`module-${id}`} className="scroll-mt-20 py-20 sm:py-24 bg-surface">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-10">
-          <span className={`text-sm font-semibold ${accent}`}>解决方案</span>
-          <h2 className="mt-1 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            {title}
+          <span className={`text-sm font-semibold ${accent}`}><Tx>解决方案</Tx></span>
+          <h2 className="mt-1 text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+            {<Tx>{title}</Tx>}
           </h2>
-          <p className="mt-4 text-slate-600 max-w-2xl">{subtitle}</p>
+          <p className="mt-4 text-mute max-w-2xl">{<Tx>{subtitle}</Tx>}</p>
         </div>
         <div className="grid gap-6 sm:grid-cols-2">
           {items.map((item) => (
             <div
               key={item.title}
-              className="rounded-2xl border border-slate-200 bg-slate-50/50 p-6"
+              className="rounded-2xl border border-line bg-raised/60 p-6"
             >
-              <h3 className="text-lg font-semibold text-slate-900">{item.title}</h3>
-              <p className="mt-3 text-slate-600">{item.desc}</p>
+              <h3 className="text-lg font-semibold text-ink">{<Tx>{item.title}</Tx>}</h3>
+              <p className="mt-3 text-mute">{<Tx>{item.desc}</Tx>}</p>
             </div>
           ))}
         </div>
@@ -84,30 +85,30 @@ export function FoodModules() {
     <>
       <SectionBlock
         id="online"
-        accent="text-cyan-600"
+        accent="text-accent"
         title="线上触点"
         subtitle="小程序、APP、外卖与预订，把「到店」和「到家」都握在手里"
         items={ONLINE_ITEMS}
       />
-      <section id="module-store" className="scroll-mt-20 py-20 sm:py-24 bg-slate-50 border-y border-slate-200/80">
+      <section id="module-store" className="scroll-mt-20 py-20 sm:py-24 bg-raised border-y border-line">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mb-10">
-            <span className="text-sm font-semibold text-emerald-600">运营层</span>
-            <h2 className="mt-1 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-              到店体验
+            <span className="text-sm font-semibold text-accent"><Tx>运营层</Tx></span>
+            <h2 className="mt-1 text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+              <Tx>到店体验</Tx>
             </h2>
-            <p className="mt-4 text-slate-600 max-w-2xl">
-              排队、点餐、收银、会员识别一体化，提升效率与体验
+            <p className="mt-4 text-mute max-w-2xl">
+              <Tx>排队、点餐、收银、会员识别一体化，提升效率与体验</Tx>
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2">
             {STORE_ITEMS.map((item) => (
               <div
                 key={item.title}
-                className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+                className="rounded-2xl border border-line bg-surface p-6 shadow-sm"
               >
-                <h3 className="text-lg font-semibold text-slate-900">{item.title}</h3>
-                <p className="mt-3 text-slate-600">{item.desc}</p>
+                <h3 className="text-lg font-semibold text-ink">{<Tx>{item.title}</Tx>}</h3>
+                <p className="mt-3 text-mute">{<Tx>{item.desc}</Tx>}</p>
               </div>
             ))}
           </div>
@@ -115,30 +116,30 @@ export function FoodModules() {
       </section>
       <SectionBlock
         id="member"
-        accent="text-cyan-600"
+        accent="text-accent"
         title="会员与营销"
         subtitle="私域运营、积分优惠券、裂变拉新与复购唤醒，提升 LTV"
         items={MEMBER_ITEMS}
       />
-      <section id="module-multi" className="scroll-mt-20 py-20 sm:py-24 bg-slate-50 border-y border-slate-200/80">
+      <section id="module-multi" className="scroll-mt-20 py-20 sm:py-24 bg-raised border-y border-line">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mb-10">
-            <span className="text-sm font-semibold text-emerald-600">管理中台</span>
-            <h2 className="mt-1 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-              多门店与供应链
+            <span className="text-sm font-semibold text-accent"><Tx>管理中台</Tx></span>
+            <h2 className="mt-1 text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+              <Tx>多门店与供应链</Tx>
             </h2>
-            <p className="mt-4 text-slate-600 max-w-2xl">
-              连锁与多门店统一管控、进销存与数据看板，支撑规模化复制
+            <p className="mt-4 text-mute max-w-2xl">
+              <Tx>连锁与多门店统一管控、进销存与数据看板，支撑规模化复制</Tx>
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2">
             {MULTI_ITEMS.map((item) => (
               <div
                 key={item.title}
-                className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+                className="rounded-2xl border border-line bg-surface p-6 shadow-sm"
               >
-                <h3 className="text-lg font-semibold text-slate-900">{item.title}</h3>
-                <p className="mt-3 text-slate-600">{item.desc}</p>
+                <h3 className="text-lg font-semibold text-ink">{<Tx>{item.title}</Tx>}</h3>
+                <p className="mt-3 text-mute">{<Tx>{item.desc}</Tx>}</p>
               </div>
             ))}
           </div>
@@ -173,44 +174,44 @@ export function FoodScenarios() {
     },
   ];
   return (
-    <section className="py-20 sm:py-24 bg-white">
+    <section className="py-20 sm:py-24 bg-surface">
       <div className="mx-auto max-w-7xl px-6">
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            典型应用场景
+          <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+            <Tx>典型应用场景</Tx>
           </h2>
-          <p className="mt-4 text-slate-600">按业态与规模匹配方案</p>
+          <p className="mt-4 text-mute"><Tx>按业态与规模匹配方案</Tx></p>
         </div>
         <div className="grid gap-8 sm:grid-cols-3">
           {SCENARIOS.map((s) => (
             <div
               key={s.title}
-              className="rounded-2xl border border-slate-200 bg-slate-50/30 p-6 transition hover:border-cyan-200 hover:shadow-md"
+              className="rounded-2xl border border-line bg-raised/30 p-6 transition hover:border-accent/40 hover:shadow-md"
             >
               <div className="flex items-center gap-2">
-                <h3 className="text-xl font-semibold text-slate-900">{s.title}</h3>
-                <span className="rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-xs font-medium text-emerald-700">
-                  {s.tagline}
+                <h3 className="text-xl font-semibold text-ink">{<Tx>{s.title}</Tx>}</h3>
+                <span className="rounded-full bg-accent/10 px-2.5 py-0.5 text-xs font-medium text-accent">
+                  {<Tx>{s.tagline}</Tx>}
                 </span>
               </div>
-              <p className="mt-3 text-sm text-slate-600">
-                <span className="font-medium text-slate-700">客户画像：</span>
-                {s.profile}
+              <p className="mt-3 text-sm text-mute">
+                <span className="font-medium text-ink"><Tx>客户画像：</Tx></span>
+                {<Tx>{s.profile}</Tx>}
               </p>
-              <p className="mt-2 text-sm text-slate-600">
-                <span className="font-medium text-slate-700">解决方案：</span>
-                {s.solution}
+              <p className="mt-2 text-sm text-mute">
+                <span className="font-medium text-ink"><Tx>解决方案：</Tx></span>
+                {<Tx>{s.solution}</Tx>}
               </p>
-              <p className="mt-4 text-sm font-semibold text-cyan-600">交付价值：{s.value}</p>
+              <p className="mt-4 text-sm font-semibold text-accent"><Tx>交付价值：</Tx>{<Tx>{s.value}</Tx>}</p>
             </div>
           ))}
         </div>
         <p className="mt-10 text-center">
           <Link
             href="/contact"
-            className="inline-flex items-center text-cyan-600 font-semibold hover:text-cyan-700"
+            className="inline-flex items-center text-accent font-semibold hover:text-accent"
           >
-            根据我的业态获取方案
+            <Tx>根据我的业态获取方案</Tx>
             <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
@@ -223,55 +224,55 @@ export function FoodScenarios() {
 
 export function FoodCaseStudy() {
   return (
-    <section className="py-20 sm:py-24 bg-slate-50 border-y border-slate-200/80">
+    <section className="py-20 sm:py-24 bg-raised border-y border-line">
       <div className="mx-auto max-w-4xl px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            成功案例
+          <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+            <Tx>成功案例</Tx>
           </h2>
-          <p className="mt-4 text-slate-600">用数据与效果说话</p>
+          <p className="mt-4 text-mute"><Tx>用数据与效果说话</Tx></p>
         </div>
-        <div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
-          <div className="space-y-6 text-slate-700">
+        <div className="rounded-2xl border border-line bg-surface p-8 shadow-sm">
+          <div className="space-y-6 text-ink">
             <div>
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-500">
-                客户背景
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-mute">
+                <Tx>客户背景</Tx>
               </h3>
-              <p className="mt-2">某区域连锁茶饮品牌，20+ 门店，以到店为主</p>
+              <p className="mt-2"><Tx>某区域连锁茶饮品牌，20+ 门店，以到店为主</Tx></p>
             </div>
             <div>
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-500">
-                核心痛点
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-mute">
+                <Tx>核心痛点</Tx>
               </h3>
-              <p className="mt-2">高峰排队久、人工点单易错、会员难沉淀、各店数据分散</p>
+              <p className="mt-2"><Tx>高峰排队久、人工点单易错、会员难沉淀、各店数据分散</Tx></p>
             </div>
             <div>
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-500">
-                解决方案
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-mute">
+                <Tx>解决方案</Tx>
               </h3>
-              <ul className="mt-2 list-disc list-inside space-y-1 text-slate-600">
-                <li>上线小程序预点餐与到店取餐，缓解排队</li>
-                <li>聚合收银 + 会员积分/优惠券，统一会员体系</li>
-                <li>多门店数据看板，总部实时掌握各店经营</li>
+              <ul className="mt-2 list-disc list-inside space-y-1 text-mute">
+                <li><Tx>上线小程序预点餐与到店取餐，缓解排队</Tx></li>
+                <li><Tx>聚合收银 + 会员积分/优惠券，统一会员体系</Tx></li>
+                <li><Tx>多门店数据看板，总部实时掌握各店经营</Tx></li>
               </ul>
             </div>
             <div>
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-500">
-                实施效果
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-mute">
+                <Tx>实施效果</Tx>
               </h3>
-              <ul className="mt-2 space-y-1 text-slate-600">
-                <li>• 高峰等位时长平均缩短约 40%</li>
-                <li>• 会员复购率提升，私域贡献订单占比超 35%</li>
-                <li>• 总部可随时查看各店营业与畅销品，决策有据可依</li>
+              <ul className="mt-2 space-y-1 text-mute">
+                <li><Tx>• 高峰等位时长平均缩短约 40%</Tx></li>
+                <li><Tx>• 会员复购率提升，私域贡献订单占比超 35%</Tx></li>
+                <li><Tx>• 总部可随时查看各店营业与畅销品，决策有据可依</Tx></li>
               </ul>
             </div>
           </div>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
               href="/contact"
-              className="inline-flex items-center rounded-lg bg-cyan-500 px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-cyan-400"
+              className="inline-flex items-center rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-accent-ink transition hover:opacity-90"
             >
-              获取定制方案
+              <Tx>获取定制方案</Tx>
             </Link>
           </div>
         </div>
@@ -282,17 +283,17 @@ export function FoodCaseStudy() {
 
 export function FoodCTA() {
   return (
-    <section className="py-20 sm:py-24 bg-slate-900">
+    <section className="py-20 sm:py-24 bg-raised">
       <div className="mx-auto max-w-4xl px-6 text-center">
-        <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-          餐饮与生活服务数字化，从到店到到家
+        <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+          <Tx>餐饮与生活服务数字化，从到店到到家</Tx>
         </h2>
-        <p className="mt-4 text-slate-400">小程序、收银、会员、多门店 — 一站式交付</p>
+        <p className="mt-4 text-mute"><Tx>小程序、收银、会员、多门店 — 一站式交付</Tx></p>
         <Link
           href="/contact"
-          className="mt-10 inline-flex items-center justify-center rounded-lg bg-cyan-500 px-8 py-4 text-base font-semibold text-slate-950 shadow-lg shadow-cyan-500/25 transition hover:bg-cyan-400"
+          className="mt-10 inline-flex items-center justify-center rounded-lg bg-accent px-8 py-4 text-base font-semibold text-accent-ink transition hover:opacity-90"
         >
-          免费咨询 · 获取方案
+          <Tx>免费咨询 · 获取方案</Tx>
         </Link>
       </div>
     </section>

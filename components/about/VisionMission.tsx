@@ -1,3 +1,4 @@
+import { Tx } from "@/components/i18n/Tx";
 const ITEMS = [
   {
     title: "愿景",
@@ -34,27 +35,27 @@ const ITEMS = [
 
 export function VisionMission() {
   return (
-    <section className="py-20 sm:py-24 bg-white">
+    <section className="py-20 sm:py-24 bg-surface">
       <div className="mx-auto max-w-7xl px-6">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            我们为什么存在
+          <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+            <Tx>我们为什么存在</Tx>
           </h2>
-          <p className="mt-4 text-lg text-slate-600">
-            愿景、使命与价值观，指引我们每一步选择
+          <p className="mt-4 text-lg text-mute">
+            <Tx>愿景、使命与价值观，指引我们每一步选择</Tx>
           </p>
         </div>
         <div className="grid gap-8 md:grid-cols-3">
           {ITEMS.map((item) => (
             <div
               key={item.title}
-              className="relative rounded-2xl border border-slate-200 bg-slate-50/50 p-8 transition hover:border-cyan-200 hover:shadow-lg hover:shadow-cyan-500/5"
+              className="relative rounded-2xl border border-line bg-raised/60 p-8 transition hover:border-accent/40 hover:shadow-lg"
             >
-              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-600">
+              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-accent/10 text-accent">
                 {item.icon}
               </div>
-              <h3 className="mt-6 text-xl font-semibold text-slate-900">{item.title}</h3>
-              <p className="mt-4 text-slate-600 leading-relaxed">{item.content}</p>
+              <h3 className="mt-6 text-xl font-semibold text-ink">{<Tx>{item.title}</Tx>}</h3>
+              <p className="mt-4 text-mute leading-relaxed">{<Tx>{item.content}</Tx>}</p>
             </div>
           ))}
         </div>

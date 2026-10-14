@@ -1,12 +1,13 @@
 "use client";
 
+import { lineFor } from "@/lib/i18n/inner-en";
 import { usePreferences } from "@/lib/preferences";
 
 const ADDRESS = "重庆市江北区观音桥红鼎国际3001";
 const AMAP_SEARCH = "https://www.amap.com/search?query=" + encodeURIComponent("重庆市江北区观音桥红鼎国际");
 
 export function ContactInfo() {
-  const { t } = usePreferences();
+  const { t, locale } = usePreferences();
   const c = t.contact;
   const rows = [
     {
@@ -45,7 +46,7 @@ export function ContactInfo() {
       label: c.address,
       node: (
         <>
-          <p className="text-ink">{ADDRESS}</p>
+          <p className="text-ink">{lineFor(locale, ADDRESS)}</p>
           <a
             href={AMAP_SEARCH}
             target="_blank"

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Tx } from "@/components/i18n/Tx";
 
 const SYNC = [
   { product: "网站搭建", role: "独立站 / 品牌官网", href: "/products#website" },
@@ -10,40 +11,40 @@ const SYNC = [
 
 export function EcommerceProductSync() {
   return (
-    <section className="py-16 sm:py-20 bg-slate-50 border-y border-slate-200/80">
+    <section className="py-16 sm:py-20 bg-raised border-y border-line">
       <div className="mx-auto max-w-5xl px-6">
         <div className="text-center mb-10">
-          <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-            与产品能力协同
+          <h2 className="text-2xl font-bold tracking-tight text-ink sm:text-3xl">
+            <Tx>与产品能力协同</Tx>
           </h2>
-          <p className="mt-3 text-slate-600">
-            电商解决方案由我们的全栈产品能力支撑，可按需组合交付
+          <p className="mt-3 text-mute">
+            <Tx>电商解决方案由我们的全栈产品能力支撑，可按需组合交付</Tx>
           </p>
         </div>
-        <div className="rounded-2xl border border-slate-200 bg-white overflow-hidden">
+        <div className="rounded-2xl border border-line bg-surface overflow-hidden">
           <table className="w-full">
             <thead>
-              <tr className="bg-slate-50 border-b border-slate-200">
-                <th className="px-6 py-4 text-left text-sm font-semibold text-slate-900">
-                  产品线
+              <tr className="bg-raised border-b border-line">
+                <th className="px-6 py-4 text-left text-sm font-semibold text-ink">
+                  <Tx>产品线</Tx>
                 </th>
-                <th className="px-6 py-4 text-left text-sm font-semibold text-slate-900">
-                  在电商方案中的体现
+                <th className="px-6 py-4 text-left text-sm font-semibold text-ink">
+                  <Tx>在电商方案中的体现</Tx>
                 </th>
               </tr>
             </thead>
             <tbody>
               {SYNC.map((row) => (
-                <tr key={row.product} className="border-b border-slate-100 last:border-0">
+                <tr key={row.product} className="border-b border-line last:border-0">
                   <td className="px-6 py-4">
                     <Link
                       href={row.href}
-                      className="font-medium text-cyan-600 hover:text-cyan-700"
+                      className="font-medium text-accent hover:text-accent"
                     >
-                      {row.product}
+                      {<Tx>{row.product}</Tx>}
                     </Link>
                   </td>
-                  <td className="px-6 py-4 text-slate-600">{row.role}</td>
+                  <td className="px-6 py-4 text-mute">{<Tx>{row.role}</Tx>}</td>
                 </tr>
               ))}
             </tbody>

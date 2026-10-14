@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Tx } from "@/components/i18n/Tx";
 
 const SYNC = [
   { product: "网站搭建", role: "企业官网、门户与展示", href: "/products#website" },
@@ -10,14 +11,14 @@ const SYNC = [
 
 export function EnterpriseProductSync() {
   return (
-    <section className="py-16 sm:py-20 bg-white border-y border-slate-200/80">
+    <section className="py-16 sm:py-20 bg-surface border-y border-line">
       <div className="mx-auto max-w-5xl px-6">
         <div className="text-center mb-10">
-          <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-            与产品能力协同
+          <h2 className="text-2xl font-bold tracking-tight text-ink sm:text-3xl">
+            <Tx>与产品能力协同</Tx>
           </h2>
-          <p className="mt-3 text-slate-600">
-            企业办公方案由全栈产品能力支撑，可集成、可扩展
+          <p className="mt-3 text-mute">
+            <Tx>企业办公方案由全栈产品能力支撑，可集成、可扩展</Tx>
           </p>
         </div>
         <div className="flex flex-wrap justify-center gap-4">
@@ -25,10 +26,10 @@ export function EnterpriseProductSync() {
             <Link
               key={row.product}
               href={row.href}
-              className="rounded-xl border border-slate-200 bg-slate-50 px-5 py-3 text-sm transition hover:border-cyan-200 hover:bg-cyan-50/50"
+              className="rounded-xl border border-line bg-raised px-5 py-3 text-sm transition hover:border-accent/40 hover:bg-accent/10"
             >
-              <span className="font-medium text-slate-900">{row.product}</span>
-              <span className="ml-2 text-slate-600">— {row.role}</span>
+              <span className="font-medium text-ink">{<Tx>{row.product}</Tx>}</span>
+              <span className="ml-2 text-mute">— {<Tx>{row.role}</Tx>}</span>
             </Link>
           ))}
         </div>

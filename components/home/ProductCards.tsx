@@ -45,13 +45,13 @@ const PRODUCTS = [
 
 export function ProductCards() {
   return (
-    <section className="py-20 sm:py-24 bg-white">
+    <section className="py-20 sm:py-24 bg-surface">
       <div className="mx-auto max-w-7xl px-6">
         <div className="text-center max-w-2xl mx-auto">
-          <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
             核心业务
           </h2>
-          <p className="mt-4 text-lg text-slate-600">
+          <p className="mt-4 text-lg text-mute">
             按场景与能力封装，不只是做页面，更是做增长与效率
           </p>
         </div>
@@ -60,14 +60,14 @@ export function ProductCards() {
             <Link
               key={product.title}
               href={product.href}
-              className="group relative rounded-2xl border border-slate-200 bg-white p-8 shadow-sm transition hover:border-cyan-200 hover:shadow-lg hover:shadow-cyan-500/5"
+              className="group relative rounded-2xl border border-line bg-surface p-8 shadow-sm transition hover:border-accent/40 hover:shadow-lg"
             >
-              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-600 transition group-hover:bg-cyan-500/20">
+              <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-accent/10 text-accent transition group-hover:bg-accent/15">
                 {product.icon}
               </div>
-              <h3 className="mt-5 text-xl font-semibold text-slate-900">{product.title}</h3>
-              <p className="mt-3 text-slate-600 leading-relaxed text-sm">{product.description}</p>
-              <span className="mt-4 inline-flex items-center text-sm font-medium text-cyan-600 group-hover:text-cyan-700">
+              <h3 className="mt-5 text-xl font-semibold text-ink">{product.title}</h3>
+              <p className="mt-3 text-mute leading-relaxed text-sm">{product.description}</p>
+              <span className="mt-4 inline-flex items-center text-sm font-medium text-accent group-hover:text-accent">
                 了解详情
                 <svg className="ml-1 h-4 w-4 transition group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />

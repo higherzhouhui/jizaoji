@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Tx } from "@/components/i18n/Tx";
 
 const MATRIX = [
   {
@@ -30,16 +31,16 @@ export function ProductArchitecture() {
   const [hoverId, setHoverId] = useState<string | null>(null);
 
   return (
-    <section className="relative overflow-hidden border-b border-slate-800 bg-slate-950 py-20 sm:py-28">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#0f172a_1px,transparent_1px),linear-gradient(to_bottom,#0f172a_1px,transparent_1px)] bg-[size:60px_60px] opacity-30" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_0%,rgba(34,211,238,0.08),transparent)]" />
+    <section className="relative overflow-hidden border-b border-line bg-canvas py-20 sm:py-28">
+      <div className="studio-grid absolute inset-0 opacity-40" />
+      <div className="hero-glow absolute inset-0" />
       <div className="relative mx-auto max-w-5xl px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            产品架构
+          <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+            <Tx>产品架构</Tx>
           </h2>
-          <p className="mt-4 text-slate-400 max-w-2xl mx-auto">
-            三大产品矩阵，覆盖从数字阵地到智能应用的全链路能力
+          <p className="mt-4 text-mute max-w-2xl mx-auto">
+            <Tx>三大产品矩阵，覆盖从数字阵地到智能应用的全链路能力</Tx>
           </p>
         </div>
 
@@ -53,27 +54,25 @@ export function ProductArchitecture() {
                 id={item.id}
                 onMouseEnter={() => setHoverId(item.id)}
                 onMouseLeave={() => setHoverId(null)}
-                className="group relative rounded-2xl border-2 bg-slate-900/80 p-6 backdrop-blur transition-all duration-300"
-                style={{
-                  borderColor: isHover ? "rgb(34, 211, 238)" : "rgba(51, 65, 85, 0.8)",
-                  boxShadow: isHover ? "0 0 40px rgba(34, 211, 238, 0.15)" : "none",
-                }}
+                className={`group relative rounded-2xl border-2 bg-raised/80 p-6 backdrop-blur transition-all duration-300 ${
+                  isHover ? "border-accent shadow-[0_0_40px_rgb(var(--accent)/0.18)]" : "border-line"
+                }`}
               >
-                <div className="h-1 w-12 rounded-full bg-cyan-500 mb-4" />
-                <h3 className="text-lg font-bold text-white">{item.name}</h3>
-                <p className="mt-1 text-sm text-cyan-400">{item.tagline}</p>
-                <p className="mt-3 text-sm text-slate-400">{item.scene}</p>
+                <div className="h-1 w-12 rounded-full bg-accent mb-4" />
+                <h3 className="text-lg font-bold text-ink">{<Tx>{item.name}</Tx>}</h3>
+                <p className="mt-1 text-sm text-accent">{<Tx>{item.tagline}</Tx>}</p>
+                <p className="mt-3 text-sm text-mute">{<Tx>{item.scene}</Tx>}</p>
                 {isHover && (
-                  <p className="mt-4 text-sm text-slate-300 leading-relaxed border-t border-slate-700 pt-4">
-                    {item.detail}
+                  <p className="mt-4 text-sm text-mute leading-relaxed border-t border-line pt-4">
+                    {<Tx>{item.detail}</Tx>}
                   </p>
                 )}
               </div>
             );
           })}
         </div>
-        <p className="mt-8 text-center text-sm text-slate-500">
-          悬停模块可查看详情
+        <p className="mt-8 text-center text-sm text-mute">
+          <Tx>悬停模块可查看详情</Tx>
         </p>
       </div>
     </section>

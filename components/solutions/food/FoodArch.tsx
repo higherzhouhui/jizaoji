@@ -1,3 +1,4 @@
+import { Tx } from "@/components/i18n/Tx";
 const MODULES = [
   {
     id: "online",
@@ -27,14 +28,14 @@ const MODULES = [
 
 export function FoodArch() {
   return (
-    <section className="py-20 sm:py-24 bg-slate-50 border-b border-slate-200/80">
+    <section className="py-20 sm:py-24 bg-raised border-b border-line">
       <div className="mx-auto max-w-7xl px-6">
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            解决方案架构
+          <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+            <Tx>解决方案架构</Tx>
           </h2>
-          <p className="mt-4 text-slate-600">
-            四大模块覆盖「线上获客 → 到店体验 → 会员留存 → 连锁管理」全链路
+          <p className="mt-4 text-mute">
+            <Tx>四大模块覆盖「线上获客 → 到店体验 → 会员留存 → 连锁管理」全链路</Tx>
           </p>
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -42,14 +43,14 @@ export function FoodArch() {
             <a
               key={m.id}
               href={`#module-${m.id}`}
-              className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:border-cyan-200 hover:shadow-lg hover:shadow-cyan-500/5"
+              className="group rounded-2xl border border-line bg-surface p-6 shadow-sm transition hover:border-accent/40 hover:shadow-lg"
             >
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/10 text-lg font-bold text-emerald-600">
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10 text-lg font-bold text-accent">
                 {i + 1}
               </span>
-              <p className="mt-4 text-sm font-medium text-slate-500">{m.sub}</p>
-              <h3 className="mt-1 text-lg font-semibold text-slate-900">{m.name}</h3>
-              <p className="mt-2 text-sm text-slate-600">{m.desc}</p>
+              <p className="mt-4 text-sm font-medium text-mute">{<Tx>{m.sub}</Tx>}</p>
+              <h3 className="mt-1 text-lg font-semibold text-ink">{<Tx>{m.name}</Tx>}</h3>
+              <p className="mt-2 text-sm text-mute">{<Tx>{m.desc}</Tx>}</p>
             </a>
           ))}
         </div>

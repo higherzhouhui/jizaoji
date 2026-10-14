@@ -16,13 +16,13 @@ function getIndustryLabel(industry: string) {
 
 export function FeaturedCases() {
   return (
-    <section className="py-20 sm:py-24 bg-white">
+    <section className="py-20 sm:py-24 bg-surface">
       <div className="mx-auto max-w-7xl px-6">
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
             精选案例
           </h2>
-          <p className="mt-4 text-slate-600">
+          <p className="mt-4 text-mute">
             客户背景、解决方案、实施效果 — 左右交错呈现，参考行业优秀案例页版式
           </p>
         </div>
@@ -33,7 +33,7 @@ export function FeaturedCases() {
               className="grid gap-10 lg:grid-cols-2 lg:items-center"
             >
               <div className={index % 2 === 1 ? "lg:order-2" : ""}>
-                <div className="aspect-video relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-100">
+                <div className="aspect-video relative overflow-hidden rounded-2xl border border-line bg-raised">
                   <Image
                     src={c.image ?? PLACEHOLDER_IMAGE(c.id)}
                     alt={c.title}
@@ -45,32 +45,32 @@ export function FeaturedCases() {
               </div>
               <div className={index % 2 === 1 ? "lg:order-1" : ""}>
                 <div className="flex flex-wrap gap-2">
-                  <span className="rounded-full bg-cyan-500/10 px-2.5 py-0.5 text-xs font-medium text-cyan-700">
+                  <span className="rounded-full bg-accent/10 px-2.5 py-0.5 text-xs font-medium text-accent">
                     {getTypeLabel(c.type)}
                   </span>
-                  <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-medium text-slate-600">
+                  <span className="rounded-full bg-raised px-2.5 py-0.5 text-xs font-medium text-mute">
                     {getIndustryLabel(c.industry)}
                   </span>
                 </div>
-                <h3 className="mt-4 text-2xl font-bold text-slate-900">{c.title}</h3>
-                <div className="mt-6 space-y-4 text-slate-600">
+                <h3 className="mt-4 text-2xl font-bold text-ink">{c.title}</h3>
+                <div className="mt-6 space-y-4 text-mute">
                   <div>
-                    <h4 className="text-sm font-semibold uppercase tracking-wider text-slate-500">
+                    <h4 className="text-sm font-semibold uppercase tracking-wider text-mute">
                       客户背景
                     </h4>
                     <p className="mt-2">{c.clientBrief}</p>
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold uppercase tracking-wider text-slate-500">
+                    <h4 className="text-sm font-semibold uppercase tracking-wider text-mute">
                       解决方案
                     </h4>
                     <p className="mt-2">{c.solutionBrief}</p>
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold uppercase tracking-wider text-slate-500">
+                    <h4 className="text-sm font-semibold uppercase tracking-wider text-mute">
                       实施效果
                     </h4>
-                    <ul className="mt-2 list-disc list-inside space-y-1 text-slate-600">
+                    <ul className="mt-2 list-disc list-inside space-y-1 text-mute">
                       {c.metrics.map((m) => (
                         <li key={m}>{m}</li>
                       ))}
@@ -79,7 +79,7 @@ export function FeaturedCases() {
                 </div>
                 <Link
                   href={`/cases/${c.id}`}
-                  className="mt-6 inline-flex items-center text-cyan-600 font-semibold hover:text-cyan-700"
+                  className="mt-6 inline-flex items-center text-accent font-semibold hover:text-accent"
                 >
                   查看更多
                   <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

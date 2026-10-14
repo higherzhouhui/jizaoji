@@ -7,6 +7,7 @@ import { Honors } from "@/components/about/Honors";
 import { OfficeEnv } from "@/components/about/OfficeEnv";
 import type { Metadata } from "next";
 import { buildPageMetadata } from "@/lib/seo";
+import { Tx } from "@/components/i18n/Tx";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "关于我们",
@@ -34,14 +35,14 @@ export default function AboutPage() {
 
 function PageHero() {
   return (
-    <section className="relative border-b border-slate-800 bg-slate-950 px-6 py-20 sm:py-28">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_0%,rgba(34,211,238,0.12),transparent)]" />
+    <section className="relative border-b border-line bg-canvas px-6 py-20 sm:py-28">
+      <div className="hero-glow absolute inset-0" />
       <div className="relative mx-auto max-w-3xl text-center">
-        <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
-          关于我们
+        <h1 className="text-4xl font-bold tracking-tight text-ink sm:text-5xl">
+          <Tx>关于我们</Tx>
         </h1>
-        <p className="mt-4 text-lg text-slate-400">
-          用技术创造价值，用数据赋能未来 — 讲述我们的故事与实力
+        <p className="mt-4 text-lg text-mute">
+          <Tx>用技术创造价值，用数据赋能未来 — 讲述我们的故事与实力</Tx>
         </p>
       </div>
     </section>

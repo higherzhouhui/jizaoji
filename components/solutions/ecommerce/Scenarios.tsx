@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Tx } from "@/components/i18n/Tx";
 
 const SCENARIOS = [
   {
@@ -33,46 +34,46 @@ const SCENARIOS = [
 
 export function Scenarios() {
   return (
-    <section className="py-20 sm:py-24 bg-white">
+    <section className="py-20 sm:py-24 bg-surface">
       <div className="mx-auto max-w-7xl px-6">
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            典型应用场景
+          <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+            <Tx>典型应用场景</Tx>
           </h2>
-          <p className="mt-4 text-slate-600">
-            按行业与规模封装，快速匹配你的需求
+          <p className="mt-4 text-mute">
+            <Tx>按行业与规模封装，快速匹配你的需求</Tx>
           </p>
         </div>
         <div className="grid gap-8 sm:grid-cols-2">
           {SCENARIOS.map((s) => (
             <div
               key={s.title}
-              className="rounded-2xl border border-slate-200 bg-slate-50/30 p-6 transition hover:border-cyan-200 hover:shadow-md"
+              className="rounded-2xl border border-line bg-raised/30 p-6 transition hover:border-accent/40 hover:shadow-md"
             >
               <div className="flex items-center gap-2">
-                <h3 className="text-xl font-semibold text-slate-900">{s.title}</h3>
-                <span className="rounded-full bg-cyan-500/10 px-2.5 py-0.5 text-xs font-medium text-cyan-700">
-                  {s.tagline}
+                <h3 className="text-xl font-semibold text-ink">{<Tx>{s.title}</Tx>}</h3>
+                <span className="rounded-full bg-accent/10 px-2.5 py-0.5 text-xs font-medium text-accent">
+                  {<Tx>{s.tagline}</Tx>}
                 </span>
               </div>
-              <p className="mt-3 text-sm text-slate-600">
-                <span className="font-medium text-slate-700">客户画像：</span>
-                {s.profile}
+              <p className="mt-3 text-sm text-mute">
+                <span className="font-medium text-ink"><Tx>客户画像：</Tx></span>
+                {<Tx>{s.profile}</Tx>}
               </p>
-              <p className="mt-2 text-sm text-slate-600">
-                <span className="font-medium text-slate-700">解决方案：</span>
-                {s.solution}
+              <p className="mt-2 text-sm text-mute">
+                <span className="font-medium text-ink"><Tx>解决方案：</Tx></span>
+                {<Tx>{s.solution}</Tx>}
               </p>
-              <p className="mt-4 text-sm font-semibold text-cyan-600">交付价值：{s.value}</p>
+              <p className="mt-4 text-sm font-semibold text-accent"><Tx>交付价值：</Tx>{<Tx>{s.value}</Tx>}</p>
             </div>
           ))}
         </div>
         <p className="mt-10 text-center">
           <Link
             href="/contact"
-            className="inline-flex items-center text-cyan-600 font-semibold hover:text-cyan-700"
+            className="inline-flex items-center text-accent font-semibold hover:text-accent"
           >
-            根据我的场景获取方案
+            <Tx>根据我的场景获取方案</Tx>
             <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
