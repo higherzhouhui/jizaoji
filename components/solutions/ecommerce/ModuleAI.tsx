@@ -1,3 +1,4 @@
+import { Tx } from "@/components/i18n/Tx";
 const ITEMS = [
   {
     title: "智能搜索推荐",
@@ -38,28 +39,28 @@ const ITEMS = [
 
 export function ModuleAI() {
   return (
-    <section id="module-ai" className="scroll-mt-20 py-20 sm:py-24 bg-slate-50 border-y border-slate-200/80">
+    <section id="module-ai" className="scroll-mt-20 py-20 sm:py-24 bg-raised border-y border-line">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-14">
-          <span className="text-sm font-semibold text-cyan-600">增值层</span>
-          <h2 className="mt-1 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            AI 智能应用
+          <span className="text-sm font-semibold text-accent"><Tx>增值层</Tx></span>
+          <h2 className="mt-1 text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+            <Tx>AI 智能应用</Tx>
           </h2>
-          <p className="mt-4 text-slate-600 max-w-2xl">
-            差异化竞争力：让搜索更懂用户、让内容自动生成、让运营更智能
+          <p className="mt-4 text-mute max-w-2xl">
+            <Tx>差异化竞争力：让搜索更懂用户、让内容自动生成、让运营更智能</Tx>
           </p>
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {ITEMS.map((item) => (
             <div
               key={item.title}
-              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+              className="rounded-2xl border border-line bg-surface p-6 shadow-sm"
             >
-              <h3 className="text-lg font-semibold text-slate-900">{item.title}</h3>
-              <ul className="mt-4 space-y-2 text-sm text-slate-600">
+              <h3 className="text-lg font-semibold text-ink">{<Tx>{item.title}</Tx>}</h3>
+              <ul className="mt-4 space-y-2 text-sm text-mute">
                 {item.points.map((p) => (
                   <li key={p} className="flex gap-2">
-                    <span className="text-cyan-500 shrink-0">•</span> {p}
+                    <span className="text-accent shrink-0">•</span> {<Tx>{p}</Tx>}
                   </li>
                 ))}
               </ul>

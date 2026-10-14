@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Tx } from "@/components/i18n/Tx";
 
 const COLLAB_ITEMS = [
   {
@@ -82,23 +83,23 @@ function Block({
   items: { title: string; desc: string }[];
 }) {
   return (
-    <section id={`module-${id}`} className="scroll-mt-20 py-20 sm:py-24 bg-white">
+    <section id={`module-${id}`} className="scroll-mt-20 py-20 sm:py-24 bg-surface">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-10">
-          <span className={`text-sm font-semibold ${accent}`}>解决方案</span>
-          <h2 className="mt-1 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            {title}
+          <span className={`text-sm font-semibold ${accent}`}><Tx>解决方案</Tx></span>
+          <h2 className="mt-1 text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+            {<Tx>{title}</Tx>}
           </h2>
-          <p className="mt-4 text-slate-600 max-w-2xl">{subtitle}</p>
+          <p className="mt-4 text-mute max-w-2xl">{<Tx>{subtitle}</Tx>}</p>
         </div>
         <div className="grid gap-6 sm:grid-cols-2">
           {items.map((item) => (
             <div
               key={item.title}
-              className="rounded-2xl border border-slate-200 bg-slate-50/50 p-6"
+              className="rounded-2xl border border-line bg-raised/60 p-6"
             >
-              <h3 className="text-lg font-semibold text-slate-900">{item.title}</h3>
-              <p className="mt-3 text-slate-600">{item.desc}</p>
+              <h3 className="text-lg font-semibold text-ink">{<Tx>{item.title}</Tx>}</h3>
+              <p className="mt-3 text-mute">{<Tx>{item.desc}</Tx>}</p>
             </div>
           ))}
         </div>
@@ -112,30 +113,30 @@ export function EnterpriseModules() {
     <>
       <Block
         id="collab"
-        accent="text-cyan-600"
+        accent="text-accent"
         title="协同办公"
         subtitle="IM、文档、日历、会议与项目协作，让信息同频、协作高效"
         items={COLLAB_ITEMS}
       />
-      <section id="module-workflow" className="scroll-mt-20 py-20 sm:py-24 bg-slate-50 border-y border-slate-200/80">
+      <section id="module-workflow" className="scroll-mt-20 py-20 sm:py-24 bg-raised border-y border-line">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mb-10">
-            <span className="text-sm font-semibold text-violet-600">管控层</span>
-            <h2 className="mt-1 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-              流程与组织
+            <span className="text-sm font-semibold text-accent"><Tx>管控层</Tx></span>
+            <h2 className="mt-1 text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+              <Tx>流程与组织</Tx>
             </h2>
-            <p className="mt-4 text-slate-600 max-w-2xl">
-              审批、考勤、人事、公告一体化，制度落地可追溯
+            <p className="mt-4 text-mute max-w-2xl">
+              <Tx>审批、考勤、人事、公告一体化，制度落地可追溯</Tx>
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2">
             {WORKFLOW_ITEMS.map((item) => (
               <div
                 key={item.title}
-                className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+                className="rounded-2xl border border-line bg-surface p-6 shadow-sm"
               >
-                <h3 className="text-lg font-semibold text-slate-900">{item.title}</h3>
-                <p className="mt-3 text-slate-600">{item.desc}</p>
+                <h3 className="text-lg font-semibold text-ink">{<Tx>{item.title}</Tx>}</h3>
+                <p className="mt-3 text-mute">{<Tx>{item.desc}</Tx>}</p>
               </div>
             ))}
           </div>
@@ -143,30 +144,30 @@ export function EnterpriseModules() {
       </section>
       <Block
         id="business"
-        accent="text-cyan-600"
+        accent="text-accent"
         title="业务应用"
         subtitle="CRM、销售与项目协作，支撑业务闭环与数据可管"
         items={BUSINESS_ITEMS}
       />
-      <section id="module-security" className="scroll-mt-20 py-20 sm:py-24 bg-slate-50 border-y border-slate-200/80">
+      <section id="module-security" className="scroll-mt-20 py-20 sm:py-24 bg-raised border-y border-line">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mb-10">
-            <span className="text-sm font-semibold text-violet-600">底座</span>
-            <h2 className="mt-1 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-              安全与集成
+            <span className="text-sm font-semibold text-accent"><Tx>底座</Tx></span>
+            <h2 className="mt-1 text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+              <Tx>安全与集成</Tx>
             </h2>
-            <p className="mt-4 text-slate-600 max-w-2xl">
-              SSO、权限、审计与现有系统对接，保障合规与可扩展
+            <p className="mt-4 text-mute max-w-2xl">
+              <Tx>SSO、权限、审计与现有系统对接，保障合规与可扩展</Tx>
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-3">
             {SECURITY_ITEMS.map((item) => (
               <div
                 key={item.title}
-                className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+                className="rounded-2xl border border-line bg-surface p-6 shadow-sm"
               >
-                <h3 className="text-lg font-semibold text-slate-900">{item.title}</h3>
-                <p className="mt-3 text-slate-600">{item.desc}</p>
+                <h3 className="text-lg font-semibold text-ink">{<Tx>{item.title}</Tx>}</h3>
+                <p className="mt-3 text-mute">{<Tx>{item.desc}</Tx>}</p>
               </div>
             ))}
           </div>
@@ -201,44 +202,44 @@ export function EnterpriseScenarios() {
     },
   ];
   return (
-    <section className="py-20 sm:py-24 bg-white">
+    <section className="py-20 sm:py-24 bg-surface">
       <div className="mx-auto max-w-7xl px-6">
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            典型应用场景
+          <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+            <Tx>典型应用场景</Tx>
           </h2>
-          <p className="mt-4 text-slate-600">按规模与管控需求匹配方案</p>
+          <p className="mt-4 text-mute"><Tx>按规模与管控需求匹配方案</Tx></p>
         </div>
         <div className="grid gap-8 sm:grid-cols-3">
           {SCENARIOS.map((s) => (
             <div
               key={s.title}
-              className="rounded-2xl border border-slate-200 bg-slate-50/30 p-6 transition hover:border-cyan-200 hover:shadow-md"
+              className="rounded-2xl border border-line bg-raised/30 p-6 transition hover:border-accent/40 hover:shadow-md"
             >
               <div className="flex items-center gap-2">
-                <h3 className="text-xl font-semibold text-slate-900">{s.title}</h3>
-                <span className="rounded-full bg-violet-500/10 px-2.5 py-0.5 text-xs font-medium text-violet-700">
-                  {s.tagline}
+                <h3 className="text-xl font-semibold text-ink">{<Tx>{s.title}</Tx>}</h3>
+                <span className="rounded-full bg-accent/10 px-2.5 py-0.5 text-xs font-medium text-accent">
+                  {<Tx>{s.tagline}</Tx>}
                 </span>
               </div>
-              <p className="mt-3 text-sm text-slate-600">
-                <span className="font-medium text-slate-700">客户画像：</span>
-                {s.profile}
+              <p className="mt-3 text-sm text-mute">
+                <span className="font-medium text-ink"><Tx>客户画像：</Tx></span>
+                {<Tx>{s.profile}</Tx>}
               </p>
-              <p className="mt-2 text-sm text-slate-600">
-                <span className="font-medium text-slate-700">解决方案：</span>
-                {s.solution}
+              <p className="mt-2 text-sm text-mute">
+                <span className="font-medium text-ink"><Tx>解决方案：</Tx></span>
+                {<Tx>{s.solution}</Tx>}
               </p>
-              <p className="mt-4 text-sm font-semibold text-cyan-600">交付价值：{s.value}</p>
+              <p className="mt-4 text-sm font-semibold text-accent"><Tx>交付价值：</Tx>{<Tx>{s.value}</Tx>}</p>
             </div>
           ))}
         </div>
         <p className="mt-10 text-center">
           <Link
             href="/contact"
-            className="inline-flex items-center text-cyan-600 font-semibold hover:text-cyan-700"
+            className="inline-flex items-center text-accent font-semibold hover:text-accent"
           >
-            根据企业规模获取方案
+            <Tx>根据企业规模获取方案</Tx>
             <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
@@ -251,55 +252,55 @@ export function EnterpriseScenarios() {
 
 export function EnterpriseCaseStudy() {
   return (
-    <section className="py-20 sm:py-24 bg-slate-50 border-y border-slate-200/80">
+    <section className="py-20 sm:py-24 bg-raised border-y border-line">
       <div className="mx-auto max-w-4xl px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            成功案例
+          <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+            <Tx>成功案例</Tx>
           </h2>
-          <p className="mt-4 text-slate-600">用效率与合规效果说话</p>
+          <p className="mt-4 text-mute"><Tx>用效率与合规效果说话</Tx></p>
         </div>
-        <div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
-          <div className="space-y-6 text-slate-700">
+        <div className="rounded-2xl border border-line bg-surface p-8 shadow-sm">
+          <div className="space-y-6 text-ink">
             <div>
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-500">
-                客户背景
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-mute">
+                <Tx>客户背景</Tx>
               </h3>
-              <p className="mt-2">某科技公司，约 200 人，多地办公，原有 OA 与沟通工具分散</p>
+              <p className="mt-2"><Tx>某科技公司，约 200 人，多地办公，原有 OA 与沟通工具分散</Tx></p>
             </div>
             <div>
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-500">
-                核心痛点
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-mute">
+                <Tx>核心痛点</Tx>
               </h3>
-              <p className="mt-2">审批慢、考勤与人事脱节、销售与项目信息分散、权限与审计难满足</p>
+              <p className="mt-2"><Tx>审批慢、考勤与人事脱节、销售与项目信息分散、权限与审计难满足</Tx></p>
             </div>
             <div>
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-500">
-                解决方案
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-mute">
+                <Tx>解决方案</Tx>
               </h3>
-              <ul className="mt-2 list-disc list-inside space-y-1 text-slate-600">
-                <li>统一协同平台（IM + 文档 + 会议）+ 审批考勤人事</li>
-                <li>CRM 与项目协作模块，销售与交付数据集中</li>
-                <li>SSO 与权限、操作审计，满足等保与内控要求</li>
+              <ul className="mt-2 list-disc list-inside space-y-1 text-mute">
+                <li><Tx>统一协同平台（IM + 文档 + 会议）+ 审批考勤人事</Tx></li>
+                <li><Tx>CRM 与项目协作模块，销售与交付数据集中</Tx></li>
+                <li><Tx>SSO 与权限、操作审计，满足等保与内控要求</Tx></li>
               </ul>
             </div>
             <div>
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-500">
-                实施效果
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-mute">
+                <Tx>实施效果</Tx>
               </h3>
-              <ul className="mt-2 space-y-1 text-slate-600">
-                <li>• 审批平均处理时长缩短，移动审批占比超 80%</li>
-                <li>• 考勤与人事、薪酬数据打通，人岗一致可追溯</li>
-                <li>• 销售漏斗与项目进度可视，管理层决策有据可依</li>
+              <ul className="mt-2 space-y-1 text-mute">
+                <li><Tx>• 审批平均处理时长缩短，移动审批占比超 80%</Tx></li>
+                <li><Tx>• 考勤与人事、薪酬数据打通，人岗一致可追溯</Tx></li>
+                <li><Tx>• 销售漏斗与项目进度可视，管理层决策有据可依</Tx></li>
               </ul>
             </div>
           </div>
           <div className="mt-8">
             <Link
               href="/contact"
-              className="inline-flex items-center rounded-lg bg-cyan-500 px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-cyan-400"
+              className="inline-flex items-center rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-accent-ink transition hover:opacity-90"
             >
-              获取定制方案
+              <Tx>获取定制方案</Tx>
             </Link>
           </div>
         </div>
@@ -310,17 +311,17 @@ export function EnterpriseCaseStudy() {
 
 export function EnterpriseCTA() {
   return (
-    <section className="py-20 sm:py-24 bg-slate-900">
+    <section className="py-20 sm:py-24 bg-raised">
       <div className="mx-auto max-w-4xl px-6 text-center">
-        <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-          企业协同与数字化办公，从协作到管控
+        <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+          <Tx>企业协同与数字化办公，从协作到管控</Tx>
         </h2>
-        <p className="mt-4 text-slate-400">一体化平台，可集成、可扩展、可审计</p>
+        <p className="mt-4 text-mute"><Tx>一体化平台，可集成、可扩展、可审计</Tx></p>
         <Link
           href="/contact"
-          className="mt-10 inline-flex items-center justify-center rounded-lg bg-cyan-500 px-8 py-4 text-base font-semibold text-slate-950 shadow-lg shadow-cyan-500/25 transition hover:bg-cyan-400"
+          className="mt-10 inline-flex items-center justify-center rounded-lg bg-accent px-8 py-4 text-base font-semibold text-accent-ink transition hover:opacity-90"
         >
-          免费咨询 · 获取方案
+          <Tx>免费咨询 · 获取方案</Tx>
         </Link>
       </div>
     </section>

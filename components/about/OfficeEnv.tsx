@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { Tx } from "@/components/i18n/Tx";
 
 const ABOUT_IMAGES = [
   {
@@ -21,23 +22,23 @@ const ABOUT_IMAGES = [
 
 export function OfficeEnv() {
   return (
-    <section className="py-20 sm:py-24 bg-white">
+    <section className="py-20 sm:py-24 bg-surface">
       <div className="mx-auto max-w-7xl px-6">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            办公环境
+          <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+            <Tx>办公环境</Tx>
           </h2>
-          <p className="mt-4 text-lg text-slate-600">
-            科技感十足的办公空间，期待优秀的你加入
+          <p className="mt-4 text-lg text-mute">
+            <Tx>科技感十足的办公空间，期待优秀的你加入</Tx>
           </p>
         </div>
         <div className="grid gap-6 sm:grid-cols-3">
           {ABOUT_IMAGES.map((item) => (
             <div
               key={item.src}
-              className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50/50"
+              className="overflow-hidden rounded-2xl border border-line bg-raised/60"
             >
-              <div className="relative aspect-[4/3] bg-slate-100">
+              <div className="relative aspect-[4/3] bg-raised">
                 <Image
                   src={item.src}
                   alt={item.title}
@@ -47,8 +48,8 @@ export function OfficeEnv() {
                 />
               </div>
               <div className="p-6 text-center">
-                <h3 className="font-semibold text-slate-900">{item.title}</h3>
-                <p className="mt-2 text-sm text-slate-600">{item.desc}</p>
+                <h3 className="font-semibold text-ink">{<Tx>{item.title}</Tx>}</h3>
+                <p className="mt-2 text-sm text-mute">{<Tx>{item.desc}</Tx>}</p>
               </div>
             </div>
           ))}
@@ -56,9 +57,9 @@ export function OfficeEnv() {
         <p className="mt-10 text-center">
           <Link
             href="/jobs"
-            className="inline-flex items-center text-cyan-600 font-semibold hover:text-cyan-700 focus:outline-none focus:underline"
+            className="inline-flex items-center text-accent font-semibold hover:text-accent focus:outline-none focus:underline"
           >
-            加入我们
+            <Tx>加入我们</Tx>
             <svg
               className="ml-1 h-4 w-4"
               fill="none"

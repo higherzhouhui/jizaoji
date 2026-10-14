@@ -5,6 +5,7 @@ import { BLOG_POSTS } from "@/components/blog/blogData";
 import { BLOG_CATEGORIES } from "@/components/blog/blogData";
 import { buildPageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
+import { Tx } from "@/components/i18n/Tx";
 
 const SOURCE_LABEL: Record<string, string> = {
   juejin: "掘金",
@@ -41,9 +42,9 @@ export default async function BlogPostPage({ params }: Props) {
       <>
         <Header />
         <main className="min-h-[50vh] flex flex-col items-center justify-center px-6 py-20">
-          <h1 className="text-2xl font-bold text-slate-900">文章不存在</h1>
-          <Link href="/blog" className="mt-4 text-cyan-600 hover:text-cyan-700">
-            返回资源中心
+          <h1 className="text-2xl font-bold text-ink"><Tx>文章不存在</Tx></h1>
+          <Link href="/blog" className="mt-4 text-accent hover:text-accent">
+            <Tx>返回资源中心</Tx>
           </Link>
         </main>
         <Footer />
@@ -58,39 +59,40 @@ export default async function BlogPostPage({ params }: Props) {
         <Header />
         <main className="pb-20">
           <article className="mx-auto max-w-3xl px-6 py-12">
-            <div className="flex flex-wrap items-center gap-2 text-sm text-slate-500">
-              <span className="rounded-full bg-cyan-500/10 px-2.5 py-0.5 font-medium text-cyan-700">
-                {categoryLabel}
+            <div className="flex flex-wrap items-center gap-2 text-sm text-mute">
+              <span className="rounded-full bg-accent/10 px-2.5 py-0.5 font-medium text-accent">
+                {<Tx>{categoryLabel}</Tx>}
               </span>
               <time dateTime={post.date}>{post.date}</time>
               {sourceLabel && (
-                <span className="rounded-full bg-slate-100 px-2.5 py-0.5 font-medium text-slate-600">
-                  {sourceLabel}
+                <span className="rounded-full bg-raised px-2.5 py-0.5 font-medium text-mute">
+                  {<Tx>{sourceLabel}</Tx>}
                 </span>
               )}
             </div>
-            <h1 className="mt-4 text-3xl font-bold text-slate-900 sm:text-4xl">{post.title}</h1>
-            <p className="mt-6 text-lg text-slate-600 leading-relaxed">{post.excerpt}</p>
-            <p className="mt-6 text-slate-500 text-sm">
-              本文来自 {sourceLabel ?? "外部平台"}，点击下方按钮前往阅读完整内容。
+            <h1 className="mt-4 text-3xl font-bold text-ink sm:text-4xl">{<Tx>{post.title}</Tx>}</h1>
+            <p className="mt-6 text-lg text-mute leading-relaxed">{<Tx>{post.excerpt}</Tx>}</p>
+            <p className="mt-6 text-sm text-mute">
+              <Tx>本文来自</Tx> {<Tx>{sourceLabel ?? "外部平台"}</Tx>}
+              <Tx>，点击下方按钮前往阅读完整内容。</Tx>
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <a
                 href={post.externalUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center rounded-lg bg-cyan-500 px-6 py-3 text-base font-semibold text-slate-950 transition hover:bg-cyan-400"
+                className="inline-flex items-center rounded-lg bg-accent px-6 py-3 text-base font-semibold text-accent-ink transition hover:opacity-90"
               >
-                阅读原文（{sourceLabel}）
+                <Tx>阅读原文</Tx>{sourceLabel ? <> ({<Tx>{sourceLabel}</Tx>})</> : null}
                 <svg className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
               </a>
               <Link
                 href="/blog"
-                className="inline-flex items-center rounded-lg border border-slate-300 px-6 py-3 text-base font-semibold text-slate-700 transition hover:bg-slate-100"
+                className="inline-flex items-center rounded-lg border border-line px-6 py-3 text-base font-semibold text-ink transition hover:bg-raised"
               >
-                返回资源中心
+                <Tx>返回资源中心</Tx>
               </Link>
             </div>
           </article>
@@ -106,32 +108,32 @@ export default async function BlogPostPage({ params }: Props) {
       <Header />
       <main className="pb-20">
         <article className="mx-auto max-w-3xl px-6 py-12">
-          <div className="flex flex-wrap items-center gap-2 text-sm text-slate-500">
-            <span className="rounded-full bg-cyan-500/10 px-2.5 py-0.5 font-medium text-cyan-700">
-              {categoryLabel}
+          <div className="flex flex-wrap items-center gap-2 text-sm text-mute">
+            <span className="rounded-full bg-accent/10 px-2.5 py-0.5 font-medium text-accent">
+              {<Tx>{categoryLabel}</Tx>}
             </span>
             <time dateTime={post.date}>{post.date}</time>
-            {post.author && <span>· {post.author}</span>}
+            {post.author && <span>· {<Tx>{post.author}</Tx>}</span>}
           </div>
-          <h1 className="mt-4 text-3xl font-bold text-slate-900 sm:text-4xl">{post.title}</h1>
-          <p className="mt-6 text-lg text-slate-600 leading-relaxed">{post.excerpt}</p>
-          <div className="mt-10 prose prose-slate max-w-none">
-            <p className="text-slate-600">
-              完整正文可在此处接入 Markdown 或 CMS 渲染；当前仅展示摘要，更多内容敬请期待。
+          <h1 className="mt-4 text-3xl font-bold text-ink sm:text-4xl">{<Tx>{post.title}</Tx>}</h1>
+          <p className="mt-6 text-lg text-mute leading-relaxed">{<Tx>{post.excerpt}</Tx>}</p>
+          <div className="mt-10 max-w-none">
+            <p className="text-mute">
+              <Tx>完整正文可在此处接入 Markdown 或 CMS 渲染；当前仅展示摘要，更多内容敬请期待。</Tx>
             </p>
           </div>
           <div className="mt-12 flex flex-wrap gap-4">
             <Link
               href="/blog"
-              className="inline-flex items-center rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-100"
+              className="inline-flex items-center rounded-lg border border-line px-4 py-2 text-sm font-semibold text-ink transition hover:bg-raised"
             >
-              返回资源中心
+              <Tx>返回资源中心</Tx>
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center rounded-lg bg-cyan-500 px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-cyan-400"
+              className="inline-flex items-center rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-accent-ink transition hover:opacity-90"
             >
-              联系我们
+              <Tx>联系我们</Tx>
             </Link>
           </div>
         </article>

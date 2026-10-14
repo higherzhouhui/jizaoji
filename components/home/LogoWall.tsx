@@ -24,9 +24,9 @@ const PARTNERS = [
 
 export function LogoWall() {
   return (
-    <section className="py-16 sm:py-20 bg-slate-50 border-y border-slate-200/80">
+    <section className="py-16 sm:py-20 bg-raised border-y border-line">
       <div className="mx-auto max-w-7xl px-6">
-        <p className="text-center text-sm font-semibold uppercase tracking-wider text-slate-500 mb-10">
+        <p className="text-center text-sm font-semibold uppercase tracking-wider text-mute mb-10">
           信任我们的客户与伙伴
         </p>
         <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-8">
@@ -36,7 +36,7 @@ export function LogoWall() {
               className="flex items-center justify-center grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
               style={{ width: partner.width }}
             >
-              <div className="h-10 w-full rounded-lg bg-slate-200 flex items-center justify-center text-slate-500 text-xs font-medium">
+              <div className="h-10 w-full rounded-lg bg-line flex items-center justify-center text-mute text-xs font-medium">
                 {partner.name}
               </div>
             </div>

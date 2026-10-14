@@ -1,3 +1,4 @@
+import { Tx } from "@/components/i18n/Tx";
 const CERTIFICATES = [
   {
     name: "国家高新技术企业",
@@ -28,27 +29,27 @@ const CERTIFICATES = [
 
 export function Honors() {
   return (
-    <section className="py-20 sm:py-24 bg-slate-50 border-y border-slate-200/80">
+    <section className="py-20 sm:py-24 bg-raised border-y border-line">
       <div className="mx-auto max-w-7xl px-6">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            荣誉资质
+          <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+            <Tx>荣誉资质</Tx>
           </h2>
-          <p className="mt-4 text-lg text-slate-600">
-            专利、软著、ISO 与高新认证，用实力与合规赢得信任
+          <p className="mt-4 text-lg text-mute">
+            <Tx>专利、软著、ISO 与高新认证，用实力与合规赢得信任</Tx>
           </p>
         </div>
         <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
           {CERTIFICATES.map((cert) => (
             <div
               key={cert.short}
-              className="flex min-w-0 flex-col items-center rounded-2xl border border-slate-200 bg-white px-8 py-6 shadow-sm transition hover:border-cyan-200 hover:shadow-md sm:flex-1 sm:max-w-[200px]"
+              className="flex min-w-0 flex-col items-center rounded-2xl border border-line bg-surface px-8 py-6 shadow-sm transition hover:border-accent/40 hover:shadow-md sm:flex-1 sm:max-w-[200px]"
             >
               <span className="text-3xl" aria-hidden>
                 {cert.icon}
               </span>
-              <p className="mt-3 text-center text-sm font-semibold text-slate-900">{cert.short}</p>
-              <p className="mt-1 text-center text-xs text-slate-500">{cert.name}</p>
+              <p className="mt-3 text-center text-sm font-semibold text-ink">{<Tx>{cert.short}</Tx>}</p>
+              <p className="mt-1 text-center text-xs text-mute">{<Tx>{cert.name}</Tx>}</p>
             </div>
           ))}
         </div>

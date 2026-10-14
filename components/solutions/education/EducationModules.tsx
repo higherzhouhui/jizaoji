@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Tx } from "@/components/i18n/Tx";
 
 const TEACHING_ITEMS = [
   {
@@ -90,23 +91,23 @@ function Block({
   items: { title: string; desc: string }[];
 }) {
   return (
-    <section id={`module-${id}`} className="scroll-mt-20 py-20 sm:py-24 bg-white">
+    <section id={`module-${id}`} className="scroll-mt-20 py-20 sm:py-24 bg-surface">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-10">
-          <span className={`text-sm font-semibold ${accent}`}>解决方案</span>
-          <h2 className="mt-1 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            {title}
+          <span className={`text-sm font-semibold ${accent}`}><Tx>解决方案</Tx></span>
+          <h2 className="mt-1 text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+            {<Tx>{title}</Tx>}
           </h2>
-          <p className="mt-4 text-slate-600 max-w-2xl">{subtitle}</p>
+          <p className="mt-4 text-mute max-w-2xl">{<Tx>{subtitle}</Tx>}</p>
         </div>
         <div className="grid gap-6 sm:grid-cols-2">
           {items.map((item) => (
             <div
               key={item.title}
-              className="rounded-2xl border border-slate-200 bg-slate-50/50 p-6"
+              className="rounded-2xl border border-line bg-raised/60 p-6"
             >
-              <h3 className="text-lg font-semibold text-slate-900">{item.title}</h3>
-              <p className="mt-3 text-slate-600">{item.desc}</p>
+              <h3 className="text-lg font-semibold text-ink">{<Tx>{item.title}</Tx>}</h3>
+              <p className="mt-3 text-mute">{<Tx>{item.desc}</Tx>}</p>
             </div>
           ))}
         </div>
@@ -120,37 +121,37 @@ export function EducationModules() {
     <>
       <Block
         id="teaching"
-        accent="text-cyan-600"
+        accent="text-accent"
         title="线上教学与课程"
         subtitle="直播、录播、互动、作业与考试，多形态课程交付，保障学习效果与完课率"
         items={TEACHING_ITEMS}
       />
       <Block
         id="enrollment"
-        accent="text-amber-600"
+        accent="text-accent"
         title="招生与营销"
         subtitle="官网、小程序、线索、裂变与试听，从公域到私域，提升获客与转化"
         items={ENROLLMENT_ITEMS}
       />
-      <section id="module-academic" className="scroll-mt-20 py-20 sm:py-24 bg-slate-50 border-y border-slate-200/80">
+      <section id="module-academic" className="scroll-mt-20 py-20 sm:py-24 bg-raised border-y border-line">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mb-10">
-            <span className="text-sm font-semibold text-amber-600">运营层</span>
-            <h2 className="mt-1 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-              教务与学员管理
+            <span className="text-sm font-semibold text-accent"><Tx>运营层</Tx></span>
+            <h2 className="mt-1 text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+              <Tx>教务与学员管理</Tx>
             </h2>
-            <p className="mt-4 text-slate-600 max-w-2xl">
-              排课、班级、学员档案、考勤与证书，教务标准化、学员可追溯
+            <p className="mt-4 text-mute max-w-2xl">
+              <Tx>排课、班级、学员档案、考勤与证书，教务标准化、学员可追溯</Tx>
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2">
             {ACADEMIC_ITEMS.map((item) => (
               <div
                 key={item.title}
-                className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+                className="rounded-2xl border border-line bg-surface p-6 shadow-sm"
               >
-                <h3 className="text-lg font-semibold text-slate-900">{item.title}</h3>
-                <p className="mt-3 text-slate-600">{item.desc}</p>
+                <h3 className="text-lg font-semibold text-ink">{<Tx>{item.title}</Tx>}</h3>
+                <p className="mt-3 text-mute">{<Tx>{item.desc}</Tx>}</p>
               </div>
             ))}
           </div>
@@ -158,7 +159,7 @@ export function EducationModules() {
       </section>
       <Block
         id="data"
-        accent="text-cyan-600"
+        accent="text-accent"
         title="数据与运营"
         subtitle="学习数据、完课率、续费预测与经营看板，数据驱动教学与运营优化"
         items={DATA_ITEMS}
@@ -199,44 +200,44 @@ export function EducationScenarios() {
     },
   ];
   return (
-    <section className="py-20 sm:py-24 bg-white">
+    <section className="py-20 sm:py-24 bg-surface">
       <div className="mx-auto max-w-7xl px-6">
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            典型应用场景
+          <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+            <Tx>典型应用场景</Tx>
           </h2>
-          <p className="mt-4 text-slate-600">按业态与规模匹配方案</p>
+          <p className="mt-4 text-mute"><Tx>按业态与规模匹配方案</Tx></p>
         </div>
         <div className="grid gap-8 sm:grid-cols-2">
           {SCENARIOS.map((s) => (
             <div
               key={s.title}
-              className="rounded-2xl border border-slate-200 bg-slate-50/30 p-6 transition hover:border-cyan-200 hover:shadow-md"
+              className="rounded-2xl border border-line bg-raised/30 p-6 transition hover:border-accent/40 hover:shadow-md"
             >
               <div className="flex items-center gap-2">
-                <h3 className="text-xl font-semibold text-slate-900">{s.title}</h3>
-                <span className="rounded-full bg-amber-500/10 px-2.5 py-0.5 text-xs font-medium text-amber-700">
-                  {s.tagline}
+                <h3 className="text-xl font-semibold text-ink">{<Tx>{s.title}</Tx>}</h3>
+                <span className="rounded-full bg-accent/10 px-2.5 py-0.5 text-xs font-medium text-accent">
+                  {<Tx>{s.tagline}</Tx>}
                 </span>
               </div>
-              <p className="mt-3 text-sm text-slate-600">
-                <span className="font-medium text-slate-700">客户画像：</span>
-                {s.profile}
+              <p className="mt-3 text-sm text-mute">
+                <span className="font-medium text-ink"><Tx>客户画像：</Tx></span>
+                {<Tx>{s.profile}</Tx>}
               </p>
-              <p className="mt-2 text-sm text-slate-600">
-                <span className="font-medium text-slate-700">解决方案：</span>
-                {s.solution}
+              <p className="mt-2 text-sm text-mute">
+                <span className="font-medium text-ink"><Tx>解决方案：</Tx></span>
+                {<Tx>{s.solution}</Tx>}
               </p>
-              <p className="mt-4 text-sm font-semibold text-cyan-600">交付价值：{s.value}</p>
+              <p className="mt-4 text-sm font-semibold text-accent"><Tx>交付价值：</Tx>{<Tx>{s.value}</Tx>}</p>
             </div>
           ))}
         </div>
         <p className="mt-10 text-center">
           <Link
             href="/contact"
-            className="inline-flex items-center text-cyan-600 font-semibold hover:text-cyan-700"
+            className="inline-flex items-center text-accent font-semibold hover:text-accent"
           >
-            根据我的业态获取方案
+            <Tx>根据我的业态获取方案</Tx>
             <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
@@ -249,55 +250,55 @@ export function EducationScenarios() {
 
 export function EducationCaseStudy() {
   return (
-    <section className="py-20 sm:py-24 bg-slate-50 border-y border-slate-200/80">
+    <section className="py-20 sm:py-24 bg-raised border-y border-line">
       <div className="mx-auto max-w-4xl px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            成功案例
+          <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+            <Tx>成功案例</Tx>
           </h2>
-          <p className="mt-4 text-slate-600">用数据与效果说话</p>
+          <p className="mt-4 text-mute"><Tx>用数据与效果说话</Tx></p>
         </div>
-        <div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
-          <div className="space-y-6 text-slate-700">
+        <div className="rounded-2xl border border-line bg-surface p-8 shadow-sm">
+          <div className="space-y-6 text-ink">
             <div>
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-500">
-                客户背景
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-mute">
+                <Tx>客户背景</Tx>
               </h3>
-              <p className="mt-2">某职业资格培训机构，年招生约 5000 人，以线下为主、线上为辅</p>
+              <p className="mt-2"><Tx>某职业资格培训机构，年招生约 5000 人，以线下为主、线上为辅</Tx></p>
             </div>
             <div>
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-500">
-                核心痛点
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-mute">
+                <Tx>核心痛点</Tx>
               </h3>
-              <p className="mt-2">招生依赖电销、线索转化低；线下排课与学员档案分散；完课率与续费难量化</p>
+              <p className="mt-2"><Tx>招生依赖电销、线索转化低；线下排课与学员档案分散；完课率与续费难量化</Tx></p>
             </div>
             <div>
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-500">
-                解决方案
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-mute">
+                <Tx>解决方案</Tx>
               </h3>
-              <ul className="mt-2 list-disc list-inside space-y-1 text-slate-600">
-                <li>搭建官网与小程序，试听与留资统一入口，线索自动分配与跟进</li>
-                <li>直播 + 录播课程、题库与模拟考，学习进度与完课率可视</li>
-                <li>教务排课、学员档案与考勤一体化，数据看板支撑续费与运营决策</li>
+              <ul className="mt-2 list-disc list-inside space-y-1 text-mute">
+                <li><Tx>搭建官网与小程序，试听与留资统一入口，线索自动分配与跟进</Tx></li>
+                <li><Tx>直播 + 录播课程、题库与模拟考，学习进度与完课率可视</Tx></li>
+                <li><Tx>教务排课、学员档案与考勤一体化，数据看板支撑续费与运营决策</Tx></li>
               </ul>
             </div>
             <div>
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-500">
-                实施效果
+              <h3 className="text-sm font-semibold uppercase tracking-wider text-mute">
+                <Tx>实施效果</Tx>
               </h3>
-              <ul className="mt-2 space-y-1 text-slate-600">
-                <li>• 线索到付费转化率提升，获客成本下降</li>
-                <li>• 完课率与考试通过率可追踪，教学效果可量化</li>
-                <li>• 续费与转介绍数据清晰，续费触达更精准</li>
+              <ul className="mt-2 space-y-1 text-mute">
+                <li><Tx>• 线索到付费转化率提升，获客成本下降</Tx></li>
+                <li><Tx>• 完课率与考试通过率可追踪，教学效果可量化</Tx></li>
+                <li><Tx>• 续费与转介绍数据清晰，续费触达更精准</Tx></li>
               </ul>
             </div>
           </div>
           <div className="mt-8">
             <Link
               href="/contact"
-              className="inline-flex items-center rounded-lg bg-cyan-500 px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-cyan-400"
+              className="inline-flex items-center rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-accent-ink transition hover:opacity-90"
             >
-              获取定制方案
+              <Tx>获取定制方案</Tx>
             </Link>
           </div>
         </div>
@@ -308,17 +309,17 @@ export function EducationCaseStudy() {
 
 export function EducationCTA() {
   return (
-    <section className="py-20 sm:py-24 bg-slate-900">
+    <section className="py-20 sm:py-24 bg-raised">
       <div className="mx-auto max-w-4xl px-6 text-center">
-        <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-          教育/培训数字化，从招生到交付
+        <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+          <Tx>教育/培训数字化，从招生到交付</Tx>
         </h2>
-        <p className="mt-4 text-slate-400">获客、授课、教务、数据 — 一站式支撑教培增长</p>
+        <p className="mt-4 text-mute"><Tx>获客、授课、教务、数据 — 一站式支撑教培增长</Tx></p>
         <Link
           href="/contact"
-          className="mt-10 inline-flex items-center justify-center rounded-lg bg-cyan-500 px-8 py-4 text-base font-semibold text-slate-950 shadow-lg shadow-cyan-500/25 transition hover:bg-cyan-400"
+          className="mt-10 inline-flex items-center justify-center rounded-lg bg-accent px-8 py-4 text-base font-semibold text-accent-ink transition hover:opacity-90"
         >
-          免费咨询 · 获取方案
+          <Tx>免费咨询 · 获取方案</Tx>
         </Link>
       </div>
     </section>

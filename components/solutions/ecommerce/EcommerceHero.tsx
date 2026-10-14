@@ -1,34 +1,35 @@
 import Link from "next/link";
+import { Tx } from "@/components/i18n/Tx";
 
 export function EcommerceHero() {
   return (
-    <section className="relative border-b border-slate-800 bg-slate-950 px-6 py-20 sm:py-28">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_0%,rgba(34,211,238,0.12),transparent)]" />
+    <section className="relative border-b border-line bg-canvas px-6 py-20 sm:py-28">
+      <div className="hero-glow absolute inset-0" />
       <div className="relative mx-auto max-w-4xl text-center">
-        <p className="text-sm font-semibold uppercase tracking-wider text-cyan-400">
-          解决方案
+        <p className="text-sm font-semibold uppercase tracking-wider text-accent">
+          <Tx>解决方案</Tx>
         </p>
-        <h1 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
-          全链路电商数字化，
-          <span className="block mt-2 bg-gradient-to-r from-cyan-400 to-indigo-400 bg-clip-text text-transparent">
-            从技术开发到商业增长
+        <h1 className="mt-4 text-4xl font-bold tracking-tight text-ink sm:text-5xl lg:text-6xl">
+          <Tx>全链路电商数字化，</Tx>
+          <span className="block mt-2 bg-gradient-to-r from-accent to-brass bg-clip-text text-transparent">
+            <Tx>从技术开发到商业增长</Tx>
           </span>
         </h1>
-        <p className="mt-6 text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
-          帮助零售企业从 0 到 1 搭建数字化销售阵地，打通前中后台数据链路，实现全渠道增长
+        <p className="mt-6 text-lg text-mute max-w-2xl mx-auto leading-relaxed">
+          <Tx>帮助零售企业从 0 到 1 搭建数字化销售阵地，打通前中后台数据链路，实现全渠道增长</Tx>
         </p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center rounded-lg bg-cyan-500 px-6 py-3 text-base font-semibold text-slate-950 shadow-lg shadow-cyan-500/25 transition hover:bg-cyan-400"
+            className="inline-flex items-center justify-center rounded-lg bg-accent px-6 py-3 text-base font-semibold text-accent-ink transition hover:opacity-90"
           >
-            免费咨询
+            <Tx>免费咨询</Tx>
           </Link>
           <Link
             href="/products"
-            className="inline-flex items-center justify-center rounded-lg border border-slate-600 bg-slate-800/50 px-6 py-3 text-base font-semibold text-white transition hover:border-slate-500 hover:bg-slate-800"
+            className="inline-flex items-center justify-center rounded-lg border border-line bg-surface/70 px-6 py-3 text-base font-semibold text-ink transition hover:border-ink/30 hover:bg-raised"
           >
-            了解产品能力
+            <Tx>了解产品能力</Tx>
           </Link>
         </div>
       </div>
