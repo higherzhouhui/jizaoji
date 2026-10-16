@@ -8,7 +8,8 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { messages, type Locale, type Messages } from "@/lib/i18n/messages";
+import { messages, type Messages } from "@/lib/i18n/messages";
+import { detectLocale, HTML_LANG, LOCALES, type Locale } from "@/lib/i18n/locales";
 
 export const THEMES = ["night", "day", "gold", "amber"] as const;
 export type Theme = (typeof THEMES)[number];
@@ -29,14 +30,33 @@ const PreferencesContext = createContext<Preferences | null>(null);
 
 export function PreferencesProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<Theme>("night");
-  const [locale, setLocaleState] = useState<Locale>("zh");
+  const [locale, setLocaleState] = useState<Locale>("en");
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
     const storedTheme = document.documentElement.getAttribute("data-theme");
-    const storedLocale = document.documentElement.getAttribute("data-locale");
+    const storedLocale = document.documentElement.getAttribute("data-locale") as Locale | null;
+    
+    // Check localStorage for manual selection (overrides detection)
+    let savedLocale: Locale | null = null;
+    try {
+      savedLocale = localStorage.getItem("jzj-locale") as Locale | null;
+    } catch {
+      /* private mode */
+    }
+    
+    // Priority: localStorage > HTML attribute > auto-detect
+    let finalLocale: Locale;
+    if (savedLocale && LOCALES.includes(savedLocale)) {
+      finalLocale = savedLocale;
+    } else if (storedLocale && LOCALES.includes(storedLocale)) {
+      finalLocale = storedLocale;
+    } else {
+      finalLocale = detectLocale();
+    }
+    
     if (isTheme(storedTheme)) setThemeState(storedTheme);
-    if (storedLocale === "en" || storedLocale === "zh") setLocaleState(storedLocale);
+    setLocaleState(finalLocale);
     setReady(true);
   }, []);
 
@@ -45,7 +65,7 @@ export function PreferencesProvider({ children }: { children: ReactNode }) {
     const root = document.documentElement;
     root.setAttribute("data-theme", theme);
     root.setAttribute("data-locale", locale);
-    root.lang = locale === "en" ? "en" : "zh-CN";
+    root.lang = HTML_LANG[locale];
     try {
       localStorage.setItem("jzj-theme", theme);
       localStorage.setItem("jzj-locale", locale);

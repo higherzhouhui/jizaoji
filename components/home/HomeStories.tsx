@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { AnimateIn } from "@/components/home/AnimateIn";
 import { SectionIntro } from "@/components/home/SectionIntro";
-import { CASES_LIST, caseTitle, type CaseItem } from "@/components/cases/casesData";
+import { CASES_LIST, caseTitle, getCopyLang, type CaseItem } from "@/components/cases/casesData";
 import { usePreferences } from "@/lib/preferences";
 import { btnPrimary } from "@/lib/ui";
 
@@ -15,19 +15,19 @@ function StoryCopy({ item, lead = false }: { item: CaseItem; lead?: boolean }) {
   const title = caseTitle(item, locale);
   return (
     <div className={lead ? "" : "flex h-full flex-col"}>
-      <p className="font-display text-4xl tracking-tight text-accent sm:text-5xl">{item.stat.value[locale]}</p>
-      <p className="mt-2 max-w-xs text-sm text-mute">{item.stat.label[locale]}</p>
+      <p className="font-display text-4xl tracking-tight text-accent sm:text-5xl">{item.stat.value[getCopyLang(locale) as "zh" | "en"]}</p>
+      <p className="mt-2 max-w-xs text-sm text-mute">{item.stat.label[getCopyLang(locale) as "zh" | "en"]}</p>
       <h3 className={`mt-5 font-semibold tracking-tight text-ink ${lead ? "text-2xl sm:text-3xl" : "text-xl"}`}>
         {title}
       </h3>
       <div className="mt-5 space-y-3 text-sm leading-relaxed text-mute">
         <p>
           <span className="font-medium text-ink">{t.stories.before} · </span>
-          {item.situation[locale]}
+          {item.situation[getCopyLang(locale) as "zh" | "en"]}
         </p>
         <p>
           <span className="font-medium text-ink">{t.stories.after} · </span>
-          {item.delivered[locale]}
+          {item.delivered[getCopyLang(locale) as "zh" | "en"]}
         </p>
       </div>
       <div className="mt-6 flex flex-wrap gap-4 text-sm font-semibold">

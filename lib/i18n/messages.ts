@@ -1,4 +1,4 @@
-export type Locale = "zh" | "en";
+import type { Locale } from "./locales";
 
 const zh = {
   brand: "极造极",
@@ -788,4 +788,221 @@ const en: Messages = {
   },
 };
 
-export const messages: Record<Locale, Messages> = { zh, en };
+// Traditional Chinese - using simplified as base with key terms updated
+const zhHant: Messages = {
+  ...zh,
+  brand: "極造極",
+  company: "極造極",
+  nav: { ...zh.nav, about: "關於我" },
+  hero: {
+    ...zh.hero,
+    kicker: "10 年全棧獨立開發者 · 吉隆坡 · 中英雙語 · 全流程一站式服務",
+    title: "你把事情說清楚，",
+    titleEm: "我做成能用的東西\n交給你。",
+    lede: "官網、微信小程序、手機應用、AI 工具。可獨立完成中小型項目：產品→設計→前後端開發→測試→部署上線→安全監控。範圍先寫下來，做到哪給你看哪，做完找得到人。",
+  },
+  trust: [
+    { k: "10 年全棧", v: "2017 年至今，產品→設計→開發→測試→上線→監控全流程" },
+    { k: "吉隆坡", v: "中英雙語，東南亞與國內項目都能做" },
+    { k: "一站式服務", v: "可獨立完成中小型項目，價格透明，2-4 周交付" },
+  ],
+};
+
+// Bahasa Melayu
+const ms: Messages = {
+  ...en, // Using English as fallback
+  brand: "Jizaoji",
+  company: "Jizaoji",
+  nav: {
+    ...en.nav,
+    home: "Laman Utama",
+    services: "Perkhidmatan",
+    cases: "Kes",
+    work: "Cara Kerja",
+    about: "Tentang Saya",
+    more: "Lagi",
+    tech: "Teknologi",
+    blog: "Blog",
+    pricing: "Harga",
+    contact: "Hubungi",
+    products: "Produk",
+    solutions: "Penyelesaian",
+  },
+  headerCta: "Hubungi Kami",
+  hero: {
+    ...en.hero,
+    kicker: "Pembangun Full-Stack, 10 tahun, Kuala Lumpur, Perkhidmatan end-to-end",
+    title: "Anda beritahu apa yang anda perlukan.",
+    titleEm: "Saya bina dan serahkan kepada anda.",
+  },
+  pricing: {
+    ...en.pricing,
+    kicker: "Harga",
+    title: "Harga Telus",
+  },
+  contact: {
+    ...en.contact,
+    kicker: "Hubungi",
+    title: "Beritahu kami projek anda",
+    phone: "Telefon",
+    whatsapp: "WhatsApp",
+    wechat: "WeChat",
+  },
+};
+
+// Bahasa Indonesia  
+const id: Messages = {
+  ...en, // Using English as fallback
+  brand: "Jizaoji",
+  company: "Jizaoji",
+  nav: {
+    ...en.nav,
+    home: "Beranda",
+    services: "Layanan",
+    cases: "Kasus",
+    work: "Cara Kerja",
+    about: "Tentang Saya",
+    more: "Lainnya",
+    tech: "Teknologi",
+    blog: "Blog",
+    pricing: "Harga",
+    contact: "Kontak",
+    products: "Produk",
+    solutions: "Solusi",
+  },
+  headerCta: "Hubungi Kami",
+  hero: {
+    ...en.hero,
+    kicker: "Pengembang Full-Stack, 10 tahun, Kuala Lumpur, Layanan end-to-end",
+    title: "Anda jelaskan kebutuhan Anda.",
+    titleEm: "Saya bangun dan serahkan kepada Anda.",
+  },
+  pricing: {
+    ...en.pricing,
+    kicker: "Harga",
+    title: "Harga Transparan",
+  },
+  contact: {
+    ...en.contact,
+    kicker: "Kontak",
+    title: "Beritahu kami tentang proyek Anda",
+    phone: "Telepon",
+    whatsapp: "WhatsApp",
+    wechat: "WeChat",
+  },
+};
+
+// Thai
+const th: Messages = {
+  ...en, // Using English as fallback  
+  brand: "Jizaoji",
+  company: "Jizaoji",
+  nav: {
+    ...en.nav,
+    home: "หน้าแรก",
+    services: "บริการ",
+    cases: "กรณีศึกษา",
+    work: "วิธีการทำงาน",
+    about: "เกี่ยวกับ",
+    more: "เพิ่มเติม",
+    pricing: "ราคา",
+    contact: "ติดต่อ",
+  },
+  headerCta: "ติดต่อเรา",
+  contact: {
+    ...en.contact,
+    phone: "โทรศัพท์",
+    whatsapp: "WhatsApp",
+    wechat: "WeChat",
+  },
+};
+
+// Vietnamese
+const vi: Messages = {
+  ...en, // Using English as fallback
+  brand: "Jizaoji",
+  company: "Jizaoji",
+  nav: {
+    ...en.nav,
+    home: "Trang chủ",
+    services: "Dịch vụ",
+    cases: "Dự án",
+    work: "Quy trình",
+    about: "Giới thiệu",
+    more: "Thêm",
+    pricing: "Báo giá",
+    contact: "Liên hệ",
+  },
+  headerCta: "Liên hệ",
+  contact: {
+    ...en.contact,
+    phone: "Điện thoại",
+    whatsapp: "WhatsApp",
+    wechat: "WeChat",
+  },
+};
+
+// Japanese
+const ja: Messages = {
+  ...en, // Using English as fallback
+  brand: "Jizaoji",
+  company: "Jizaoji",
+  nav: {
+    ...en.nav,
+    home: "ホーム",
+    services: "サービス",
+    cases: "事例",
+    work: "業務フロー",
+    about: "について",
+    more: "その他",
+    pricing: "料金",
+    contact: "お問い合わせ",
+  },
+  headerCta: "お問い合わせ",
+  contact: {
+    ...en.contact,
+    phone: "電話",
+    whatsapp: "WhatsApp",
+    wechat: "WeChat",
+  },
+};
+
+// Korean
+const ko: Messages = {
+  ...en, // Using English as fallback
+  brand: "Jizaoji",
+  company: "Jizaoji",
+  nav: {
+    ...en.nav,
+    home: "홈",
+    services: "서비스",
+    cases: "사례",
+    work: "작업 방식",
+    about: "소개",
+    more: "더보기",
+    pricing: "가격",
+    contact: "문의",
+  },
+  headerCta: "문의하기",
+  contact: {
+    ...en.contact,
+    phone: "전화",
+    whatsapp: "WhatsApp",
+    wechat: "WeChat",
+  },
+};
+
+export const messages: Record<Locale, Messages> = { 
+  zh, 
+  "zh-Hant": zhHant,
+  en,
+  ms,
+  id,
+  th,
+  vi,
+  ja,
+  ko,
+};
+
+// Note: Additional languages use English as fallback for content-heavy sections
+// Professional translation recommended for production use
