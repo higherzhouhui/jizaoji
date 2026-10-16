@@ -39,7 +39,7 @@ export function ProductArchitecture() {
           <h2 className="text-3xl font-bold tracking-tight text-ink sm:text-4xl">
             <Tx>产品架构</Tx>
           </h2>
-          <p className="mt-4 text-mute max-w-2xl mx-auto">
+          <p className="mx-auto mt-4 max-w-2xl text-pretty text-mute [overflow-wrap:anywhere]">
             <Tx>三大产品矩阵，覆盖从数字阵地到智能应用的全链路能力</Tx>
           </p>
         </div>
@@ -54,16 +54,18 @@ export function ProductArchitecture() {
                 id={item.id}
                 onMouseEnter={() => setHoverId(item.id)}
                 onMouseLeave={() => setHoverId(null)}
-                className={`group relative rounded-2xl border-2 bg-raised/80 p-6 backdrop-blur transition-all duration-300 ${
+                className={`group relative min-w-0 rounded-2xl border-2 bg-raised/80 p-6 backdrop-blur transition-all duration-300 ${
                   isHover ? "border-accent shadow-[0_0_40px_rgb(var(--accent)/0.18)]" : "border-line"
                 }`}
               >
-                <div className="h-1 w-12 rounded-full bg-accent mb-4" />
-                <h3 className="text-lg font-bold text-ink">{<Tx>{item.name}</Tx>}</h3>
-                <p className="mt-1 text-sm text-accent">{<Tx>{item.tagline}</Tx>}</p>
-                <p className="mt-3 text-sm text-mute">{<Tx>{item.scene}</Tx>}</p>
+                <div className="mb-4 h-1 w-12 rounded-full bg-accent" />
+                <h3 className="text-pretty text-lg font-bold leading-snug text-ink [overflow-wrap:anywhere]">
+                  {<Tx>{item.name}</Tx>}
+                </h3>
+                <p className="mt-1 text-pretty text-sm text-accent [overflow-wrap:anywhere]">{<Tx>{item.tagline}</Tx>}</p>
+                <p className="mt-3 text-pretty text-sm text-mute [overflow-wrap:anywhere]">{<Tx>{item.scene}</Tx>}</p>
                 {isHover && (
-                  <p className="mt-4 text-sm text-mute leading-relaxed border-t border-line pt-4">
+                  <p className="mt-4 border-t border-line pt-4 text-pretty text-sm leading-relaxed text-mute [overflow-wrap:anywhere]">
                     {<Tx>{item.detail}</Tx>}
                   </p>
                 )}
