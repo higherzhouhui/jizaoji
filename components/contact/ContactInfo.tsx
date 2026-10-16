@@ -2,7 +2,6 @@
 
 import { usePreferences } from "@/lib/preferences";
 import { CONTACT_CONFIG } from "@/lib/contact-config";
-import Image from "next/image";
 
 export function ContactInfo() {
   const { t, locale } = usePreferences();

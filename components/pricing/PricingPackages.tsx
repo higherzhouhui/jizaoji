@@ -5,7 +5,7 @@ import { usePreferences } from "@/lib/preferences";
 import { btnPrimary } from "@/lib/ui";
 
 export function PricingPackages() {
-  const { t, locale } = usePreferences();
+  const { t } = usePreferences();
   const p = t.pricing;
 
   return (

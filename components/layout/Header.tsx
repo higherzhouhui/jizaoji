@@ -49,7 +49,6 @@ export function Header() {
   const moreItems = [
     { label: t.nav.tech, href: "/tech" },
     { label: t.nav.blog, href: "/blog" },
-    { label: t.nav.jobs, href: "/jobs" },
     { label: t.nav.about, href: "/about" },
   ];
 

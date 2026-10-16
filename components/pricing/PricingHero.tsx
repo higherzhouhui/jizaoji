@@ -1,7 +1,6 @@
 "use client";
 
 import { usePreferences } from "@/lib/preferences";
-import { Tx } from "@/components/i18n/Tx";
 
 export function PricingHero() {
   const { t } = usePreferences();
