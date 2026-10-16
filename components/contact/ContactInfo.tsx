@@ -51,14 +51,6 @@ export function ContactInfo() {
       ),
     },
     {
-      label: c.email,
-      node: (
-        <a href="mailto:zhou782492184@gmail.com" className="break-all text-ink hover:text-accent transition">
-          zhou782492184@gmail.com
-        </a>
-      ),
-    },
-    {
       label: c.address,
       node: <p className="text-ink">{c.addressValue}</p>,
     },

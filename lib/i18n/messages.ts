@@ -46,10 +46,10 @@ const zh = {
     amber: "橙黄",
   },
   hero: {
-    kicker: "10 年前端独立开发者 · 吉隆坡 · 中英双语 · 2–4 周交付",
+    kicker: "10 年全栈独立开发者 · 吉隆坡 · 中英双语 · 全流程一站式服务",
     title: "你把事情说清楚，",
     titleEm: "我做成能用的东西\n交给你。",
-    lede: "官网、微信小程序、手机应用、AI 工具。范围先写下来，做到哪给你看哪，做完找得到人。",
+    lede: "官网、微信小程序、手机应用、AI 工具。可独立完成中小型项目：产品→设计→前后端开发→测试→部署上线→安全监控。范围先写下来，做到哪给你看哪，做完找得到人。",
     primary: "说说你的事",
     secondary: "先看别人做成什么样",
     promises: [
@@ -70,9 +70,9 @@ const zh = {
     note: "这是一张示意工单，用来说明合作方式，不是在编订单号。",
   },
   trust: [
-    { k: "10 年经验", v: "2017 年至今，React/Next.js/Vue/小程序" },
+    { k: "10 年全栈", v: "2017 年至今，产品→设计→开发→测试→上线→监控全流程" },
     { k: "吉隆坡", v: "中英双语，东南亚与国内项目都能做" },
-    { k: "公开报价", v: "价格透明，2-4 周交付" },
+    { k: "一站式服务", v: "可独立完成中小型项目，价格透明，2-4 周交付" },
   ],
   services: {
     index: "01",
@@ -210,7 +210,7 @@ const zh = {
   pricing: {
     kicker: "服务报价",
     title: "公开透明的价格",
-    lede: "按项目范围定价，写明包含什么、不包含什么。价格供参考，具体以方案为准。",
+    lede: "10 年全栈独立开发者，可独立完成中小型项目全流程。按项目范围定价，写明包含什么、不包含什么。价格供参考，具体以方案为准。",
     currency: {
       rmb: "人民币",
       myr: "马来西亚林吉特",
@@ -446,10 +446,10 @@ const en: Messages = {
     amber: "Amber",
   },
   hero: {
-    kicker: "Freelance front-end developer, 10 years, Kuala Lumpur, English/Chinese, 2–4 week delivery",
+    kicker: "Full-stack developer, 10 years, Kuala Lumpur, English/Chinese, end-to-end service",
     title: "You say what you need.",
     titleEm: "I build it, and hand it over.",
-    lede: "Websites, WeChat mini programs, mobile apps, and AI tools. The scope is written down, you can see each stage, and someone is still here after launch.",
+    lede: "Websites, WeChat mini programs, mobile apps, and AI tools. Complete small to medium projects independently: product → design → full-stack dev → testing → deployment → monitoring. The scope is written down, you can see each stage, and someone is still here after launch.",
     primary: "Tell me the job",
     secondary: "See what it looked like for others",
     promises: [
@@ -470,9 +470,9 @@ const en: Messages = {
     note: "A sample ticket, to show how the work is run. Not a real order number.",
   },
   trust: [
-    { k: "10 years", v: "Since 2017, React/Next.js/Vue/mini programs" },
+    { k: "10 years full-stack", v: "Since 2017, product → design → dev → test → deploy → monitor" },
     { k: "Kuala Lumpur", v: "English/Chinese, SEA and China projects" },
-    { k: "Transparent pricing", v: "Clear rates, 2-4 week delivery" },
+    { k: "End-to-end service", v: "Complete small to medium projects, transparent pricing, 2-4 weeks" },
   ],
   services: {
     index: "01",
@@ -610,7 +610,7 @@ const en: Messages = {
   pricing: {
     kicker: "Pricing",
     title: "Transparent pricing",
-    lede: "Priced by project scope, stating what is included and excluded. Prices are indicative; actual quote based on requirements.",
+    lede: "10-year full-stack developer completing small to medium projects end-to-end. Priced by project scope, stating what is included and excluded. Prices are indicative; actual quote based on requirements.",
     currency: {
       rmb: "RMB",
       myr: "RM (Malaysian Ringgit)",
