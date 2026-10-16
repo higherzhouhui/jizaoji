@@ -4,6 +4,7 @@ import { SITE_NAME, DEFAULT_DESCRIPTION, DEFAULT_OG_IMAGE } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { TopProgressBar } from "@/components/layout/TopProgressBar";
 import { ChatWidget } from "@/components/chat/ChatWidget";
+import { WhatsAppFloat } from "@/components/contact/WhatsAppFloat";
 import { PreferencesProvider } from "@/lib/preferences";
 import { THEME_BOOT } from "@/lib/theme-boot";
 import "./globals.css";
@@ -76,6 +77,7 @@ export default function RootLayout({
           <JsonLd />
           {children}
           <ChatWidget />
+          <WhatsAppFloat />
         </PreferencesProvider>
       </body>
     </html>
