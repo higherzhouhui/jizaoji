@@ -6,10 +6,10 @@ export function JsonLd() {
   const person = {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: "Independent Front-end Developer · Kuala Lumpur",
-    jobTitle: "Independent Front-end Developer",
+    name: "Independent Full-Stack Developer · Kuala Lumpur",
+    jobTitle: "Independent Full-Stack Developer",
     description:
-      "10-year experienced independent front-end developer based in Kuala Lumpur, specializing in websites, apps, mini-programs, and AI tools. Bilingual service (Chinese/English) with 2-4 weeks delivery.",
+      "10-year experienced independent full-stack developer based in Kuala Lumpur. One-stop service from product planning to design, development, testing, deployment, and monitoring. Specializing in small to medium-sized projects with bilingual service (Chinese/English) and 2-4 weeks delivery.",
     url: SITE_URL,
     image: `${SITE_URL}/images/developer-photo.jpg`,
     address: {
@@ -36,7 +36,7 @@ export function JsonLd() {
     name: SITE_NAME,
     url: SITE_URL,
     description:
-      "Independent front-end developer offering website development, mobile apps, mini-programs, and AI tools. Based in Kuala Lumpur with 10 years of experience.",
+      "Independent full-stack developer offering complete end-to-end service: product planning, design, full-stack development, testing, deployment, and monitoring. Specializing in websites, mobile apps, mini-programs, and AI tools. Based in Kuala Lumpur with 10 years of experience.",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Kuala Lumpur",

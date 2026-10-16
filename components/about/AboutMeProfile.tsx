@@ -33,20 +33,20 @@ export function AboutMeProfile() {
             <div className="mt-6 space-y-4 text-base leading-relaxed text-mute">
               <p>
                 {locale === "en"
-                  ? `I'm a freelance front-end developer with ${dev.experienceYears} years of experience, based in ${dev.locationEn}. I've been building web and mobile applications since ${dev.experienceSince}, working with clients across Southeast Asia and China.`
-                  : `我是一名独立前端开发者，拥有 ${dev.experienceYears} 年经验，现居${dev.locationZh}。自 ${dev.experienceSince} 年起从事 Web 和移动应用开发，服务过东南亚和中国的多个客户。`}
+                  ? `I'm an independent full-stack developer with ${dev.experienceYears} years of experience, based in ${dev.locationEn}. Since ${dev.experienceSince}, I've been completing small to medium-sized projects end-to-end: from product planning to design, development, testing, deployment, and monitoring.`
+                  : `我是一名独立全栈开发者，拥有 ${dev.experienceYears} 年经验，现居${dev.locationZh}。自 ${dev.experienceSince} 年起，我可以独立完成中小型项目的全流程：从产品规划到设计、开发、测试、部署上线和安全监控。`}
               </p>
 
               <p>
                 {locale === "en"
-                  ? `I specialize in building responsive websites, WeChat mini programs, mobile apps, and admin dashboards using modern technologies like ${dev.stack.slice(0, -1).join(", ")} and ${dev.stack[dev.stack.length - 1]}.`
-                  : `我专注于使用现代技术栈（${dev.stack.join("、")}）构建响应式网站、微信小程序、手机应用和管理后台。`}
+                  ? `I provide end-to-end service for websites, WeChat mini programs, mobile apps, and admin dashboards using modern technologies like ${dev.stack.slice(0, -1).join(", ")} and ${dev.stack[dev.stack.length - 1]}. You get a complete solution without coordinating multiple vendors.`
+                  : `我为网站、微信小程序、手机应用和管理后台提供一站式服务，使用现代技术栈（${dev.stack.join("、")}）。你不需要协调多个供应商，就能得到完整的解决方案。`}
               </p>
 
               <p>
                 {locale === "en"
-                  ? `What sets me apart is my ability to communicate in both English and Chinese, allowing me to bridge the gap between international and Chinese markets. I deliver clean, maintainable code and provide ongoing support after launch.`
-                  : `我的优势在于中英双语能力，能够在国际市场和中国市场之间架起桥梁。我注重代码质量和可维护性，并在项目上线后提供持续支持。`}
+                  ? `Bilingual service (English and Chinese) allows me to bridge international and Chinese markets. I handle everything from requirements to production deployment, deliver clean maintainable code, and provide ongoing support after launch.`
+                  : `中英双语能力让我能够服务国际市场和中国市场。我负责从需求到生产部署的所有环节，交付简洁可维护的代码，并在项目上线后提供持续支持。`}
               </p>
 
               <p>
