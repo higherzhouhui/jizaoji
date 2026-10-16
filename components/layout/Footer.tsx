@@ -12,7 +12,7 @@ export function Footer() {
     { href: "/#services", label: t.nav.services },
     { href: "/cases", label: t.nav.cases },
     { href: "/#work", label: t.nav.work },
-    { href: "/#faq", label: "FAQ" },
+    { href: "/#faq", label: t.nav.faq },
     { href: "/contact", label: t.nav.contact },
     { href: "/about", label: t.nav.about },
     { href: "/products", label: t.nav.products },

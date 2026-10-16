@@ -2,6 +2,25 @@
 import type { Messages } from "@/lib/i18n/messages";
 
 export const msMarketing = {
+  a11y: {
+    menu: "Buka menu",
+    closeMenu: "Tutup menu",
+    theme: "Tukar tema",
+    language: "Tukar bahasa",
+    main: "Kandungan utama",
+  },
+  themes: {
+    label: "Tema",
+    night: "Malam",
+    day: "Siang",
+    gold: "Emas",
+    amber: "Ambar",
+  },
+  footer: {
+    blurb: "Satu kerja, siap untuk digunakan. Laman web, program mini, aplikasi mudah alih, alat AI.",
+    rights: "Hak cipta terpelihara",
+    icp: "渝ICP备2023007595号-2",
+  },
   products: {
     website: "Laman web / kedai",
     app: "Aplikasi mudah alih",
