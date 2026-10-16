@@ -49,7 +49,6 @@ export function Header() {
   const moreItems = [
     { label: t.nav.tech, href: "/tech" },
     { label: t.nav.blog, href: "/blog" },
-    { label: t.nav.jobs, href: "/jobs" },
     { label: t.nav.about, href: "/about" },
   ];
 
@@ -76,6 +75,7 @@ export function Header() {
               pathname={pathname}
             />
             {link("/cases", t.nav.cases, pathname.startsWith("/cases"))}
+            {link("/pricing", t.nav.pricing, pathname.startsWith("/pricing"))}
             {link("/#work", t.nav.work, false)}
             <NavDropdown
               label={t.nav.solutions}
@@ -86,7 +86,7 @@ export function Header() {
             <NavDropdown
               label={t.nav.more}
               items={moreItems}
-              active={["/tech", "/blog", "/jobs", "/about"].some((path) => pathname.startsWith(path))}
+              active={["/tech", "/blog", "/about"].some((path) => pathname.startsWith(path))}
               pathname={pathname}
             />
           </nav>
@@ -137,6 +137,7 @@ export function Header() {
               <Link href="/">{t.nav.home}</Link>
               <Link href="/#services">{t.nav.services}</Link>
               <Link href="/cases">{t.nav.cases}</Link>
+              <Link href="/pricing">{t.nav.pricing}</Link>
               <Link href="/#work">{t.nav.work}</Link>
               <Link href="/contact">{t.nav.contact}</Link>
               <Link href="/about">{t.nav.about}</Link>
