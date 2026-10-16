@@ -10,7 +10,7 @@ import { ClosingBand } from "@/components/home/ClosingBand";
 import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata = buildPageMetadata({
-  title: "独立开发者 Zhou Hui - 吉隆坡 10 年前端",
+  title: "独立开发者 - 吉隆坡 10 年前端",
   description:
     "吉隆坡独立开发者，10 年前端经验。官网、小程序、应用、AI 工具，2-4 周交付。中英双语，透明报价。WhatsApp/微信联系。",
   path: "/",
