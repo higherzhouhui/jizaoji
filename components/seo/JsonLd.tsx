@@ -21,6 +21,7 @@ export function JsonLd() {
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer service",
+      telephone: CONTACT_CONFIG.phone.tel,
       url: CONTACT_CONFIG.whatsapp.url,
       availableLanguage: ["Chinese", "English"],
     },
@@ -44,6 +45,7 @@ export function JsonLd() {
     },
     areaServed: ["MY", "CN", "SG"],
     priceRange: "RM 2,500 - RM 15,000",
+    telephone: CONTACT_CONFIG.phone.tel,
   };
 
   const website = {

@@ -6,10 +6,18 @@
  */
 
 export const CONTACT_CONFIG = {
-  // WhatsApp contact - using QR link provided by owner
+  // WhatsApp contact - using direct phone number
   whatsapp: {
-    url: "https://wa.me/qr/OBAPKC5ERBB7K1",
+    url: "https://wa.me/601121103890",
+    qrUrl: "https://wa.me/qr/OBAPKC5ERBB7K1", // Fallback QR link
+    qrImage: "/images/whatsapp-qr.png",
     displayText: "WhatsApp",
+  },
+
+  // Phone contact
+  phone: {
+    number: "+60 11-2110 3890",
+    tel: "+601121103890",
   },
 
   // WeChat contact

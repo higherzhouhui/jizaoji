@@ -8,7 +8,7 @@ import { CASES_LIST, caseTitle, type CaseItem } from "@/components/cases/casesDa
 import { usePreferences } from "@/lib/preferences";
 import { btnPrimary } from "@/lib/ui";
 
-const HOME_IDS = ["2", "10", "1"];
+const HOME_IDS = ["ai-xiaohongshu", "demo-restaurant", "demo-booking"];
 
 function StoryCopy({ item, lead = false }: { item: CaseItem; lead?: boolean }) {
   const { locale, t } = usePreferences();
