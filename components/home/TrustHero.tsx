@@ -2,12 +2,14 @@
 
 import Link from "next/link";
 import { usePreferences } from "@/lib/preferences";
+import { usesLatinDisplayFont } from "@/lib/i18n/locales";
 import { btnGhost, btnPrimary } from "@/lib/ui";
 
 export function TrustHero() {
   const { t, locale } = usePreferences();
   const h = t.hero;
-  const display = locale === "en" ? "font-display" : "";
+  const display = usesLatinDisplayFont(locale) ? "font-display" : "";
+  const latinEmphasis = usesLatinDisplayFont(locale);
 
   return (
     <section className="relative overflow-hidden border-b border-line">
@@ -15,12 +17,12 @@ export function TrustHero() {
       <div className="studio-grid pointer-events-none absolute inset-0 opacity-70" aria-hidden />
       <div className="relative mx-auto grid min-h-[calc(100svh-4rem)] max-w-page items-center gap-12 px-5 py-16 sm:px-6 lg:grid-cols-12 lg:py-20">
         <div className="lg:col-span-7">
-          <p className="font-display text-xs font-semibold uppercase tracking-[0.32em] text-brass">
+          <p className="text-pretty font-display text-[10px] font-semibold uppercase leading-snug tracking-[0.2em] text-brass sm:text-xs sm:tracking-[0.28em] lg:tracking-[0.32em]">
             {h.kicker}
           </p>
-          <h1 className={`mt-5 text-[2.4rem] font-semibold leading-[1.18] tracking-tight text-ink sm:text-5xl lg:text-[3.4rem] ${display}`}>
+          <h1 className={`mt-5 text-balance text-[1.85rem] font-semibold leading-[1.2] tracking-tight text-ink sm:text-5xl lg:text-[3.1rem] ${display}`}>
             {h.title}
-            <span className={`mt-2 block text-accent ${locale === "en" ? "font-serif text-[0.92em] font-normal italic" : ""}`}>
+            <span className={`mt-2 block text-accent ${latinEmphasis ? "font-serif text-[0.92em] font-normal italic" : ""}`}>
               {h.titleEm.split("\n").map((line) => (
                 <span key={line} className="block">
                   {line}
@@ -29,11 +31,11 @@ export function TrustHero() {
             </span>
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-mute sm:text-lg">{h.lede}</p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link href="/contact" className={btnPrimary}>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <Link href="/contact" className={`${btnPrimary} w-full sm:w-auto sm:max-w-full`}>
               {h.primary}
             </Link>
-            <Link href="/#cases" className={btnGhost}>
+            <Link href="/#cases" className={`${btnGhost} w-full sm:w-auto sm:max-w-full`}>
               {h.secondary}
             </Link>
           </div>
@@ -61,9 +63,9 @@ export function TrustHero() {
             </div>
             <dl className="mt-4 space-y-3">
               {h.rows.map((row) => (
-                <div key={row.k} className="grid grid-cols-[5.5rem_1fr] gap-3 text-sm sm:grid-cols-[6.5rem_1fr]">
-                  <dt className="text-mute">{row.k}</dt>
-                  <dd className="text-ink">{row.v}</dd>
+                <div key={row.k} className="grid grid-cols-[minmax(4.5rem,38%)_1fr] gap-2 text-sm sm:grid-cols-[minmax(5.5rem,34%)_1fr] sm:gap-3">
+                  <dt className="text-pretty text-mute [overflow-wrap:anywhere]">{row.k}</dt>
+                  <dd className="text-pretty text-ink [overflow-wrap:anywhere]">{row.v}</dd>
                 </div>
               ))}
             </dl>
@@ -76,7 +78,7 @@ export function TrustHero() {
           {t.trust.map((item) => (
             <li key={item.k} className="bg-canvas px-5 py-4 sm:px-6">
               <p className="text-xs font-semibold tracking-wide text-brass">{item.k}</p>
-              <p className="mt-1 text-sm text-ink">{item.v}</p>
+              <p className="mt-1 text-pretty text-sm text-ink [overflow-wrap:anywhere]">{item.v}</p>
             </li>
           ))}
         </ul>

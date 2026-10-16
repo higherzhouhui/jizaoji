@@ -22,16 +22,18 @@ export function PricingPackages() {
               } p-6 sm:p-8`}
             >
               {pkg.recommended && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <span className="inline-flex rounded-full bg-accent px-4 py-1 text-xs font-semibold text-canvas">
+                <div className="absolute -top-4 left-1/2 w-[92%] max-w-[16rem] -translate-x-1/2">
+                  <span className="inline-flex w-full justify-center rounded-full bg-accent px-3 py-1.5 text-center text-[11px] font-semibold leading-snug text-canvas sm:text-xs">
                     {t.work.recommend}
                   </span>
                 </div>
               )}
               
-              <div>
-                <h3 className="text-xl font-semibold text-ink">{pkg.name}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-mute">{pkg.desc}</p>
+              <div className="min-w-0">
+                <h3 className="text-balance text-lg font-semibold leading-snug text-ink sm:text-xl [overflow-wrap:anywhere]">
+                  {pkg.name}
+                </h3>
+                <p className="mt-2 text-pretty text-sm leading-relaxed text-mute [overflow-wrap:anywhere]">{pkg.desc}</p>
               </div>
 
               <div className="mt-6 space-y-3">
@@ -84,7 +86,7 @@ export function PricingPackages() {
 
               <div className="mt-6 border-t border-line pt-6">
                 <p className="text-xs font-semibold uppercase tracking-wide text-mute">
-                  {t.work.items[0].fit.split("：")[0]}
+                  {p.durationLabel}
                 </p>
                 <p className="mt-1 text-sm text-ink">{pkg.duration}</p>
               </div>

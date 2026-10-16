@@ -95,3 +95,23 @@ export function prefersRM(locale: Locale): boolean {
 export function prefersRMB(locale: Locale): boolean {
   return locale === "zh" || locale === "zh-Hant";
 }
+
+/** Locales that use the Latin display font on marketing headings */
+export function usesLatinDisplayFont(locale: Locale): boolean {
+  return locale === "en" || locale === "ms" || locale === "id";
+}
+
+export function localeShortCode(locale: Locale): string {
+  const codes: Record<Locale, string> = {
+    zh: "简",
+    "zh-Hant": "繁",
+    en: "EN",
+    ms: "MS",
+    id: "ID",
+    th: "TH",
+    vi: "VI",
+    ja: "JA",
+    ko: "KO",
+  };
+  return codes[locale];
+}
