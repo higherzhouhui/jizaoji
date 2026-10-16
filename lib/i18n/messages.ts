@@ -2,6 +2,10 @@ import type { Locale } from "./locales";
 import { mergeMessages } from "./merge-messages";
 import { thMarketing } from "./locales/th-marketing";
 import { msMarketing } from "./locales/ms-marketing";
+import { idMarketing } from "./locales/id-marketing";
+import { viMarketing } from "./locales/vi-marketing";
+import { jaMarketing } from "./locales/ja-marketing";
+import { koMarketing } from "./locales/ko-marketing";
 
 const zh = {
   brand: "极造极",
@@ -1106,8 +1110,7 @@ const ms: Messages = mergeMessages(en, {
 });
 
 // Bahasa Indonesia  
-const id: Messages = {
-  ...en, // Using English as fallback
+const id: Messages = mergeMessages(en, {
   brand: "Jizaoji",
   company: "Jizaoji",
   nav: {
@@ -1212,7 +1215,8 @@ const id: Messages = {
       network: "Kesalahan jaringan. Silakan coba lagi.",
     },
   },
-};
+  ...idMarketing,
+});
 
 // Thai
 const th: Messages = mergeMessages(en, {
@@ -1309,8 +1313,7 @@ const th: Messages = mergeMessages(en, {
 });
 
 // Vietnamese
-const vi: Messages = {
-  ...en, // Using English as fallback
+const vi: Messages = mergeMessages(en, {
   brand: "Jizaoji",
   company: "Jizaoji",
   nav: {
@@ -1400,11 +1403,11 @@ const vi: Messages = {
       network: "Lỗi mạng. Vui lòng thử lại.",
     },
   },
-};
+  ...viMarketing,
+});
 
 // Japanese
-const ja: Messages = {
-  ...en, // Using English as fallback
+const ja: Messages = mergeMessages(en, {
   brand: "Jizaoji",
   company: "Jizaoji",
   nav: {
@@ -1494,11 +1497,11 @@ const ja: Messages = {
       network: "ネットワークエラーです。もう一度お試しください。",
     },
   },
-};
+  ...jaMarketing,
+});
 
 // Korean
-const ko: Messages = {
-  ...en, // Using English as fallback
+const ko: Messages = mergeMessages(en, {
   brand: "Jizaoji",
   company: "Jizaoji",
   nav: {
@@ -1588,7 +1591,8 @@ const ko: Messages = {
       network: "네트워크 오류입니다. 다시 시도해 주세요.",
     },
   },
-};
+  ...koMarketing,
+});
 
 export const messages: Record<Locale, Messages> = { 
   zh, 

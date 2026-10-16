@@ -295,6 +295,81 @@ const ja: Record<PageMetaKey, MetaEntry> = {
   },
 };
 
+const id: Record<PageMetaKey, MetaEntry> = {
+  home: {
+    title: "Pengembang full-stack independen · Kuala Lumpur · 10 tahun",
+    description: "Proyek kecil–menengah end-to-end. Dwibahasa, harga transparan, 2–4 minggu.",
+  },
+  about: {
+    title: "Tentang saya",
+    description: "Pengembang independen 10 tahun di Kuala Lumpur. React, Next.js, Vue, WeChat.",
+  },
+  pricing: { title: "Harga", description: "Harga transparan untuk website, mini program/H5, dan panel admin." },
+  contact: {
+    title: "Kontak",
+    description: "Ceritakan proyek Anda. Saya balas apakah cocok dan langkah berikutnya.",
+  },
+  cases: { title: "Kasus", description: "Cerita: masalah, hasil, satu angka yang mudah diingat." },
+  products: { title: "Layanan", description: "Website, aplikasi, mini program, uni-app, alat AI." },
+  tech: { title: "Cara pengiriman", description: "Stack, proses, dan kualitas." },
+  blog: { title: "Blog", description: "Catatan dan pembaruan." },
+  jobs: { title: "Karier", description: "Posisi (halaman demo)." },
+  solutionsEcommerce: { title: "E-commerce / ritel", description: "Toko online, omnichannel, toko fisik, AI." },
+  solutionsEducation: { title: "Pendidikan / pelatihan", description: "Pendaftaran, pengajaran, operasi, retensi." },
+  solutionsEnterprise: { title: "Perusahaan / kantor", description: "Kolaborasi, persetujuan, CRM, keamanan." },
+  solutionsFood: { title: "Makanan / layanan lokal", description: "Pesanan, antrian, member, multi-cabang." },
+};
+
+const vi: Record<PageMetaKey, MetaEntry> = {
+  home: {
+    title: "Lập trình viên full-stack độc lập · Kuala Lumpur · 10 năm",
+    description: "Dự án vừa và nhỏ end-to-end. Song ngữ, báo giá minh bạch, 2–4 tuần.",
+  },
+  about: {
+    title: "Giới thiệu",
+    description: "Lập trình viên độc lập 10 năm tại Kuala Lumpur. React, Next.js, Vue, WeChat.",
+  },
+  pricing: { title: "Báo giá", description: "Báo giá minh bạch cho website, mini program/H5, admin." },
+  contact: {
+    title: "Liên hệ",
+    description: "Cho tôi biết dự án của bạn. Tôi trả lời có phù hợp không và bước tiếp theo.",
+  },
+  cases: { title: "Dự án", description: "Câu chuyện: vấn đề, kết quả, một con số đáng nhớ." },
+  products: { title: "Dịch vụ", description: "Website, app, mini program, uni-app, công cụ AI." },
+  tech: { title: "Quy trình", description: "Stack, quy trình, chất lượng." },
+  blog: { title: "Blog", description: "Bài viết và cập nhật." },
+  jobs: { title: "Tuyển dụng", description: "Vị trí (trang demo)." },
+  solutionsEcommerce: { title: "Thương mại / bán lẻ", description: "Cửa hàng online, omnichannel, cửa hàng, AI." },
+  solutionsEducation: { title: "Giáo dục / đào tạo", description: "Tuyển sinh, giảng dạy, vận hành, gia hạn." },
+  solutionsEnterprise: { title: "Doanh nghiệp / văn phòng", description: "Cộng tác, phê duyệt, CRM, bảo mật." },
+  solutionsFood: { title: "Ẩm thực / dịch vụ địa phương", description: "Đặt món, xếp hàng, hội viên, nhiều chi nhánh." },
+};
+
+const ko: Record<PageMetaKey, MetaEntry> = {
+  home: {
+    title: "독립 풀스택 개발자 · 쿠알라룸푸르 · 10년",
+    description: "중소 규모 프로젝트 엔드투엔드. 이중 언어, 투명한 견적, 2–4주.",
+  },
+  about: {
+    title: "소개",
+    description: "쿠알라룸푸르 독립 개발자 10년. React, Next.js, Vue, WeChat.",
+  },
+  pricing: { title: "가격", description: "웹, 미니 프로그램/H5, 관리자 패널의 투명한 가격." },
+  contact: {
+    title: "문의",
+    description: "프로젝트를 알려주세요. 가능 여부와 다음 단계를 답변합니다.",
+  },
+  cases: { title: "사례", description: "이야기: 문제, 결과, 기억할 숫자 하나." },
+  products: { title: "서비스", description: "웹, 앱, 미니 프로그램, uni-app, AI 도구." },
+  tech: { title: "진행 방식", description: "스택, 프로세스, 품질." },
+  blog: { title: "블로그", description: "글과 업데이트." },
+  jobs: { title: "채용", description: "포지션(데모 페이지)." },
+  solutionsEcommerce: { title: "커머스 / 리테일", description: "온라인 스토어, 옴니채널, 매장, AI." },
+  solutionsEducation: { title: "교육 / 훈련", description: "모집, 수업, 운영, 유지." },
+  solutionsEnterprise: { title: "기업 / 오피스", description: "협업, 승인, CRM, 보안." },
+  solutionsFood: { title: "외식 / 로컬 서비스", description: "주문, 대기, 멤버십, 다매장." },
+};
+
 /** Locales without a dedicated table fall back to English. */
 const byLocale: Partial<Record<Locale, Record<PageMetaKey, MetaEntry>>> = {
   zh,
@@ -302,7 +377,10 @@ const byLocale: Partial<Record<Locale, Record<PageMetaKey, MetaEntry>>> = {
   en,
   th,
   ms,
+  id,
+  vi,
   ja,
+  ko,
 };
 
 export function pageMetaFor(locale: Locale, key: PageMetaKey): MetaEntry {
