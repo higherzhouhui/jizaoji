@@ -5,7 +5,7 @@ import { usePreferences } from "@/lib/preferences";
 import { CONTACT_CONFIG } from "@/lib/contact-config";
 
 export function ContactInfo() {
-  const { t, locale } = usePreferences();
+  const { t } = usePreferences();
   const c = t.contact;
   
   const rows = [
@@ -36,7 +36,7 @@ export function ContactInfo() {
             <div className="relative h-32 w-32">
               <Image
                 src={CONTACT_CONFIG.whatsapp.qrImage}
-                alt={`${locale === "en" ? "WhatsApp QR Code" : "WhatsApp 二维码"}`}
+                alt={c.whatsappQrAlt}
                 fill
                 className="object-contain"
                 sizes="128px"
@@ -44,7 +44,7 @@ export function ContactInfo() {
             </div>
           </div>
           <p className="mt-2 text-xs text-mute">
-            {locale === "en" ? "Scan to add on WhatsApp" : "扫码添加 WhatsApp"}
+            {c.scanWhatsapp}
           </p>
         </div>
       ),
@@ -58,7 +58,7 @@ export function ContactInfo() {
             <div className="relative h-32 w-32">
               <Image
                 src="/images/wechat-qr.png"
-                alt={`${locale === "en" ? "WeChat QR Code" : "微信二维码"} - ${CONTACT_CONFIG.wechat.id}`}
+                alt={`${c.wechatQrAlt} - ${CONTACT_CONFIG.wechat.id}`}
                 fill
                 className="object-contain"
                 sizes="128px"

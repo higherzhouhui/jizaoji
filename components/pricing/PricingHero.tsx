@@ -13,10 +13,10 @@ export function PricingHero() {
         <p className="font-display text-xs font-semibold uppercase tracking-[0.32em] text-brass">
           {p.kicker}
         </p>
-        <h1 className="mt-5 text-4xl font-bold tracking-tight text-ink sm:text-5xl">
+        <h1 className="mt-5 text-balance text-3xl font-bold tracking-tight text-ink sm:text-4xl lg:text-5xl">
           {p.title}
         </h1>
-        <p className="mt-4 text-lg text-mute">
+        <p className="mx-auto mt-4 max-w-2xl text-pretty text-base leading-relaxed text-mute sm:text-lg [overflow-wrap:anywhere]">
           {p.lede}
         </p>
       </div>

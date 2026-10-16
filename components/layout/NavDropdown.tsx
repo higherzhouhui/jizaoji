@@ -37,7 +37,8 @@ export function NavDropdown({
       <button
         type="button"
         onClick={() => setOpen((value) => !value)}
-        className={`flex items-center gap-1 text-sm transition hover:text-ink ${active ? "text-ink" : "text-mute"}`}
+        className={`flex max-w-[8rem] items-center gap-0.5 truncate text-[11px] transition hover:text-ink xl:max-w-[9rem] xl:text-xs 2xl:max-w-none 2xl:gap-1 2xl:text-sm ${active ? "text-ink" : "text-mute"}`}
+        title={label}
         aria-expanded={open}
         aria-haspopup="true"
       >

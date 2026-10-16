@@ -55,7 +55,8 @@ export function Header() {
   const link = (href: string, label: string, active: boolean) => (
     <Link
       href={href}
-      className={`text-sm transition hover:text-ink ${active ? "text-ink" : "text-mute"}`}
+      title={label}
+      className={`max-w-[7.5rem] truncate text-[11px] transition hover:text-ink xl:max-w-[8.5rem] xl:text-xs 2xl:max-w-none 2xl:text-sm ${active ? "text-ink" : "text-mute"}`}
     >
       {label}
     </Link>
@@ -64,9 +65,9 @@ export function Header() {
   return (
     <>
       <header className="sticky top-0 z-[70] border-b border-line bg-canvas/90 backdrop-blur-md">
-        <div className="mx-auto flex h-16 max-w-page items-center justify-between gap-4 px-5 sm:px-6">
+        <div className="mx-auto flex h-16 max-w-page items-center justify-between gap-2 px-4 sm:gap-3 sm:px-6">
           <Wordmark />
-          <nav className="hidden items-center gap-6 xl:flex" aria-label={t.a11y.main}>
+          <nav className="hidden min-w-0 flex-1 items-center justify-center gap-1.5 xl:flex xl:gap-2.5 2xl:gap-3" aria-label={t.a11y.main}>
             {link("/", t.nav.home, pathname === "/")}
             <NavDropdown
               label={t.nav.services}
@@ -90,15 +91,15 @@ export function Header() {
               pathname={pathname}
             />
           </nav>
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
             <LanguageDropdown />
             <ThemeSwitch />
-            <Link href="/contact" className={`${btnPrimary} hidden lg:inline-flex px-4`}>
+            <Link href="/contact" className={`${btnPrimary} hidden max-w-[10rem] truncate xl:inline-flex xl:max-w-[12rem] 2xl:max-w-[14rem] 2xl:px-4`}>
               {t.headerCta}
             </Link>
             <button
               type="button"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line text-ink xl:hidden"
+              className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-line text-ink xl:hidden"
               aria-expanded={open}
               aria-label={open ? t.a11y.closeMenu : t.a11y.menu}
               onClick={() => setOpen((value) => !value)}
@@ -130,22 +131,36 @@ export function Header() {
               </svg>
             </button>
           </div>
-          <div className="flex-1 space-y-8 overflow-y-auto px-5 py-8">
-            <div className="flex flex-col gap-4 text-2xl font-semibold tracking-tight">
-              <Link href="/">{t.nav.home}</Link>
-              <Link href="/#services">{t.nav.services}</Link>
-              <Link href="/cases">{t.nav.cases}</Link>
-              <Link href="/pricing">{t.nav.pricing}</Link>
-              <Link href="/#work">{t.nav.work}</Link>
-              <Link href="/contact">{t.nav.contact}</Link>
-              <Link href="/about">{t.nav.about}</Link>
+          <div className="flex-1 space-y-8 overflow-y-auto overscroll-contain px-5 py-6 pb-8">
+            <div className="flex flex-col gap-3">
+              <Link href="/" className="text-pretty text-xl font-semibold leading-snug tracking-tight sm:text-2xl">
+                {t.nav.home}
+              </Link>
+              <Link href="/#services" className="text-pretty text-xl font-semibold leading-snug tracking-tight sm:text-2xl">
+                {t.nav.services}
+              </Link>
+              <Link href="/cases" className="text-pretty text-xl font-semibold leading-snug tracking-tight sm:text-2xl">
+                {t.nav.cases}
+              </Link>
+              <Link href="/pricing" className="text-pretty text-xl font-semibold leading-snug tracking-tight sm:text-2xl">
+                {t.nav.pricing}
+              </Link>
+              <Link href="/#work" className="text-pretty text-xl font-semibold leading-snug tracking-tight sm:text-2xl">
+                {t.nav.work}
+              </Link>
+              <Link href="/contact" className="text-pretty text-xl font-semibold leading-snug tracking-tight sm:text-2xl">
+                {t.nav.contact}
+              </Link>
+              <Link href="/about" className="text-pretty text-xl font-semibold leading-snug tracking-tight sm:text-2xl">
+                {t.nav.about}
+              </Link>
             </div>
             <div className="grid gap-6 border-t border-line pt-6 sm:grid-cols-2">
               <div>
                 <p className="text-xs tracking-wide text-mute">{t.nav.products}</p>
-                <div className="mt-3 flex flex-col gap-2 text-sm">
+                <div className="mt-3 flex flex-col gap-2.5 text-sm">
                   {productItems.map((item) => (
-                    <Link key={item.href} href={item.href} className="text-ink">
+                    <Link key={item.href} href={item.href} className="text-pretty text-ink [overflow-wrap:anywhere]">
                       {item.label}
                     </Link>
                   ))}
