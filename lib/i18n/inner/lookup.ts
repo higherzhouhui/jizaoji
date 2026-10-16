@@ -146,20 +146,27 @@ export function getCopyLang(locale: Locale): "zh" | "en" {
   return locale === "zh" || locale === "zh-Hant" ? "zh" : "en";
 }
 
+function safeText(value: string, fallback: string): string {
+  if (value.includes("MYMEMORY WARNING") || value.includes("mymemory.translated.net")) {
+    return fallback;
+  }
+  return value;
+}
+
 export function lineFor(locale: Locale, source: string): string {
   const key = source.trim();
   if (locale === "zh") return source;
+  const enLine = innerEn[key] ?? key;
   if (locale === "zh-Hant") {
     const map = maps["zh-Hant"];
-    return map?.[key] ?? toTraditional(key);
+    const hant = map?.[key] ?? toTraditional(key);
+    return safeText(hant, enLine);
   }
   if (locale === "en") {
-    return innerEn[key] ?? key;
+    return enLine;
   }
   const localeMap = maps[locale];
   const translated = localeMap?.[key];
-  if (translated) return translated;
-  const en = innerEn[key];
-  if (en) return en;
-  return key;
+  if (translated) return safeText(translated, enLine);
+  return enLine;
 }
