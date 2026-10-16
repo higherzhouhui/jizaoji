@@ -6,16 +6,15 @@
  */
 
 export const CONTACT_CONFIG = {
-  // TODO: Replace with actual WhatsApp number (format: 60XXXXXXXXX for Malaysia)
+  // WhatsApp contact - using QR link provided by owner
   whatsapp: {
-    number: "60XXXXXXXXX", // Malaysia format without +
-    displayNumber: "+60 XXX XXX XXXX",
-    url: "https://wa.me/60XXXXXXXXX",
+    url: "https://wa.me/qr/OBAPKC5ERBB7K1",
+    displayText: "WhatsApp",
   },
 
-  // TODO: Replace with actual WeChat ID
+  // WeChat contact
   wechat: {
-    id: "YOUR_WECHAT_ID",
+    id: "P0refect", // Capital P, zero, 'refect'
     // TODO: Add WeChat QR code image to /public/images/wechat-qr.png
     qrImage: "/images/wechat-qr.png",
   },
