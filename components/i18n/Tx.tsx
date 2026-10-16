@@ -1,16 +1,15 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { innerEn } from "@/lib/i18n/inner-en";
+import { lineFor } from "@/lib/i18n/inner/lookup";
 import { usePreferences } from "@/lib/preferences";
 
-/** Renders the same Chinese source the page already uses, or the English line when the locale is English. */
+/** Renders localized copy for string children; Chinese source keys stay as-is for zh. */
 export function Tx({ children }: { children: ReactNode }) {
   const { locale } = usePreferences();
-  if (locale !== "en") return <>{children}</>;
   if (typeof children === "string" || typeof children === "number") {
     const key = String(children).trim();
-    return <>{innerEn[key] ?? children}</>;
+    return <>{lineFor(locale, key)}</>;
   }
   return <>{children}</>;
 }
