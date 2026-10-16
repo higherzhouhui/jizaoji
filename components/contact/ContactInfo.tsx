@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { usePreferences } from "@/lib/preferences";
 import { CONTACT_CONFIG } from "@/lib/contact-config";
 
@@ -35,26 +36,14 @@ export function ContactInfo() {
         <div>
           <p className="text-ink font-mono">{CONTACT_CONFIG.wechat.id}</p>
           <div className="mt-3 inline-block rounded-lg border border-line bg-canvas p-2">
-            {/* TODO: Add actual WeChat QR code image */}
-            <div className="flex h-32 w-32 items-center justify-center bg-surface">
-              <div className="text-center">
-                <svg
-                  className="mx-auto h-12 w-12 text-mute"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
-                  />
-                </svg>
-                <p className="mt-2 text-xs text-mute">
-                  {locale === "en" ? "QR TODO" : "二维码 TODO"}
-                </p>
-              </div>
+            <div className="relative h-32 w-32">
+              <Image
+                src="/images/wechat-qr.png"
+                alt={`${locale === "en" ? "WeChat QR Code" : "微信二维码"} - ${CONTACT_CONFIG.wechat.id}`}
+                fill
+                className="object-contain"
+                sizes="128px"
+              />
             </div>
           </div>
           <p className="mt-2 text-xs text-mute">{c.wechatQr}</p>

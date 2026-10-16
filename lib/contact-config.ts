@@ -15,7 +15,6 @@ export const CONTACT_CONFIG = {
   // WeChat contact
   wechat: {
     id: "P0refect", // Capital P, zero, 'refect'
-    // TODO: Add WeChat QR code image to /public/images/wechat-qr.png
     qrImage: "/images/wechat-qr.png",
   },
 

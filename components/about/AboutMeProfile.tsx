@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { usePreferences } from "@/lib/preferences";
 import { CONTACT_CONFIG } from "@/lib/contact-config";
 
@@ -12,28 +13,15 @@ export function AboutMeProfile() {
       <div className="mx-auto max-w-4xl px-5 sm:px-6">
         <div className="grid gap-12 lg:grid-cols-[300px_1fr]">
           <div>
-            <div className="aspect-square overflow-hidden rounded-2xl border border-line bg-surface">
-              {/* TODO: Replace with actual developer photo */}
-              <div className="flex h-full items-center justify-center bg-gradient-to-br from-accent/20 to-brass/20">
-                <div className="text-center">
-                  <svg
-                    className="mx-auto h-24 w-24 text-mute"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                    />
-                  </svg>
-                  <p className="mt-4 text-xs text-mute">
-                    {locale === "en" ? "TODO: Add photo" : "TODO: 添加照片"}
-                  </p>
-                </div>
-              </div>
+            <div className="relative aspect-square overflow-hidden rounded-2xl border border-line bg-surface">
+              <Image
+                src="/images/developer-photo.jpg"
+                alt={locale === "en" ? "Developer portrait" : "开发者照片"}
+                fill
+                className="object-cover"
+                sizes="300px"
+                priority
+              />
             </div>
           </div>
 
