@@ -56,7 +56,7 @@ export function Header() {
     <Link
       href={href}
       title={label}
-      className={`max-w-[7.5rem] truncate text-[11px] transition hover:text-ink xl:max-w-[8.5rem] xl:text-xs 2xl:max-w-none 2xl:text-sm ${active ? "text-ink" : "text-mute"}`}
+      className={`max-w-[7rem] min-w-0 truncate text-pretty text-[11px] leading-snug transition hover:text-ink xl:max-w-[8rem] xl:text-xs 2xl:max-w-[9.5rem] 2xl:text-sm ${active ? "text-ink" : "text-mute"}`}
     >
       {label}
     </Link>

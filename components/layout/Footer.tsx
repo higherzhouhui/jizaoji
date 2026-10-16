@@ -12,7 +12,7 @@ export function Footer() {
     { href: "/#services", label: t.nav.services },
     { href: "/cases", label: t.nav.cases },
     { href: "/#work", label: t.nav.work },
-    { href: "/#faq", label: "FAQ" },
+    { href: "/#faq", label: t.nav.faq },
     { href: "/contact", label: t.nav.contact },
     { href: "/about", label: t.nav.about },
     { href: "/products", label: t.nav.products },
@@ -33,7 +33,12 @@ export function Footer() {
           </div>
           <div className="grid grid-cols-2 gap-x-10 gap-y-3 text-sm sm:grid-cols-4">
             {links.map((item) => (
-              <Link key={item.href} href={item.href} className="text-mute transition hover:text-ink">
+              <Link
+                key={item.href}
+                href={item.href}
+                title={item.label}
+                className="text-pretty text-mute transition hover:text-ink [overflow-wrap:anywhere]"
+              >
                 {item.label}
               </Link>
             ))}

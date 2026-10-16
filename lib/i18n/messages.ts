@@ -1,4 +1,11 @@
 import type { Locale } from "./locales";
+import { mergeMessages } from "./merge-messages";
+import { thMarketing } from "./locales/th-marketing";
+import { msMarketing } from "./locales/ms-marketing";
+import { idMarketing } from "./locales/id-marketing";
+import { viMarketing } from "./locales/vi-marketing";
+import { jaMarketing } from "./locales/ja-marketing";
+import { koMarketing } from "./locales/ko-marketing";
 
 const zh = {
   brand: "极造极",
@@ -16,6 +23,7 @@ const zh = {
     contact: "联系",
     products: "服务细项",
     solutions: "按行业看",
+    faq: "常见问题",
   },
   products: {
     website: "官网 / 独立站",
@@ -483,6 +491,7 @@ const en: Messages = {
     contact: "Contact",
     products: "Services",
     solutions: "By trade",
+    faq: "FAQ",
   },
   products: {
     website: "Website",
@@ -926,7 +935,7 @@ const zhHant: Messages = {
   ...zh,
   brand: "極造極",
   company: "極造極",
-  nav: { ...zh.nav, about: "關於我" },
+  nav: { ...zh.nav, about: "關於我", faq: "常見問題" },
   hero: {
     ...zh.hero,
     kicker: "10 年全棧獨立開發者 · 吉隆坡 · 中英雙語 · 全流程一站式服務",
@@ -1005,8 +1014,7 @@ const zhHant: Messages = {
 };
 
 // Bahasa Melayu
-const ms: Messages = {
-  ...en, // Using English as fallback
+const ms: Messages = mergeMessages(en, {
   brand: "Jizaoji",
   company: "Jizaoji",
   nav: {
@@ -1023,19 +1031,9 @@ const ms: Messages = {
     contact: "Hubungi",
     products: "Produk",
     solutions: "Penyelesaian",
+    faq: "Soalan lazim",
   },
   headerCta: "Hubungi Kami",
-  hero: {
-    ...en.hero,
-    kicker: "Pembangun Full-Stack, 10 tahun, Kuala Lumpur, Perkhidmatan end-to-end",
-    title: "Anda beritahu apa yang anda perlukan.",
-    titleEm: "Saya bina dan serahkan kepada anda.",
-  },
-  pricing: {
-    ...en.pricing,
-    kicker: "Harga",
-    title: "Harga Telus",
-  },
   contact: {
     ...en.contact,
     kicker: "Hubungi",
@@ -1111,11 +1109,11 @@ const ms: Messages = {
       network: "Ralat rangkaian. Sila cuba lagi.",
     },
   },
-};
+  ...msMarketing,
+});
 
 // Bahasa Indonesia  
-const id: Messages = {
-  ...en, // Using English as fallback
+const id: Messages = mergeMessages(en, {
   brand: "Jizaoji",
   company: "Jizaoji",
   nav: {
@@ -1132,6 +1130,7 @@ const id: Messages = {
     contact: "Kontak",
     products: "Produk",
     solutions: "Solusi",
+    faq: "Tanya jawab",
   },
   headerCta: "Hubungi Kami",
   hero: {
@@ -1220,11 +1219,11 @@ const id: Messages = {
       network: "Kesalahan jaringan. Silakan coba lagi.",
     },
   },
-};
+  ...idMarketing,
+});
 
 // Thai
-const th: Messages = {
-  ...en, // Using English as fallback  
+const th: Messages = mergeMessages(en, {
   brand: "Jizaoji",
   company: "Jizaoji",
   nav: {
@@ -1235,8 +1234,13 @@ const th: Messages = {
     work: "วิธีการทำงาน",
     about: "เกี่ยวกับ",
     more: "เพิ่มเติม",
+    tech: "การส่งมอบ",
+    blog: "บล็อก",
     pricing: "ราคา",
     contact: "ติดต่อ",
+    products: "รายละเอียดบริการ",
+    solutions: "ตามธุรกิจ",
+    faq: "คำถามที่พบบ่อย",
   },
   headerCta: "ติดต่อเรา",
   contact: {
@@ -1314,11 +1318,11 @@ const th: Messages = {
       network: "เครือข่ายผิดพลาด ลองอีกครั้ง",
     },
   },
-};
+  ...thMarketing,
+});
 
 // Vietnamese
-const vi: Messages = {
-  ...en, // Using English as fallback
+const vi: Messages = mergeMessages(en, {
   brand: "Jizaoji",
   company: "Jizaoji",
   nav: {
@@ -1329,8 +1333,13 @@ const vi: Messages = {
     work: "Quy trình",
     about: "Giới thiệu",
     more: "Thêm",
+    tech: "Quy trình",
+    blog: "Bài viết",
     pricing: "Báo giá",
     contact: "Liên hệ",
+    products: "Chi tiết dịch vụ",
+    solutions: "Theo ngành",
+    faq: "Câu hỏi thường gặp",
   },
   headerCta: "Liên hệ",
   contact: {
@@ -1408,11 +1417,11 @@ const vi: Messages = {
       network: "Lỗi mạng. Vui lòng thử lại.",
     },
   },
-};
+  ...viMarketing,
+});
 
 // Japanese
-const ja: Messages = {
-  ...en, // Using English as fallback
+const ja: Messages = mergeMessages(en, {
   brand: "Jizaoji",
   company: "Jizaoji",
   nav: {
@@ -1423,8 +1432,13 @@ const ja: Messages = {
     work: "業務フロー",
     about: "について",
     more: "その他",
+    tech: "進め方",
+    blog: "ブログ",
     pricing: "料金",
     contact: "お問い合わせ",
+    products: "サービス一覧",
+    solutions: "業種から",
+    faq: "よくある質問",
   },
   headerCta: "お問い合わせ",
   contact: {
@@ -1502,11 +1516,11 @@ const ja: Messages = {
       network: "ネットワークエラーです。もう一度お試しください。",
     },
   },
-};
+  ...jaMarketing,
+});
 
 // Korean
-const ko: Messages = {
-  ...en, // Using English as fallback
+const ko: Messages = mergeMessages(en, {
   brand: "Jizaoji",
   company: "Jizaoji",
   nav: {
@@ -1517,8 +1531,13 @@ const ko: Messages = {
     work: "작업 방식",
     about: "소개",
     more: "더보기",
+    tech: "진행 방식",
+    blog: "블로그",
     pricing: "가격",
     contact: "문의",
+    products: "서비스 안내",
+    solutions: "업종별",
+    faq: "자주 묻는 질문",
   },
   headerCta: "문의하기",
   contact: {
@@ -1596,7 +1615,8 @@ const ko: Messages = {
       network: "네트워크 오류입니다. 다시 시도해 주세요.",
     },
   },
-};
+  ...koMarketing,
+});
 
 export const messages: Record<Locale, Messages> = { 
   zh, 

@@ -30,7 +30,9 @@ export function TrustHero() {
               ))}
             </span>
           </h1>
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-mute sm:text-lg">{h.lede}</p>
+          <p className="mt-6 max-w-xl text-pretty text-base leading-relaxed text-mute [overflow-wrap:anywhere] sm:text-lg">
+            {h.lede}
+          </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Link href="/contact" className={`${btnPrimary} w-full sm:w-auto sm:max-w-full`}>
               {h.primary}
