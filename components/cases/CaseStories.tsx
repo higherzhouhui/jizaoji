@@ -6,11 +6,12 @@ import Link from "next/link";
 import {
   CASES_LIST,
   caseTitle,
+  getCopyLang,
   type CaseIndustry,
   type CaseType,
 } from "@/components/cases/casesData";
 import { usePreferences } from "@/lib/preferences";
-import type { Locale } from "@/lib/i18n/messages";
+import type { Locale } from "@/lib/i18n/locales";
 
 const TYPES: CaseType[] = ["all", "website", "app", "miniprogram", "ai"];
 const INDUSTRIES: CaseIndustry[] = ["all", "ecommerce", "education", "enterprise", "food"];
@@ -124,18 +125,18 @@ function StoryCard({ id, locale }: { id: string; locale: Locale }) {
             <span>{t.caseIndustries[industryKey]}</span>
           </div>
           <h2 className="mt-2 text-xl font-semibold tracking-tight text-ink">{caseTitle(item, locale)}</h2>
-          <p className="mt-3 font-display text-3xl text-accent">{item.stat.value[locale]}</p>
-          <p className="mt-1 text-sm text-mute">{item.stat.label[locale]}</p>
+          <p className="mt-3 font-display text-3xl text-accent">{item.stat.value[getCopyLang(locale) as keyof typeof item.stat.value]}</p>
+          <p className="mt-1 text-sm text-mute">{item.stat.label[getCopyLang(locale) as keyof typeof item.stat.label]}</p>
         </div>
       </div>
       <div className="flex flex-1 flex-col gap-3 border-t border-line px-5 py-5 text-sm leading-relaxed text-mute sm:px-6">
         <p>
           <span className="font-medium text-ink">{t.stories.before} · </span>
-          {item.situation[locale]}
+          {item.situation[getCopyLang(locale) as keyof typeof item.situation]}
         </p>
         <p>
           <span className="font-medium text-ink">{t.stories.after} · </span>
-          {item.delivered[locale]}
+          {item.delivered[getCopyLang(locale) as keyof typeof item.delivered]}
         </p>
         <div className="mt-2 flex flex-wrap gap-4 font-semibold">
           <Link href={`/cases/${item.id}`} className="text-ink underline decoration-line underline-offset-4">

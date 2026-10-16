@@ -286,8 +286,15 @@ export const CASES_LIST: CaseItem[] = [
   },
 ];
 
-export function caseTitle(item: CaseItem, locale: "zh" | "en") {
-  return locale === "en" ? item.titleEn : item.title;
+import type { Locale } from "@/lib/i18n/locales";
+
+// Helper to map locale to Copy key - exported for use in components
+export function getCopyLang(locale: Locale): "zh" | "en" {
+  return (locale === "zh" || locale === "zh-Hant") ? "zh" : "en";
+}
+
+export function caseTitle(item: CaseItem, locale: Locale) {
+  return getCopyLang(locale) === "zh" ? item.title : item.titleEn;
 }
 
 export function caseById(id: string) {

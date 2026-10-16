@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import type { Locale } from "@/lib/i18n/locales";
+import { LOCALES, HTML_LANG } from "@/lib/i18n/locales";
 
 /** 站点名称，与 layout 一致 */
 export const SITE_NAME = "极造极信息科技有限公司";
@@ -25,12 +27,14 @@ export function buildPageMetadata({
   path = "",
   image = DEFAULT_OG_IMAGE,
   noIndex = false,
+  locale = "zh" as Locale,
 }: {
   title: string;
   description: string;
   path?: string;
   image?: string | null;
   noIndex?: boolean;
+  locale?: Locale;
 }): Metadata {
   const fullTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
   const canonicalUrl = path ? `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}` : SITE_URL;
@@ -41,13 +45,22 @@ export function buildPageMetadata({
         ? `${SITE_URL}${image.startsWith("/") ? image : `/${image}`}`
         : "";
 
+  // Generate hreflang alternates
+  const languages: Record<string, string> = {};
+  LOCALES.forEach(loc => {
+    languages[HTML_LANG[loc]] = canonicalUrl;
+  });
+
   return {
     title,
     description,
-    alternates: { canonical: canonicalUrl },
+    alternates: { 
+      canonical: canonicalUrl,
+      languages,
+    },
     openGraph: {
       type: "website",
-      locale: "zh_CN",
+      locale: HTML_LANG[locale].replace("-", "_"),
       siteName: SITE_NAME,
       title: fullTitle,
       description,

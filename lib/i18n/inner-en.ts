@@ -762,8 +762,15 @@ export const innerEn: Record<string, string> = {
   "，点击下方按钮前往阅读完整内容。": ". The button below opens the full piece.",
 };
 
-export function lineFor(locale: "zh" | "en", source: string) {
+import type { Locale } from "@/lib/i18n/locales";
+
+function getCopyLang(locale: Locale): "zh" | "en" {
+  return (locale === "zh" || locale === "zh-Hant") ? "zh" : "en";
+}
+
+export function lineFor(locale: Locale, source: string) {
   const key = source.trim();
-  if (locale !== "en") return source;
+  const lang = getCopyLang(locale);
+  if (lang !== "en") return source;
   return innerEn[key] ?? source;
 }

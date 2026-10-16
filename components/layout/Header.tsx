@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { LocaleSwitch } from "@/components/brand/LocaleSwitch";
+import { LanguageDropdown } from "@/components/layout/LanguageDropdown";
 import { ThemeSwitch } from "@/components/brand/ThemeSwitch";
 import { Wordmark } from "@/components/brand/Wordmark";
 import { NavDropdown } from "@/components/layout/NavDropdown";
@@ -91,9 +91,7 @@ export function Header() {
             />
           </nav>
           <div className="flex items-center gap-2 sm:gap-3">
-            <div className="hidden sm:block">
-              <LocaleSwitch />
-            </div>
+            <LanguageDropdown />
             <ThemeSwitch />
             <Link href="/contact" className={`${btnPrimary} hidden lg:inline-flex px-4`}>
               {t.headerCta}
@@ -170,7 +168,7 @@ export function Header() {
               </div>
             </div>
             <div className="flex flex-wrap items-center gap-4 border-t border-line pt-6">
-              <LocaleSwitch />
+              <LanguageDropdown />
               <ThemeSwitch labelled />
             </div>
           </div>

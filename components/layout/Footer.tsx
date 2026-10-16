@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Wordmark } from "@/components/brand/Wordmark";
 import { usePreferences } from "@/lib/preferences";
+import { CONTACT_CONFIG } from "@/lib/contact-config";
 
 export function Footer() {
   const { t } = usePreferences();
@@ -26,8 +27,8 @@ export function Footer() {
             <Wordmark />
             <p className="mt-4 text-sm leading-relaxed text-mute">{t.footer.blurb}</p>
             <p className="mt-4 text-sm text-ink">{t.company}</p>
-            <a href="tel:18516010812" className="mt-2 block font-display text-lg text-ink">
-              185 1601 0812
+            <a href={`tel:${CONTACT_CONFIG.phone.tel}`} className="mt-2 block font-display text-lg text-ink">
+              {CONTACT_CONFIG.phone.number}
             </a>
           </div>
           <div className="grid grid-cols-2 gap-x-10 gap-y-3 text-sm sm:grid-cols-4">
