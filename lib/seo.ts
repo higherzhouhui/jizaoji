@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import type { Locale } from "@/lib/i18n/locales";
 import { LOCALES, HTML_LANG } from "@/lib/i18n/locales";
 
-/** 站点名称，与 layout 一致 */
-export const SITE_NAME = "极造极信息科技有限公司";
+/** Site name for titles and structured data */
+export const SITE_NAME = "Jizaoji";
 
 /** 站点根 URL，用于 canonical、openGraph.url、JSON-LD；生产环境请配置 NEXT_PUBLIC_SITE_URL */
 export const SITE_URL =
@@ -16,7 +16,7 @@ export const DEFAULT_OG_IMAGE = "/logo.png";
 
 /** 默认描述（首页/兜底） */
 export const DEFAULT_DESCRIPTION =
-  "极造极信息科技有限公司 — 从 0 到 1 打造数字产品，网站、APP、小程序、AI 工具一站式交付，用技术创造价值。";
+  "Jizaoji — Independent full-stack developer in Kuala Lumpur. Websites, apps, WeChat mini programs, and AI tools. End-to-end delivery for small and medium projects.";
 
 /**
  * 为页面生成完整 SEO metadata（title、description、openGraph、twitter、canonical）

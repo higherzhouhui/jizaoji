@@ -1,4 +1,7 @@
 import type { Locale } from "./locales";
+import { mergeMessages } from "./merge-messages";
+import { thMarketing } from "./locales/th-marketing";
+import { msMarketing } from "./locales/ms-marketing";
 
 const zh = {
   brand: "极造极",
@@ -1005,8 +1008,7 @@ const zhHant: Messages = {
 };
 
 // Bahasa Melayu
-const ms: Messages = {
-  ...en, // Using English as fallback
+const ms: Messages = mergeMessages(en, {
   brand: "Jizaoji",
   company: "Jizaoji",
   nav: {
@@ -1025,17 +1027,6 @@ const ms: Messages = {
     solutions: "Penyelesaian",
   },
   headerCta: "Hubungi Kami",
-  hero: {
-    ...en.hero,
-    kicker: "Pembangun Full-Stack, 10 tahun, Kuala Lumpur, Perkhidmatan end-to-end",
-    title: "Anda beritahu apa yang anda perlukan.",
-    titleEm: "Saya bina dan serahkan kepada anda.",
-  },
-  pricing: {
-    ...en.pricing,
-    kicker: "Harga",
-    title: "Harga Telus",
-  },
   contact: {
     ...en.contact,
     kicker: "Hubungi",
@@ -1111,7 +1102,8 @@ const ms: Messages = {
       network: "Ralat rangkaian. Sila cuba lagi.",
     },
   },
-};
+  ...msMarketing,
+});
 
 // Bahasa Indonesia  
 const id: Messages = {
@@ -1223,8 +1215,7 @@ const id: Messages = {
 };
 
 // Thai
-const th: Messages = {
-  ...en, // Using English as fallback  
+const th: Messages = mergeMessages(en, {
   brand: "Jizaoji",
   company: "Jizaoji",
   nav: {
@@ -1314,7 +1305,8 @@ const th: Messages = {
       network: "เครือข่ายผิดพลาด ลองอีกครั้ง",
     },
   },
-};
+  ...thMarketing,
+});
 
 // Vietnamese
 const vi: Messages = {
