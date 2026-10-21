@@ -9,7 +9,7 @@ export const SITE_NAME = "Jizaoji";
 export const SITE_URL =
   typeof process.env.NEXT_PUBLIC_SITE_URL === "string" && process.env.NEXT_PUBLIC_SITE_URL
     ? process.env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "")
-    : "https://jizaoji.top";
+    : "https://jizaoji.vercel.app";
 
 /** 默认 OG 图路径（相对或绝对），无则可不设或使用 logo */
 export const DEFAULT_OG_IMAGE = "/logo.png";
