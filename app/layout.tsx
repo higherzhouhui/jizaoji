@@ -35,7 +35,7 @@ const instrument = Instrument_Serif({
 const siteUrl =
   typeof process.env.NEXT_PUBLIC_SITE_URL === "string" && process.env.NEXT_PUBLIC_SITE_URL
     ? process.env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, "")
-    : "https://jizaoji.top";
+    : "https://jizaoji.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

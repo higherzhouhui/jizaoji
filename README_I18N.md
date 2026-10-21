@@ -111,9 +111,9 @@ node scripts/validate-i18n.mjs
 所有页面自动生成 hreflang 替代链接:
 
 ```html
-<link rel="alternate" hreflang="zh-CN" href="https://jizaoji.top" />
-<link rel="alternate" hreflang="zh-TW" href="https://jizaoji.top" />
-<link rel="alternate" hreflang="en" href="https://jizaoji.top" />
+<link rel="alternate" hreflang="zh-CN" href="https://jizaoji.vercel.app" />
+<link rel="alternate" hreflang="zh-TW" href="https://jizaoji.vercel.app" />
+<link rel="alternate" hreflang="en" href="https://jizaoji.vercel.app" />
 <!-- ... 其他语言 -->
 ```
 
